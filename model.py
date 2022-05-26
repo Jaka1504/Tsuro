@@ -104,8 +104,8 @@ class Igra:
                     vrni = False
                 karta.zarotiraj()
             if vrni:
-                stare.append(povezave)
-                yield Karta(povezave)
+                stare.append(karta)
+                yield karta
 
 
     def ustvari_nov_kupcek(self):
