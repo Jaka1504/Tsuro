@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Moje datoteke:
+# Mape z slikami, ki pomagajo pri razvoju aplikacije
+img/cropped/
+img/import-from-geogebra
