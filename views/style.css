@@ -1,0 +1,9 @@
+body {
+    background-color: burlywood;
+}
+
+.potka {
+    position: absolute;
+    transform: rotate(var(--rot));
+    filter: hue-rotate(var(--hue));
+}
