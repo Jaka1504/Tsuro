@@ -51,8 +51,6 @@ class Karta:
         return prikaz
 
 
-
-
 @dataclass
 class Igralec:
     uporabnik: Uporabnik
@@ -164,8 +162,8 @@ class Igra:
 
 @dataclass
 class Tsuro:
-    igre: List[Igra]
-    uporabniki: List[Uporabnik]
+    igre: List[Igra] = None
+    uporabniki: List[Uporabnik] = None
 
 
 
@@ -182,5 +180,3 @@ karta2 = igra.kupcek[1]
 karta3 = igra.kupcek[2]
 for i in range(1, 4):
     igra.postavi_karto_na_tabelo(igra.kupcek[i - 1], (1, i))
-
-karta1.prikaz_povezav()
