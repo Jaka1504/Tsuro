@@ -38,6 +38,20 @@ class Karta:
         self.povezave = nove_povezave
         return self
 
+    def prikaz_povezav(self):
+        prikaz = []
+        obdelano = []
+        for konec, izvor in enumerate(self.povezave):
+            if not izvor in obdelano:
+                if (konec - izvor) % 8 > 4 or konec - izvor == 4:
+                    izvor, konec = konec, izvor
+                prikaz.append((izvor % 2, (konec - izvor) % 8, (izvor - izvor % 2) // 2))
+                obdelano.append(izvor)
+                obdelano.append(konec)
+        return prikaz
+
+
+
 
 @dataclass
 class Igralec:
@@ -54,6 +68,7 @@ class Igra:
     igralci: List[Igralec]
     kupcek: List[Karta] = None
     tabela: Dict[tuple, Karta] = None
+    na_vrsti: int = 0
 
 
     def __post_init__(self):
@@ -158,14 +173,14 @@ class Tsuro:
 
 
 
-# uporabnik1 = Uporabnik("Jaka")
-# igralec1 = Igralec(uporabnik=uporabnik1, barva=3, polje=(0, 2), polozaj=7, karte_v_roki=[])
-# igra = Igra("prva igra", igralci=[igralec1])
-# igra.ustvari_nov_kupcek()
-# karta1 = igra.kupcek[0]
-# karta2 = igra.kupcek[1]
-# karta3 = igra.kupcek[2]
-for i, karta in enumerate(Igra.vse_karte()):
-    print(i, karta)
+uporabnik1 = Uporabnik("Jaka")
+igralec1 = Igralec(uporabnik=uporabnik1, barva=3, polje=(0, 2), polozaj=7, karte_v_roki=[])
+igra = Igra("prva igra", igralci=[igralec1])
+igra.ustvari_nov_kupcek()
+karta1 = igra.kupcek[0]
+karta2 = igra.kupcek[1]
+karta3 = igra.kupcek[2]
+for i in range(1, 4):
+    igra.postavi_karto_na_tabelo(igra.kupcek[i - 1], (1, i))
 
-karta = Karta([3, 4, 7, 0, 1, 6, 5, 2])
+karta1.prikaz_povezav()
