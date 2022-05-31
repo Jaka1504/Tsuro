@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Dict, List
+from uuid import uuid4
 import random
 
 
@@ -35,7 +36,7 @@ class Karta:
         for _ in range(st_rotacij):
             nove_povezave = [(num + 2) % 8 for num in nove_povezave]
             nove_povezave = nove_povezave[-2:] + nove_povezave[:-2]
-        self.povezave = nove_povezave
+        self.povezave = nove_povezave[:]
         return self
 
     def prikaz_povezav(self):
@@ -63,20 +64,22 @@ class Igralec:
 @dataclass
 class Igra:
     id_igre: int
-    igralci: List[Igralec]
+    igralci: List[Igralec] = None
     kupcek: List[Karta] = None
     tabela: Dict[tuple, Karta] = None
     na_vrsti: int = 0
 
 
     def __post_init__(self):
+        if self.igralci is None:
+            self.igralci = []
         if self.tabela is None:
-            self.tabela = {(x, y): None for x in range(VELIKOST_TABELE[0]) for y in range(VELIKOST_TABELE[1])}
+            self.tabela = {(x, y): None for x in range(VELIKOST_TABELE[0] + 2) for y in range(VELIKOST_TABELE[1] + 2)}
         if self.kupcek is None:
-            self.kupcek = []
+            self.ustvari_nov_kupcek()
 
 
-    def postavi_karto_na_tabelo(self, karta, polje):
+    def postavi_karto_na_tabelo(self, polje, karta):
         self.tabela[polje] = karta
     
 
@@ -90,18 +93,18 @@ class Igra:
 
     @staticmethod
     def napreduj_po_tabeli(staro_polje, star_polozaj, povezave_karte):
-        x, y = staro_polje
+        st_vrstice, st_stolpca = staro_polje
         nov_polozaj = povezave_karte[star_polozaj]
         nov_polozaj = Igra.nasproten_polozaj(nov_polozaj)
         if nov_polozaj in [0, 1]:
-            y += -1
+            st_vrstice += -1
         elif nov_polozaj in [2, 3]:
-            x += -1
+            st_stolpca += -1
         elif nov_polozaj in [4, 5]:
-            y += 1
+            st_vrstice += 1
         else:
-            x += 1
-        return {"novo_polje": (x, y),
+            st_stolpca += 1
+        return {"novo_polje": (st_vrstice, st_stolpca),
                 "nov_polozaj": nov_polozaj}
     
     @staticmethod
@@ -162,21 +165,50 @@ class Igra:
 
 @dataclass
 class Tsuro:
-    igre: List[Igra] = None
-    uporabniki: List[Uporabnik] = None
+    igre: Dict[str, Igra] = None
+    uporabniki: Dict[str, Uporabnik] = None
+
+    def __post_init__(self):
+        if self.igre is None:
+            self.igre = {}
+        if self. uporabniki is None:
+            self.uporabniki = {}
+
+
+    def dodaj_uporabnika(self, ime=None):
+        if ime is None:
+            ime = f"Uporabnik {len(self.uporabniki) + 1}"
+        nov_uporabnik = Uporabnik(ime)
+        self.uporabniki[ime] = nov_uporabnik
+        return nov_uporabnik
+    
+
+    def ustvari_novo_igro(self, id_igre=None, igralci=None, kupcek=None, tabela=None, na_vrsti=0):
+        if id_igre is None:
+            id_igre = self.prost_id_igre()
+        igra = Igra(id_igre, igralci, kupcek, tabela, na_vrsti)
+        self.igre[id_igre] = igra
+        return igra
+
+
+    def prost_id_igre(self):
+        while True:
+            kandidat = uuid4().int
+            if not kandidat in self.igre:
+                return kandidat
 
 
 
 # Testni podatki:
 
 
-
-uporabnik1 = Uporabnik("Jaka")
-igralec1 = Igralec(uporabnik=uporabnik1, barva=3, polje=(0, 2), polozaj=7, karte_v_roki=[])
-igra = Igra("prva igra", igralci=[igralec1])
-igra.ustvari_nov_kupcek()
-karta1 = igra.kupcek[0]
-karta2 = igra.kupcek[1]
-karta3 = igra.kupcek[2]
-for i in range(1, 4):
-    igra.postavi_karto_na_tabelo(igra.kupcek[i - 1], (1, i))
+if __name__ == "__main__":
+    uporabnik1 = Uporabnik("Jaka")
+    igralec1 = Igralec(uporabnik=uporabnik1, barva=3, polje=(0, 2), polozaj=7, karte_v_roki=[])
+    igra = Igra("prva igra", igralci=[igralec1])
+    igra.ustvari_nov_kupcek()
+    karta1 = igra.kupcek[0]
+    karta2 = igra.kupcek[1]
+    karta3 = igra.kupcek[2]
+    for i in range(1, 4):
+        igra.postavi_karto_na_tabelo(igra.kupcek[i - 1], (1, i))
