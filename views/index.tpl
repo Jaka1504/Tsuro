@@ -1,21 +1,22 @@
 % rebase("base.tpl", title = "Tsuro")
 
-<!-- <img src="img/napis_tsuro.png" alt="Tsuro" width="80px"> -->
-<table class="tabela">
-  <tr>
+<table cellspacing="0" cellpadding="0">
+% for st_vrstice in range(velikost_tabele[0] + 2):
+  <tr class="karta">
+% for st_stolpca in range(velikost_tabele[1] + 2):
     <td class="karta">
-      <img src="img/01.png" alt="pot 01" width="100px" class="potka" style="--rot: 0deg; --hue: 90deg;">
-      <img src="img/02.png" alt="pot 02" width="100px" class="potka" style="--rot: -90deg; --hue: 90deg;">
-      <img src="img/11.png" alt="pot 11" width="100px" class="potka" style="--rot: 180deg; --hue: 90deg;">
-      <img src="img/14.png" alt="pot 14" width="100px" class="potka" style="--rot: 90deg; --hue: 90deg;">
+      <div class="karta">
+% karta = tabela[(st_vrstice, st_stolpca)]
+% if karta is not None:
+% for krivulja in karta.prikaz_povezav():
+        <img src="/img/{{krivulja[0]}}{{krivulja[1]}}.png" alt="pot {{krivulja[0]}}{{krivulja[1]}}" width="100px" class="potka" style="--rot: {{(-90 * krivulja[2]) % 360}}deg; --hue: 180deg;">
+% end
+% end
+        <img src="/img/ozadje.png" alt="ozadje" width="100px">
+      </div>
     </td>
-    <td class="karta">
-      <img src="img/11.png" alt="pot 11" width="100px" class="potka">
-      <img src="img/12.png" alt="pot 12" width="100px" class="potka">
-      <img src="img/13.png" alt="pot 13" width="100px" class="potka">
-      <img src="img/14.png" alt="pot 14" width="100px" class="potka">
-    </td>
+% end
   </tr>
+% end
 </table>
-
 

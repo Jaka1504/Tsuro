@@ -1,18 +1,15 @@
 body {
-    background-color: burlywood;
+    background-color: rgb(245, 207, 159);
 }
 
 .potka {
+    position: absolute;
     transform: rotate(var(--rot));
     filter: hue-rotate(var(--hue));
 }
 
 .karta {
-    border: 10px;
-    width: 476px;
-    height: 476px;
-}
-
-.tabela {
-    table-layout: fixed;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
 }
