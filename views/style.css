@@ -3,7 +3,16 @@ body {
 }
 
 .potka {
-    position: absolute;
     transform: rotate(var(--rot));
     filter: hue-rotate(var(--hue));
+}
+
+.karta {
+    border: 10px;
+    width: 476px;
+    height: 476px;
+}
+
+.tabela {
+    table-layout: fixed;
 }
