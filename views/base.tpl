@@ -9,7 +9,15 @@
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <h1>Tsuro</h1>
+    <nav class="navbar navbar-expand-xl bg-light sticky-top">
+      <div class="col-2"></div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="/img/napis_tsuro.png" alt="Tsuro" height="24" class="d-inline-block align-text-top">
+          Tsuro
+        </a>
+      </div>
+    </nav>
     {{!base}}
   </body>
 </html>
