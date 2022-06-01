@@ -55,10 +55,32 @@ class Karta:
 @dataclass
 class Igralec:
     uporabnik: Uporabnik
-    barva: int          # barve bi bile kar 0, 1, 2, ...
-    polje: tuple        # (x, y) ... na ploščici s koordinatama x, y
-    polozaj: int        # položaj na ploščici - int med 0 in 7
-    karte_v_roki: List[Karta]
+    # st_igralca: int     # barve bi bile kar 0, 1, 2, ...
+    polje: tuple = None        # (vrstica, stolpec) polje tabele v tej vrstici in stolpcu
+    polozaj: int = None        # položaj na ploščici - int med 0 in 7
+    karte_v_roki: List[Karta] = None
+
+
+    def __post_init__(self):
+        if self.polje is None:
+            self.polje = random.choice([
+                (i, j)
+                for i in range(1, VELIKOST_TABELE[0] + 1)
+                for j in range(1, VELIKOST_TABELE[1] + 1)
+                if i in (1, VELIKOST_TABELE[0] + 1) or j in (1, VELIKOST_TABELE[1] + 1)
+            ])
+        if self.polozaj is None:
+            if self.polje[0] == 1:
+                self.polozaj = random.choice((0, 1))
+            elif self.polje[1] == VELIKOST_TABELE[1] + 1:
+                self.polozaj = random.choice((2, 3))
+            elif self.polje[0] == VELIKOST_TABELE[0] + 1:
+                self.polozaj = random.choice((4, 5))
+            else:
+                self.polozaj = random.choice((6, 7))
+        if self.karte_v_roki is None:
+            self.karte_v_roki = []
+            
 
 
 @dataclass
@@ -79,16 +101,42 @@ class Igra:
             self.ustvari_nov_kupcek()
 
 
-    def postavi_karto_na_tabelo(self, polje, karta):
-        self.tabela[polje] = karta
-    
+    def ustvari_nov_kupcek(self):
+        self.kupcek = [karta.zarotiraj(st_rotacij=random.randint(0,3)) for karta in Igra.vse_karte()]
+        random.shuffle(self.kupcek)
+
+
+    def dodaj_novega_igralca(self, uporabnik):
+        nov_igralec = Igralec(uporabnik)
+        self.igralci.append(nov_igralec)
+        return len(self.igralci)                    # indeks novega igralca
+
+
+    def igralec_postavi_karto_na_tabelo(self, st_igralca, st_karte, polje):
+        igralec = self.igralci[st_igralca]
+        karta = igralec.karte_v_roki.pop(st_karte)
+        self.postavi_karto_na_tabelo(polje, karta)
+        self.vleci_karto(igralec)
+
+
+    def vleci_karto(self, st_igralca):
+        try:
+            zgornja_karta = self.kupcek.pop()       # ce je prazen kupcek ne naredi nicesar
+            self.igralci[st_igralca].karte_v_roki.append(zgornja_karta)
+        except IndexError:
+            pass
+
 
     def poisci_pot_od_tocke(self, polje, polozaj):
         while not self.tabela[polje] is None:
             novo = Igra.napreduj_po_tabeli(polje, polozaj, self.tabela[polje].povezave)
-            polje = novo["novo_polje"]
-            polozaj = novo["nov_polozaj"]
+            polje = novo[0]
+            polozaj = novo[1]
         return (polje, polozaj)
+
+
+    def postavi_karto_na_tabelo(self, polje, karta):
+        self.tabela[polje] = karta
     
 
     @staticmethod
@@ -104,8 +152,8 @@ class Igra:
             st_vrstice += 1
         else:
             st_stolpca += 1
-        return {"novo_polje": (st_vrstice, st_stolpca),
-                "nov_polozaj": nov_polozaj}
+        return ((st_vrstice, st_stolpca), nov_polozaj)
+
     
     @staticmethod
     def nasproten_polozaj(polozaj):
@@ -134,13 +182,6 @@ class Igra:
             povezave[par[1]] = par[0]
         return povezave
 
-    # @staticmethod
-    # def zarotiraj(povezave, k=1):
-    #     nove_povezave = povezave[:]
-    #     for _ in range(k):
-    #         nove_povezave = [(num + 2) % 8 for num in nove_povezave]
-    #         nove_povezave = nove_povezave[-2:] + nove_povezave[:-2]
-    #     return nove_povezave
 
     @staticmethod
     def vse_karte():
@@ -156,11 +197,6 @@ class Igra:
             if vrni:
                 stare.append(karta)
                 yield karta
-
-
-    def ustvari_nov_kupcek(self):
-        self.kupcek = [karta.zarotiraj(st_rotacij=random.randint(0,3)) for karta in Igra.vse_karte()]
-        random.shuffle(self.kupcek)
 
 
 @dataclass
@@ -204,7 +240,7 @@ class Tsuro:
 
 if __name__ == "__main__":
     uporabnik1 = Uporabnik("Jaka")
-    igralec1 = Igralec(uporabnik=uporabnik1, barva=3, polje=(0, 2), polozaj=7, karte_v_roki=[])
+    igralec1 = Igralec(uporabnik=uporabnik1, st_igralca=3, polje=(0, 2), polozaj=7, karte_v_roki=[])
     igra = Igra("prva igra", igralci=[igralec1])
     igra.ustvari_nov_kupcek()
     karta1 = igra.kupcek[0]
