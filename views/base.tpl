@@ -16,6 +16,29 @@
           <img src="/img/napis_tsuro.png" alt="Tsuro" height="24" class="d-inline-block align-text-top">
           Tsuro
         </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Začetna stran</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Igra
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Trenutna igra</a></li>
+                <li><a class="dropdown-item" href="#">Nova igra</a></li>
+                <li><a class="dropdown-item" href="#">Pregled mojih iger</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Statistika</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     {{!base}}
