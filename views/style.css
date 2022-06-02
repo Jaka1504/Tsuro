@@ -1,11 +1,29 @@
-.potka {
+.povezava {
     position: absolute;
     transform: rotate(var(--rot));
-    filter: hue-rotate(var(--hue)) saturate(20); 
+}
+
+
+.barvna_povezava {
+    filter: hue-rotate(var(--hue)) saturate(30); 
+}
+
+
+.bela_povezava {
+    filter: grayscale(1) brightness(6);
+}
+
+
+.siva_povezava {
+    filter: grayscale(1) brightness(3);
 }
 
 .karta {
     margin: 0px;
     border: 0px;
     padding: 0px;
+}
+
+.ni_postavljena_karta {
+    filter: brightness(1.4);
 }

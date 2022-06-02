@@ -5,7 +5,20 @@ import random
 
 
 
-VELIKOST_TABELE = (6, 6)    # 6×6 tabela
+VELIKOST_TABELE = (4, 4)    # 6×6 tabela
+LOOP = "L"
+# Barve za v css:
+RDECA = 0
+ORANZNA = 67
+RUMENA = 70
+ZELENA = 80
+AQUA = 180
+MODRA = 234
+VIJOLICNA = 255.5
+ROZA = 330
+BELA = "bela"
+SIVA = "siva"
+VRSTNI_RED_BARV = [RDECA, ZELENA, MODRA, RUMENA, AQUA, ROZA, VIJOLICNA, ORANZNA]
 
 # Opombe zase:
 #
@@ -30,6 +43,13 @@ class Uporabnik:
 @dataclass
 class Karta:
     povezave: list
+    barve: Dict[int, list] = None
+
+
+    def __post_init__(self):
+        if self.barve is None:
+            self.barve = {i: BELA for i in range(8)}
+
 
     def zarotiraj(self, st_rotacij=1):
         nove_povezave = self.povezave[:]
@@ -46,7 +66,7 @@ class Karta:
             if not izvor in obdelano:
                 if (konec - izvor) % 8 > 4 or konec - izvor == 4:
                     izvor, konec = konec, izvor
-                prikaz.append((izvor % 2, (konec - izvor) % 8, (izvor - izvor % 2) // 2))
+                prikaz.append((izvor % 2, (konec - izvor) % 8, (izvor - izvor % 2) // 2, self.barve[izvor]))
                 obdelano.append(izvor)
                 obdelano.append(konec)
         return prikaz
@@ -58,29 +78,7 @@ class Igralec:
     # st_igralca: int     # barve bi bile kar 0, 1, 2, ...
     polje: tuple = None        # (vrstica, stolpec) polje tabele v tej vrstici in stolpcu
     polozaj: int = None        # položaj na ploščici - int med 0 in 7
-    karte_v_roki: List[Karta] = None
-
-
-    def __post_init__(self):
-        if self.polje is None:
-            self.polje = random.choice([
-                (i, j)
-                for i in range(1, VELIKOST_TABELE[0] + 1)
-                for j in range(1, VELIKOST_TABELE[1] + 1)
-                if i in (1, VELIKOST_TABELE[0] + 1) or j in (1, VELIKOST_TABELE[1] + 1)
-            ])
-        if self.polozaj is None:
-            if self.polje[0] == 1:
-                self.polozaj = random.choice((0, 1))
-            elif self.polje[1] == VELIKOST_TABELE[1] + 1:
-                self.polozaj = random.choice((2, 3))
-            elif self.polje[0] == VELIKOST_TABELE[0] + 1:
-                self.polozaj = random.choice((4, 5))
-            else:
-                self.polozaj = random.choice((6, 7))
-        if self.karte_v_roki is None:
-            self.karte_v_roki = []
-            
+    karte_v_roki: List[Karta] = None            
 
 
 @dataclass
@@ -108,8 +106,16 @@ class Igra:
 
     def dodaj_novega_igralca(self, uporabnik):
         nov_igralec = Igralec(uporabnik)
+        slaba_pozicija = True
+        while slaba_pozicija:
+            zacetno_polje, zacetni_polozaj = random.choice([pozicija for pozicija in Igra.robne_pozicije()])
+            slaba_pozicija = False
+            for igralec in self. igralci:
+                if igralec.polje == zacetno_polje and igralec.polozaj == zacetni_polozaj:
+                    slaba_pozicija = True
+        nov_igralec.polje, nov_igralec.polozaj = zacetno_polje, zacetni_polozaj
         self.igralci.append(nov_igralec)
-        return len(self.igralci)                    # indeks novega igralca
+        return len(self.igralci) - 1                   # indeks novega igralca
 
 
     def igralec_postavi_karto_na_tabelo(self, st_igralca, st_karte, polje):
@@ -128,36 +134,78 @@ class Igra:
 
 
     def poisci_pot_od_tocke(self, polje, polozaj):
+        zacetno_polje, zaceten_polozaj = polje, polozaj
         while not self.tabela[polje] is None:
-            novo = Igra.napreduj_po_tabeli(polje, polozaj, self.tabela[polje].povezave)
+            novo = self.napreduj_po_tabeli(polje, polozaj)
             polje = novo[0]
             polozaj = novo[1]
+            if polje == zacetno_polje and polozaj == zaceten_polozaj:
+                return LOOP
         return (polje, polozaj)
 
 
     def postavi_karto_na_tabelo(self, polje, karta):
         self.tabela[polje] = karta
+
     
+    def barvaj_povezave_od_tocke(self, polje, polozaj, barva):
+        while not self.tabela[polje] is None:
+            karta = self.tabela[polje]
+            karta.barve[polozaj] = barva
+            karta.barve[karta.povezave[polozaj]] = barva
+            polje, polozaj = self.napreduj_po_tabeli(polje, polozaj)
+
+
+    def primerno_pobarvaj_poti(self):
+        for polje, polozaj in Igra.robne_pozicije():
+            self.barvaj_povezave_od_tocke(polje, polozaj, SIVA)
+        for indeks in range(len(self.igralci)):
+            # polje, polozaj = Igra.obrni_se_na_mestu(self.igralci[indeks].polje, self.igralci[indeks].polozaj)
+            polje, polozaj = self.igralci[indeks].polje, self.igralci[indeks].polozaj
+            barva = VRSTNI_RED_BARV[indeks]
+            self.barvaj_povezave_od_tocke(polje, polozaj, barva)
+
+
+
+    def napreduj_po_tabeli(self, staro_polje, star_polozaj):
+        nov_polozaj = self.tabela[staro_polje].povezave[star_polozaj]
+        return (Igra.obrni_se_na_mestu(staro_polje, nov_polozaj))
+
 
     @staticmethod
-    def napreduj_po_tabeli(staro_polje, star_polozaj, povezave_karte):
-        st_vrstice, st_stolpca = staro_polje
-        nov_polozaj = povezave_karte[star_polozaj]
-        nov_polozaj = Igra.nasproten_polozaj(nov_polozaj)
-        if nov_polozaj in [0, 1]:
-            st_vrstice += -1
-        elif nov_polozaj in [2, 3]:
-            st_stolpca += -1
-        elif nov_polozaj in [4, 5]:
-            st_vrstice += 1
-        else:
-            st_stolpca += 1
-        return ((st_vrstice, st_stolpca), nov_polozaj)
+    def robne_pozicije():
+        for i in range(1, VELIKOST_TABELE[0] + 1):
+            yield ((i, 1), 6)
+            yield ((i, 1), 7)
+        for j in range(1, VELIKOST_TABELE[1] + 1):
+            yield ((VELIKOST_TABELE[0], j), 0)
+            yield ((VELIKOST_TABELE[0], j), 1)
+        for i in range(VELIKOST_TABELE[0], 0, -1):
+            yield ((i, VELIKOST_TABELE[1]), 2)
+            yield ((i, VELIKOST_TABELE[1]), 3)
+        for j in range(VELIKOST_TABELE[1], 0, -1):
+            yield ((1, j), 4)
+            yield ((1, j), 5)
 
-    
+
     @staticmethod
     def nasproten_polozaj(polozaj):
         return [5, 4, 7, 6, 1, 0, 3, 2][polozaj]
+
+    
+    @staticmethod
+    def obrni_se_na_mestu(polje, polozaj):
+        st_vrstice, st_stolpca = polje
+        polozaj = Igra.nasproten_polozaj(polozaj)
+        if polozaj in [0, 1]:
+            st_vrstice += -1
+        elif polozaj in [2, 3]:
+            st_stolpca += -1
+        elif polozaj in [4, 5]:
+            st_vrstice += 1
+        else:
+            st_stolpca += 1
+        return ((st_vrstice, st_stolpca), polozaj)
 
 
     @staticmethod
@@ -240,11 +288,11 @@ class Tsuro:
 
 if __name__ == "__main__":
     uporabnik1 = Uporabnik("Jaka")
-    igralec1 = Igralec(uporabnik=uporabnik1, st_igralca=3, polje=(0, 2), polozaj=7, karte_v_roki=[])
+    igralec1 = Igralec(uporabnik=uporabnik1, polje=(0, 2), polozaj=7, karte_v_roki=[])
     igra = Igra("prva igra", igralci=[igralec1])
     igra.ustvari_nov_kupcek()
     karta1 = igra.kupcek[0]
     karta2 = igra.kupcek[1]
     karta3 = igra.kupcek[2]
     for i in range(1, 4):
-        igra.postavi_karto_na_tabelo(igra.kupcek[i - 1], (1, i))
+        igra.postavi_karto_na_tabelo((1, i), igra.kupcek[i - 1])
