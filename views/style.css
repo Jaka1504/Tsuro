@@ -27,3 +27,14 @@
 .ni_postavljena_karta {
     filter: brightness(1.4);
 }
+
+.igralec {
+    position: absolute;
+    filter: hue-rotate(var(--hue)) saturate(30);
+    left: var(--odmik_x);
+    top: var(--odmik_y);
+}
+
+.tabela {
+    position: relative;
+}

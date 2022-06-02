@@ -5,7 +5,7 @@ import random
 
 
 
-VELIKOST_TABELE = (4, 4)    # 6×6 tabela
+VELIKOST_TABELE = (6, 6)    # 6×6 tabela
 LOOP = "L"
 # Barve za v css:
 RDECA = 0

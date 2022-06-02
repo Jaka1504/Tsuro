@@ -10,7 +10,7 @@ igra = tsuro.igre["test"]
 st_karte = 0
 for i in range(1, model.VELIKOST_TABELE[0] + 1):
     for j in range(1, model.VELIKOST_TABELE[1] + 1):
-        if random.random() > 0.01:
+        if random.random() > 0.05:
             igra.postavi_karto_na_tabelo((i, j), igra.kupcek[st_karte])
             st_karte += 1
 
@@ -47,7 +47,7 @@ def osnovna_stran():
 
 @bottle.get("/igra/")
 def stran_z_igro():
-    return bottle.template("index", igra=igra, velikost_tabele=model.VELIKOST_TABELE, bela=model.BELA, siva=model.SIVA)
+    return bottle.template("index", igra=igra, velikost_tabele=model.VELIKOST_TABELE, bela=model.BELA, siva=model.SIVA, barve=model.VRSTNI_RED_BARV)
 
 
 # To naj bo na dnu datoteke.
