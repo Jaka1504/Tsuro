@@ -7,7 +7,7 @@
 % karta = tabela[(st_vrstice, st_stolpca)]
 % if karta is not None:
 % for krivulja in karta.prikaz_povezav():
-        <img src="/img/{{krivulja[0]}}{{krivulja[1]}}.png" alt="pot {{krivulja[0]}}{{krivulja[1]}}" width="100px" class="potka" style="--rot: {{(-90 * krivulja[2]) % 360}}deg; --hue: 180deg;">
+        <img src="/img/{{krivulja[0]}}{{krivulja[1]}}.png" alt="pot {{krivulja[0]}}{{krivulja[1]}}" width="100px" class="potka" style="--rot: {{(-90 * krivulja[2]) % 360}}deg; --hue: 0deg;">
 % end
 % end
         <img src="/img/ozadje.png" alt="ozadje" width="100px">

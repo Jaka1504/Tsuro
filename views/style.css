@@ -1,7 +1,7 @@
 .potka {
     position: absolute;
     transform: rotate(var(--rot));
-    filter: hue-rotate(var(--hue));
+    filter: hue-rotate(var(--hue)) saturate(20); 
 }
 
 .karta {
