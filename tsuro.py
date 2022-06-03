@@ -14,6 +14,8 @@ for i in range(1, model.VELIKOST_TABELE[0] + 1):
             igra.postavi_karto_na_tabelo((i, j), igra.kupcek[st_karte])
             st_karte += 1
 
+
+
 igra.dodaj_novega_igralca(uporabnik)
 igra.dodaj_novega_igralca(uporabnik)
 igra.dodaj_novega_igralca(uporabnik)
@@ -23,11 +25,7 @@ igra.dodaj_novega_igralca(uporabnik)
 igra.dodaj_novega_igralca(uporabnik)
 igra.dodaj_novega_igralca(uporabnik)
 igra.primerno_pobarvaj_poti()
-
-# for polje, polozaj in igra.robne_pozicije():
-#     igra.barvaj_povezave_od_tocke(polje, polozaj, model.SIVA)
-# igra.barvaj_povezave_od_tocke((4, 1), 7, model.AQUA)
-# igra.barvaj_povezave_od_tocke((6, 5), 0, model.ZELENA)
+igra.razdeli_karte()
         
 
 @bottle.get("/img/<ime_slike:path>")

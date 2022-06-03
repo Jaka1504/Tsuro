@@ -78,7 +78,12 @@ class Igralec:
     # st_igralca: int     # barve bi bile kar 0, 1, 2, ...
     polje: tuple = None        # (vrstica, stolpec) polje tabele v tej vrstici in stolpcu
     polozaj: int = None        # položaj na ploščici - int med 0 in 7
-    karte_v_roki: List[Karta] = None            
+    karte_v_roki: List[Karta] = None
+
+
+    def __post_init__(self):
+        if self.karte_v_roki is None:
+            self.karte_v_roki = []
 
 
 @dataclass
@@ -131,6 +136,12 @@ class Igra:
             self.igralci[st_igralca].karte_v_roki.append(zgornja_karta)
         except IndexError:
             pass
+    
+
+    def razdeli_karte(self):
+        for _ in range(3):
+            for st_igralca in range(len(self.igralci)):
+                self.vleci_karto(st_igralca)
 
 
     def poisci_pot_od_tocke(self, polje, polozaj):
