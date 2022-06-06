@@ -168,6 +168,11 @@ class Igra:
 
 
     def primerno_pobarvaj_poti(self):
+        for polje in self.tabela:
+            karta = self.tabela[polje]
+            if not karta is None:
+                for polozaj in range(8):
+                    karta.barve[polozaj] = BELA
         for polje, polozaj in Igra.robne_pozicije():
             self.barvaj_povezave_od_tocke(polje, polozaj, SIVA)
         for indeks in range(len(self.igralci)):
