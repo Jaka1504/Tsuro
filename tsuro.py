@@ -48,6 +48,15 @@ def stran_z_igro():
     return bottle.template("index", igra=igra, velikost_tabele=model.VELIKOST_TABELE, bela=model.BELA, siva=model.SIVA, barve=model.VRSTNI_RED_BARV)
 
 
+@bottle.post("/zarotiraj/<rotacija>")
+def zarotiraj(rotacija):
+    indeks_karte = int(rotacija[0])
+    st_rotacij = int(rotacija[1])
+    igra.igralci[igra.na_vrsti].karte_v_roki[indeks_karte].zarotiraj(st_rotacij)
+    igra.primerno_pobarvaj_poti()           # potem izbrisi
+    return bottle.redirect("/igra/")
+
+
 # To naj bo na dnu datoteke.
-bottle.run()
+bottle.run(reloader=True, debug=True)
 # reloader=True, debug=True
