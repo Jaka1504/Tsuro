@@ -123,11 +123,15 @@ class Igra:
         return len(self.igralci) - 1                   # indeks novega igralca
 
 
-    def igralec_postavi_karto_na_tabelo(self, st_igralca, st_karte, polje):
+    def igralec_postavi_karto_na_tabelo(self, st_karte, st_igralca=None, polje=None):
+        if st_igralca is None:
+            st_igralca = self.na_vrsti
+        if polje is None:
+            polje = self.igralci[st_igralca].polje
         igralec = self.igralci[st_igralca]
         karta = igralec.karte_v_roki.pop(st_karte)
         self.postavi_karto_na_tabelo(polje, karta)
-        self.vleci_karto(igralec)
+        self.vleci_karto(st_igralca)
 
 
     def vleci_karto(self, st_igralca):
@@ -143,11 +147,29 @@ class Igra:
             for st_igralca in range(len(self.igralci)):
                 self.vleci_karto(st_igralca)
 
-
+    def napreduj_po_tabeli(self, st_igralca=None):
+        if st_igralca is None:
+            st_igralca = self.na_vrsti
+        igralec = self.igralci[st_igralca]
+        while True:
+            polje, polozaj = igralec.polje, igralec.polozaj
+            if self.tabela[polje] is None:
+                break                       # WIP eliminiraj ce je na robu
+            dva_igralca = False
+            for indeks in range(len(self.igralci)):
+                if (self.igralci[indeks].polje, self.igralci[indeks].polozaj) == self.obrni_se_na_mestu(polje, polozaj):
+                    dva_igralca = True 
+            if dva_igralca:
+                break                       # WIP eliminiraj
+            polje, polozaj = self.naslednja_pozicija(polje, polozaj)
+            igralec.polje, igralec.polozaj = polje, polozaj
+            
+            
+            
     def poisci_pot_od_tocke(self, polje, polozaj):
         zacetno_polje, zaceten_polozaj = polje, polozaj
         while not self.tabela[polje] is None:
-            novo = self.napreduj_po_tabeli(polje, polozaj)
+            novo = self.naslednja_pozicija(polje, polozaj)
             polje = novo[0]
             polozaj = novo[1]
             if polje == zacetno_polje and polozaj == zaceten_polozaj:
@@ -164,7 +186,7 @@ class Igra:
             karta = self.tabela[polje]
             karta.barve[polozaj] = barva
             karta.barve[karta.povezave[polozaj]] = barva
-            polje, polozaj = self.napreduj_po_tabeli(polje, polozaj)
+            polje, polozaj = self.naslednja_pozicija(polje, polozaj)
 
 
     def primerno_pobarvaj_poti(self):
@@ -176,14 +198,14 @@ class Igra:
         for polje, polozaj in Igra.robne_pozicije():
             self.barvaj_povezave_od_tocke(polje, polozaj, SIVA)
         for indeks in range(len(self.igralci)):
-            # polje, polozaj = Igra.obrni_se_na_mestu(self.igralci[indeks].polje, self.igralci[indeks].polozaj)
-            polje, polozaj = self.igralci[indeks].polje, self.igralci[indeks].polozaj
+            polje, polozaj = Igra.obrni_se_na_mestu(self.igralci[indeks].polje, self.igralci[indeks].polozaj)
+            # polje, polozaj = self.igralci[indeks].polje, self.igralci[indeks].polozaj
             barva = VRSTNI_RED_BARV[indeks]
             self.barvaj_povezave_od_tocke(polje, polozaj, barva)
 
 
 
-    def napreduj_po_tabeli(self, staro_polje, star_polozaj):
+    def naslednja_pozicija(self, staro_polje, star_polozaj):
         nov_polozaj = self.tabela[staro_polje].povezave[star_polozaj]
         return (Igra.obrni_se_na_mestu(staro_polje, nov_polozaj))
 
