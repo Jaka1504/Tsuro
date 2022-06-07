@@ -1,9 +1,9 @@
 import model
 import bottle
-import random # potem odstrani !!!
+import random  # potem odstrani !!!
 
 
-ST_IGRALCEV = 1             # za testiranje
+ST_IGRALCEV = 2  # za testiranje
 
 
 tsuro = model.Tsuro()
@@ -22,7 +22,7 @@ for _ in range(ST_IGRALCEV):
     igra.dodaj_novega_igralca(uporabnik)
 igra.primerno_pobarvaj_poti()
 igra.razdeli_karte()
-        
+
 
 @bottle.get("/img/<ime_slike:path>")
 def staticne_slike(ime_slike):
@@ -41,7 +41,14 @@ def osnovna_stran():
 
 @bottle.get("/igra/")
 def stran_z_igro():
-    return bottle.template("index", igra=igra, velikost_tabele=model.VELIKOST_TABELE, bela=model.BELA, siva=model.SIVA, barve=model.VRSTNI_RED_BARV)
+    return bottle.template(
+        "index",
+        igra=igra,
+        velikost_tabele=model.VELIKOST_TABELE,
+        bela=model.BELA,
+        siva=model.SIVA,
+        barve=model.VRSTNI_RED_BARV,
+    )
 
 
 @bottle.post("/zarotiraj/<rotacija>")
@@ -55,12 +62,14 @@ def zarotiraj(rotacija):
 @bottle.post("/postavi-karto/<indeks>")
 def postavi_karto(indeks):
     igra.igralec_postavi_karto_na_tabelo(int(indeks))
-    for indeks in list(range(len(igra.igralci)))[igra.na_vrsti:] + list(range(len(igra.igralci)))[:igra.na_vrsti]:
+    for indeks in (
+        list(range(len(igra.igralci)))[igra.na_vrsti :]
+        + list(range(len(igra.igralci)))[: igra.na_vrsti]
+    ):
         igra.napreduj_po_tabeli(indeks)
     igra.primerno_pobarvaj_poti()
     igra.na_vrsti = (igra.na_vrsti + 1) % len(igra.igralci)
     return bottle.redirect("/igra/")
-
 
 
 # To naj bo na dnu datoteke.
