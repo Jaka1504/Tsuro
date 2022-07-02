@@ -27,7 +27,7 @@
                   <img src="/img/box-arrow-in-up.svg" height="20px">
                 </button>
               </form>
-              <form action="/zarotiraj/{{indeks}}1" method="post">
+              <form action="/zarotiraj/{{indeks}}3" method="post">
                 <button type="submit" class="btn btn-outline-primary">
                   <img src="/img/arrow-clockwise.svg" height="20px">
                 </button>
