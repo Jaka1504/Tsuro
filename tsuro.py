@@ -62,13 +62,6 @@ def zarotiraj(rotacija):
 @bottle.post("/postavi-karto/<indeks>")
 def postavi_karto(indeks):
     igra.igralec_postavi_karto_na_tabelo(int(indeks))
-    for indeks in (
-        list(range(len(igra.igralci)))[igra.na_vrsti :]
-        + list(range(len(igra.igralci)))[: igra.na_vrsti]
-    ):
-        igra.napreduj_po_tabeli(indeks)
-    igra.primerno_pobarvaj_poti()
-    igra.na_vrsti = (igra.na_vrsti + 1) % len(igra.igralci)
     return bottle.redirect("/igra/")
 
 

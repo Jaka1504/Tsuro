@@ -83,6 +83,7 @@ class Igralec:
     polje: tuple = None  # (vrstica, stolpec) polje tabele v tej vrstici in stolpcu
     polozaj: int = None  # položaj na ploščici - int med 0 in 7
     karte_v_roki: List[Karta] = None
+    v_igri: bool = True  # postane False ko je igralec izločen
 
     def __post_init__(self):
         if self.karte_v_roki is None:
@@ -134,15 +135,21 @@ class Igra:
         self.igralci.append(nov_igralec)
         return len(self.igralci) - 1  # indeks novega igralca
 
-    def igralec_postavi_karto_na_tabelo(self, st_karte, st_igralca=None, polje=None):
-        if st_igralca is None:
-            st_igralca = self.na_vrsti
+    def igralec_postavi_karto_na_tabelo(self, st_karte, polje=None):
+        st_igralca = self.na_vrsti
         if polje is None:
             polje = self.igralci[st_igralca].polje
         igralec = self.igralci[st_igralca]
         karta = igralec.karte_v_roki.pop(st_karte)
         self.postavi_karto_na_tabelo(polje, karta)
         self.vleci_karto(st_igralca)
+        for indeks in (
+            list(range(len(self.igralci)))[self.na_vrsti :]
+            + list(range(len(self.igralci)))[: self.na_vrsti]
+        ):
+            self.napreduj_po_tabeli(indeks)
+        self.primerno_pobarvaj_poti()
+        self.na_vrsti = (self.na_vrsti + 1) % len(self.igralci)
 
     def vleci_karto(self, st_igralca):
         try:
