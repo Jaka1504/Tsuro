@@ -44,7 +44,7 @@ def stran_z_igro():
     return bottle.template(
         "index",
         igra=igra,
-        velikost_tabele=model.VELIKOST_TABELE,
+        velikost_tabele=igra.velikost_tabele,
         bela=model.BELA,
         siva=model.SIVA,
         barve=model.VRSTNI_RED_BARV,

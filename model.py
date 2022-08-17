@@ -4,7 +4,6 @@ from uuid import uuid4
 import random
 
 
-VELIKOST_TABELE = (6, 6)  # 6×6 tabela
 LOOP = "L"
 # Barve za v css:
 RDECA = 0
@@ -94,6 +93,7 @@ class Igralec:
 class Igra:
     id_igre: int
     igralci: List[Igralec] = None
+    velikost_tabele: tuple = (6, 6)
     kupcek: List[Karta] = None
     tabela: Dict[tuple, Karta] = None
     na_vrsti: int = 0
@@ -104,8 +104,8 @@ class Igra:
         if self.tabela is None:
             self.tabela = {
                 (x, y): None
-                for x in range(VELIKOST_TABELE[0] + 2)
-                for y in range(VELIKOST_TABELE[1] + 2)
+                for x in range(self.velikost_tabele[0] + 2)
+                for y in range(self.velikost_tabele[1] + 2)
             }
         if self.kupcek is None:
             self.ustvari_nov_kupcek()
@@ -122,7 +122,7 @@ class Igra:
         slaba_pozicija = True
         while slaba_pozicija:
             zacetno_polje, zacetni_polozaj = random.choice(
-                [pozicija for pozicija in Igra.robne_pozicije()]
+                [pozicija for pozicija in self.robne_pozicije()]
             )
             slaba_pozicija = False
             for igralec in self.igralci:
@@ -209,7 +209,7 @@ class Igra:
             if not karta is None:
                 for polozaj in range(8):
                     karta.barve[polozaj] = BELA
-        for polje, polozaj in Igra.robne_pozicije():
+        for polje, polozaj in self.robne_pozicije():
             self.barvaj_povezave_od_tocke(polje, polozaj, SIVA)
         for indeks in range(len(self.igralci)):
             polje, polozaj = Igra.obrni_se_na_mestu(
@@ -223,18 +223,17 @@ class Igra:
         nov_polozaj = self.tabela[staro_polje].povezave[star_polozaj]
         return Igra.obrni_se_na_mestu(staro_polje, nov_polozaj)
 
-    @staticmethod
-    def robne_pozicije():
-        for i in range(1, VELIKOST_TABELE[0] + 1):
+    def robne_pozicije(self):
+        for i in range(1, self.velikost_tabele[0] + 1):
             yield ((i, 1), 6)
             yield ((i, 1), 7)
-        for j in range(1, VELIKOST_TABELE[1] + 1):
-            yield ((VELIKOST_TABELE[0], j), 0)
-            yield ((VELIKOST_TABELE[0], j), 1)
-        for i in range(VELIKOST_TABELE[0], 0, -1):
-            yield ((i, VELIKOST_TABELE[1]), 2)
-            yield ((i, VELIKOST_TABELE[1]), 3)
-        for j in range(VELIKOST_TABELE[1], 0, -1):
+        for j in range(1, self.velikost_tabele[1] + 1):
+            yield ((self.velikost_tabele[0], j), 0)
+            yield ((self.velikost_tabele[0], j), 1)
+        for i in range(self.velikost_tabele[0], 0, -1):
+            yield ((i, self.velikost_tabele[1]), 2)
+            yield ((i, self.velikost_tabele[1]), 3)
+        for j in range(self.velikost_tabele[1], 0, -1):
             yield ((1, j), 4)
             yield ((1, j), 5)
 
@@ -313,11 +312,11 @@ class Tsuro:
         return nov_uporabnik
 
     def ustvari_novo_igro(
-        self, id_igre=None, igralci=None, kupcek=None, tabela=None, na_vrsti=0
+        self, id_igre=None, igralci=None, velikost_tabele=(6,6), kupcek=None, tabela=None, na_vrsti=0
     ):
         if id_igre is None:
             id_igre = self.prost_id_igre()
-        igra = Igra(id_igre, igralci, kupcek, tabela, na_vrsti)
+        igra = Igra(id_igre, igralci, velikost_tabele, kupcek, tabela, na_vrsti)
         self.igre[id_igre] = igra
         return igra
 
