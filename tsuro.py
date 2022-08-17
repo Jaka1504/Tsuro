@@ -4,7 +4,7 @@ import bottle
 import random  # potem odstrani !!!
 
 
-ST_IGRALCEV = 4  # za testiranje
+ST_IGRALCEV = 8  # za testiranje
 
 
 tsuro = model.Tsuro()
@@ -63,6 +63,7 @@ def zarotiraj(rotacija):
 @bottle.post("/postavi-karto/<indeks>")
 def postavi_karto(indeks):
     novo_stanje = igra.igralec_postavi_karto_na_tabelo(int(indeks))
+    print(novo_stanje) # potem izbrisi
     if novo_stanje == model.NEDOKONCANA:
         return bottle.redirect("/igra/")
     elif novo_stanje == model.ZMAGA:

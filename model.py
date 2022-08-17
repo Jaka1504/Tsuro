@@ -146,17 +146,16 @@ class Igra:
         ):
             self.napreduj_po_tabeli(indeks)
         self.primerno_pobarvaj_poti()
-        prejsnji = self.na_vrsti
-        while True:
-            self.na_vrsti = (self.na_vrsti + 1) % len(self.igralci)
-            if self.igralci[self.na_vrsti].v_igri:
-                return NEDOKONCANA
-                break
-            if self.na_vrsti == prejsnji: # ce pride cel krog, pomeni, da je se kvecjemu en igralec
-                if igralec.v_igri:
-                    return ZMAGA
-                else:
-                    return NI_ZMAGOVALCA
+        st_igralcev_v_igri = len([igralec_ for igralec_ in self.igralci if igralec_.v_igri])
+        if st_igralcev_v_igri > 1:
+            while True:
+                self.na_vrsti = (self.na_vrsti + 1) % len(self.igralci)
+                if self.igralci[self.na_vrsti].v_igri:
+                    return NEDOKONCANA
+        elif st_igralcev_v_igri == 1:
+            return ZMAGA
+        else:
+            return NI_ZMAGOVALCA
             
 
     def vleci_karto(self, st_igralca):
