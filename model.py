@@ -34,11 +34,6 @@ VRSTNI_RED_BARV = [RDECA, ZELENA, MODRA, RUMENA, AQUA, ROZA, VIJOLICNA, ORANZNA]
 
 
 @dataclass
-class Uporabnik:
-    uporabnisko_ime: str
-
-
-@dataclass
 class Karta:
     povezave: list
     barve: Dict[int, list] = None
@@ -77,7 +72,6 @@ class Karta:
 
 @dataclass
 class Igralec:
-    uporabnik: Uporabnik
     # st_igralca: int     # barve bi bile kar 0, 1, 2, ...
     polje: tuple = None  # (vrstica, stolpec) polje tabele v tej vrstici in stolpcu
     polozaj: int = None  # položaj na ploščici - int med 0 in 7
@@ -294,22 +288,13 @@ class Igra:
 
 
 @dataclass
-class Tsuro:
+class Uporabnik:
+    uporabnisko_ime: str
     igre: Dict[str, Igra] = None
-    uporabniki: Dict[str, Uporabnik] = None
 
     def __post_init__(self):
         if self.igre is None:
             self.igre = {}
-        if self.uporabniki is None:
-            self.uporabniki = {}
-
-    def dodaj_uporabnika(self, ime=None):
-        if ime is None:
-            ime = f"Uporabnik {len(self.uporabniki) + 1}"
-        nov_uporabnik = Uporabnik(ime)
-        self.uporabniki[ime] = nov_uporabnik
-        return nov_uporabnik
 
     def ustvari_novo_igro(
         self, id_igre=None, igralci=None, velikost_tabele=(6,6), kupcek=None, tabela=None, na_vrsti=0
@@ -325,6 +310,22 @@ class Tsuro:
             kandidat = uuid4().int
             if not kandidat in self.igre:
                 return kandidat
+
+
+@dataclass
+class Tsuro:
+    uporabniki: Dict[str, Uporabnik] = None
+
+    def __post_init__(self):
+        if self.uporabniki is None:
+            self.uporabniki = {}
+
+    def dodaj_uporabnika(self, ime=None):
+        if ime is None:
+            ime = f"Uporabnik {len(self.uporabniki) + 1}"
+        nov_uporabnik = Uporabnik(ime)
+        self.uporabniki[ime] = nov_uporabnik
+        return nov_uporabnik
 
 
 # Testni podatki:

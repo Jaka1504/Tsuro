@@ -8,8 +8,8 @@ ST_IGRALCEV = 2  # za testiranje
 
 tsuro = model.Tsuro()
 uporabnik = tsuro.dodaj_uporabnika()
-tsuro.ustvari_novo_igro(id_igre="test")
-igra = tsuro.igre["test"]
+uporabnik.ustvari_novo_igro(id_igre="test")
+igra = uporabnik.igre["test"]
 st_karte = 0
 # for i in range(1, model.VELIKOST_TABELE[0] + 1):
 #     for j in range(1, model.VELIKOST_TABELE[1] + 1):
