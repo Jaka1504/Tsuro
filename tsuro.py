@@ -1,9 +1,10 @@
+from operator import mod
 import model
 import bottle
 import random  # potem odstrani !!!
 
 
-ST_IGRALCEV = 2  # za testiranje
+ST_IGRALCEV = 4  # za testiranje
 
 
 tsuro = model.Tsuro()
@@ -61,8 +62,15 @@ def zarotiraj(rotacija):
 
 @bottle.post("/postavi-karto/<indeks>")
 def postavi_karto(indeks):
-    igra.igralec_postavi_karto_na_tabelo(int(indeks))
-    return bottle.redirect("/igra/")
+    novo_stanje = igra.igralec_postavi_karto_na_tabelo(int(indeks))
+    if novo_stanje == model.NEDOKONCANA:
+        return bottle.redirect("/igra/")
+    elif novo_stanje == model.ZMAGA:
+        raise ValueError
+    elif novo_stanje == model.NI_ZMAGOVALCA:
+        raise ValueError
+    else:
+        raise ValueError
 
 
 # To naj bo na dnu datoteke.

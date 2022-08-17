@@ -4,6 +4,9 @@ from uuid import uuid4
 import random
 
 
+NEDOKONCANA = "ND"
+ZMAGA = "Z"
+NI_ZMAGOVALCA = "NZ"
 LOOP = "L"
 # Barve za v css:
 RDECA = 0
@@ -143,7 +146,18 @@ class Igra:
         ):
             self.napreduj_po_tabeli(indeks)
         self.primerno_pobarvaj_poti()
-        self.na_vrsti = (self.na_vrsti + 1) % len(self.igralci)
+        prejsnji = self.na_vrsti
+        while True:
+            self.na_vrsti = (self.na_vrsti + 1) % len(self.igralci)
+            if self.igralci[self.na_vrsti].v_igri:
+                return NEDOKONCANA
+                break
+            if self.na_vrsti == prejsnji: # ce pride cel krog, pomeni, da je se kvecjemu en igralec
+                if igralec.v_igri:
+                    return ZMAGA
+                else:
+                    return NI_ZMAGOVALCA
+            
 
     def vleci_karto(self, st_igralca):
         try:
@@ -163,17 +177,22 @@ class Igra:
         igralec = self.igralci[st_igralca]
         while True:
             polje, polozaj = igralec.polje, igralec.polozaj
-            if self.tabela[polje] is None:
-                break  # WIP eliminiraj ce je na robu
-            dva_igralca = False
+            if not (0 < polje[0] < self.velikost_tabele[0] + 1 and 0 < polje[1] < self.velikost_tabele[1] + 1): # ce igralec zapusti tabelo
+                igralec.v_igri = False
+                break
+            dva_igralca = False # ce se dva zaletita
             for indeks in range(len(self.igralci)):
                 if (
                     self.igralci[indeks].polje,
                     self.igralci[indeks].polozaj,
                 ) == self.obrni_se_na_mestu(polje, polozaj):
+                    igralec.v_igri = False
+                    self.igralci[indeks].v_igri = False
                     dva_igralca = True
             if dva_igralca:
-                break  # WIP eliminiraj
+                break
+            if self.tabela[polje] is None: # normalen zakljucek poteze
+                break
             polje, polozaj = self.naslednja_pozicija(polje, polozaj)
             igralec.polje, igralec.polozaj = polje, polozaj
 
