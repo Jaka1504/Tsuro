@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Dict, List
 from uuid import uuid4
+from copy import deepcopy
 import random
 
 
@@ -20,6 +21,7 @@ ROZA = 330
 BELA = "bela"
 SIVA = "siva"
 VRSTNI_RED_BARV = [RDECA, ZELENA, MODRA, RUMENA, AQUA, ROZA, VIJOLICNA, ORANZNA]
+
 
 
 # Opombe zase:
@@ -80,6 +82,7 @@ class Igralec:
     polozaj: int = None  # položaj na ploščici - int med 0 in 7
     karte_v_roki: List[Karta] = None
     v_igri: bool = True  # postane False ko je igralec izločen
+    je_bot: bool = False # True če s tem igralcem upravlja program
 
     def __post_init__(self):
         if self.karte_v_roki is None:
@@ -114,8 +117,8 @@ class Igra:
         ]
         random.shuffle(self.kupcek)
 
-    def dodaj_novega_igralca(self, uporabnik):
-        nov_igralec = Igralec(uporabnik)
+    def dodaj_novega_igralca(self, je_bot=False):
+        nov_igralec = Igralec(je_bot=je_bot)
         slaba_pozicija = True
         while slaba_pozicija:
             zacetno_polje, zacetni_polozaj = random.choice(
@@ -134,9 +137,9 @@ class Igra:
 
     def igralec_postavi_karto_na_tabelo(self, st_karte, polje=None):
         st_igralca = self.na_vrsti
-        if polje is None:
-            polje = self.igralci[st_igralca].polje
         igralec = self.igralci[st_igralca]
+        if polje is None:
+            polje = igralec.polje
         karta = igralec.karte_v_roki.pop(st_karte)
         self.postavi_karto_na_tabelo(polje, karta)
         self.vleci_karto(st_igralca)
@@ -146,24 +149,72 @@ class Igra:
         ):
             self.napreduj_po_tabeli(indeks)
         self.primerno_pobarvaj_poti()
+        return self.predaj_potezo()
+        
+    def predaj_potezo(self):
         st_igralcev_v_igri = len([igralec_ for igralec_ in self.igralci if igralec_.v_igri])
         if st_igralcev_v_igri > 1:
             while True:
                 self.na_vrsti = (self.na_vrsti + 1) % len(self.igralci)
                 if self.igralci[self.na_vrsti].v_igri:
+                    # Poskusi narediti botovo potezo
+                    self.botova_poteza()
                     return NEDOKONCANA
         elif st_igralcev_v_igri == 1:
             return ZMAGA
         else:
             return NI_ZMAGOVALCA
+
+    def botova_poteza(self):
+        igralec = self.igralci[self.na_vrsti]
+        aktivni_igralci = [aktivni_igralec for aktivni_igralec in self.igralci if aktivni_igralec.v_igri]
+        if igralec.je_bot:
+            tockovane_moznosti = {}
+            for st_karte in range(3):
+                for st_rotacij in range(4):
+                    hipoteticna_igra = deepcopy(self)
+                    bot = hipoteticna_igra.igralci[hipoteticna_igra.na_vrsti]
+                    bot.karte_v_roki[st_karte].zarotiraj(st_rotacij=st_rotacij)
+                    hipoteticna_igra.postavi_karto_na_tabelo(bot.polje, bot.karte_v_roki[st_karte])
+                    for indeks in range(len(hipoteticna_igra.igralci)):
+                        hipoteticna_igra.napreduj_po_tabeli(indeks)
+                    tockovane_moznosti[(st_karte, st_rotacij)] = hipoteticna_igra.tockuj_polozaj_bota(aktivni_igralci)
+            izbrana_karta, izbrana_rotacija = max(tockovane_moznosti, key=tockovane_moznosti.get)
+            igralec.karte_v_roki[izbrana_karta].zarotiraj(izbrana_rotacija)
+            self.igralec_postavi_karto_na_tabelo(izbrana_karta)
             
+
+    def tockuj_polozaj_bota(self, igralci_pred_potezo):
+        bot = self.igralci[self.na_vrsti]
+        najvecja_razdalja = self.velikost_tabele[0] + self.velikost_tabele[1] - 2
+        vrstica, stolpec = bot.polje
+        # Botu je cilj ostati čim dlje od roba, saj ga je tako težje izločiti.
+        tocke = min(vrstica, stolpec, self.velikost_tabele[0] + 1 - vrstica, self.velikost_tabele[1] + 1 - stolpec)
+        aktivni_igralci = [igralec for igralec in self.igralci if igralec.v_igri]
+        for igralec in aktivni_igralci:
+            if igralec != bot:
+                razdalja = Igra.taxi_razdalja(bot.polje, igralec.polje)
+                # Botu je praviloma cilj končati potezo na lihi oddaljenosti od igralca, saj pri razdalji 0 igralec odloča o njegovi usodi, navadno pa se po celem krogu potez parnosti razdalj ohranjajo. Prednost oziroma slabost je bolj občutna pri nižji razdalji do igralca.
+                tocke += (-1) ** (razdalja + 1) * (najvecja_razdalja - razdalja) / (razdalja + 1)
+        # Bot seveda noče izgubiti.
+        if not bot.v_igri:
+            tocke += -100
+        # Bot hoče eliminirati igralce.
+        tocke += 30 * (len(igralci_pred_potezo) - len(aktivni_igralci))
+        # Da dodamo še nekaj nepredvivljivosti.
+        EPSILON = 0.2
+        return tocke * (1 + EPSILON * (2 * random.random() - 1))
+
+
+        
 
     def vleci_karto(self, st_igralca):
         try:
             zgornja_karta = self.kupcek.pop()  # ce je prazen kupcek ne naredi nicesar
             self.igralci[st_igralca].karte_v_roki.append(zgornja_karta)
         except IndexError:
-            pass
+            self.ustvari_nov_kupcek()
+            self.vleci_karto(st_igralca)
 
     def razdeli_karte(self):
         for _ in range(3):
@@ -248,6 +299,12 @@ class Igra:
         for j in range(self.velikost_tabele[1], 0, -1):
             yield ((1, j), 4)
             yield ((1, j), 5)
+
+    @staticmethod
+    def taxi_razdalja(polje1, polje2):
+        x1, y1 = polje1
+        x2, y2 = polje2
+        return abs(x1 - x2) + abs(y1 - y2)
 
     @staticmethod
     def nasproten_polozaj(polozaj):

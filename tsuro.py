@@ -1,4 +1,3 @@
-from operator import mod
 import model
 import bottle
 import random  # potem odstrani !!!
@@ -9,18 +8,13 @@ ST_IGRALCEV = 8  # za testiranje
 
 tsuro = model.Tsuro()
 uporabnik = tsuro.dodaj_uporabnika()
-uporabnik.ustvari_novo_igro(id_igre="test")
+uporabnik.ustvari_novo_igro(id_igre="test", velikost_tabele=(10, 19))
 igra = uporabnik.igre["test"]
-st_karte = 0
-# for i in range(1, model.VELIKOST_TABELE[0] + 1):
-#     for j in range(1, model.VELIKOST_TABELE[1] + 1):
-#         if random.random() > 0.05:
-#             igra.postavi_karto_na_tabelo((i, j), igra.kupcek[st_karte])
-#             st_karte += 1
 
 
-for _ in range(ST_IGRALCEV):
-    igra.dodaj_novega_igralca(uporabnik)
+# igra.dodaj_novega_igralca()
+for _ in range(ST_IGRALCEV - 1):
+    igra.dodaj_novega_igralca(je_bot=True)
 igra.primerno_pobarvaj_poti()
 igra.razdeli_karte()
 
@@ -75,5 +69,5 @@ def postavi_karto(indeks):
 
 
 # To naj bo na dnu datoteke.
-bottle.run()
-# reloader=True, debug=True
+bottle.run(reloader=True, debug=True)
+
