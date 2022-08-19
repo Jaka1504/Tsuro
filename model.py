@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Dict, List
-from uuid import uuid4
+# from uuid import uuid4
 from copy import deepcopy
-import random
+import random, json
 
 
 NEDOKONCANA = "ND"
@@ -47,6 +47,19 @@ class Karta:
         if self.barve is None:
             self.barve = {i: BELA for i in range(8)}
 
+    def v_slovar(self):
+        return {
+            "povezave": self.povezave,
+            "barve": self.barve
+        }
+
+    @classmethod
+    def iz_slovarja(cls, slovar):
+        return Karta(
+            povezave=slovar["povezave"],
+            barve=slovar["barve"]
+        )
+        
     def zarotiraj(self, st_rotacij=1):
         nove_povezave = self.povezave[:]
         for _ in range(st_rotacij):
@@ -73,7 +86,7 @@ class Karta:
                 obdelano.append(izvor)
                 obdelano.append(konec)
         return prikaz
-
+    
 
 @dataclass
 class Igralec:
@@ -87,6 +100,25 @@ class Igralec:
     def __post_init__(self):
         if self.karte_v_roki is None:
             self.karte_v_roki = []
+    
+    def v_slovar(self):
+        return {
+            "polje": self.polje,
+            "polozaj": self.polozaj,
+            "karte_v_roki": [karta.v_slovar() for karta in self.karte_v_roki],
+            "v_igri": self.v_igri,
+            "je_bot": self.je_bot
+        }
+
+    @classmethod
+    def iz_slovarja(cls, slovar):
+        return Igralec(
+            polje=slovar["polje"],
+            polozaj=slovar["polozaj"],
+            karte_v_roki=[Karta.iz_slovarja(karta) for karta in slovar["karte_v_roki"]],
+            v_igri=slovar["v_igri"],
+            je_bot=slovar["je_bot"]
+        )
 
 
 @dataclass
@@ -109,6 +141,44 @@ class Igra:
             }
         if self.kupcek is None:
             self.ustvari_nov_kupcek()
+    
+    def v_slovar(self):
+        seznam_tabele = []
+        for vrstica in range(self.velikost_tabele[0]):
+            seznam_vrstice = []
+            for stolpec in range(self.velikost_tabele[1]):
+                if self.tabela[(vrstica, stolpec)] is None:
+                    seznam_vrstice.append(None)
+                else:
+                    seznam_vrstice.append(self.tabela[(vrstica, stolpec)].v_slovar())
+            seznam_tabele.append(seznam_vrstice)            
+        return {
+            "id_igre": self.id_igre,
+            "igralci": [igralec.v_slovar() for igralec in self.igralci],
+            "velikost_tabele": self.velikost_tabele,
+            "kupcek": [karta.v_slovar() for karta in self.kupcek],
+            "tabela": seznam_tabele,
+            "na_vrsti": self.na_vrsti
+        }
+
+    @classmethod
+    def iz_slovarja(cls, slovar):
+        slovar_tabele = {}
+        for vrstica in range(slovar["velikost_tabele"][0]):
+            for stolpec in range(slovar["velikost_tabele"][1]):
+                karta = slovar["tabela"][vrstica][stolpec]
+                if karta is None:
+                    slovar_tabele[(vrstica, stolpec)] = None
+                else:
+                    slovar_tabele[(vrstica, stolpec)] = Karta.iz_slovarja(karta)
+        return Igra(
+            id_igre=slovar["id_igre"],
+            igralci=[Igralec.iz_slovarja(igralec) for igralec in slovar["igralci"]],
+            velikost_tabele=slovar["velikost_tabele"],
+            kupcek=[Karta.iz_slovarja(karta) for karta in slovar["kupcek"]],
+            tabela=slovar_tabele,
+            na_vrsti=slovar["na_vrsti"]
+        )
 
     def ustvari_nov_kupcek(self):
         self.kupcek = [
@@ -367,12 +437,26 @@ class Igra:
 class Uporabnik:
     uporabnisko_ime: str
     geslo: str
-    igre: Dict[str, Igra] = None
+    igre: Dict[int, Igra] = None
 
     def __post_init__(self):
         if self.igre is None:
             self.igre = {}
-        self.geslo = self.zasifriraj_geslo(self.geslo)
+
+    def v_slovar(self):
+        return {
+            "uporabnisko_ime": self.uporabnisko_ime,
+            "geslo": self.geslo,
+            "igre": {id_igre: igra.v_slovar() for id_igre in self.igre}
+        }
+
+    @classmethod
+    def iz_slovarja(cls, slovar):
+        return Uporabnik(
+            uporabnisko_ime=slovar["uporabnisko_ime"],
+            geslo=slovar["geslo"],
+            igre={id_igre: Igra.iz_slovarja(slovar["igre"][id_igre]) for id_igre in slovar["igre"]}           
+        )
 
     def ustvari_novo_igro(
         self, id_igre=None, igralci=None, velikost_tabele=(6,6), kupcek=None, tabela=None, na_vrsti=0
@@ -384,7 +468,7 @@ class Uporabnik:
         return igra
 
     def prost_id_igre(self):
-        return len(self.igre)
+        return len(self.igre) + 1
         # while True:
         #     kandidat = uuid4().int
         #     if not kandidat in self.igre:
@@ -392,7 +476,8 @@ class Uporabnik:
 
     @classmethod
     def zasifriraj_geslo(cls, geslo_v_cistopisu):
-        return abs(hash(geslo_v_cistopisu) - 1234567890)
+        zaporedje = "QWERTZUIOPŠĐASDFGHJKLČĆŽYXCVBNMqwertzuiopšđasdfghjklčćžyxcvbnm 0123456789.,_<>!#&%$()[]-@€ß"
+        return sum([2 ** zaporedje.index(geslo_v_cistopisu[indeks_znaka]) * 3 ** indeks_znaka for indeks_znaka in range(len(geslo_v_cistopisu))])
 
 
 @dataclass
@@ -403,22 +488,43 @@ class Tsuro:
         if self.uporabniki is None:
             self.uporabniki = {}
 
+    def v_slovar(self):
+        return {ime: self.uporabniki[ime].v_slovar() for ime in self.uporabniki}
+
+    @classmethod
+    def iz_slovarja(cls, slovar):
+        return Tsuro(
+            uporabniki={ime: Uporabnik.iz_slovarja(slovar[ime]) for ime in slovar}
+        )
+
     def dodaj_uporabnika(self, ime, geslo):
-        nov_uporabnik = Uporabnik(ime, geslo)
+        nov_uporabnik = Uporabnik(ime, Uporabnik.zasifriraj_geslo(geslo))
         self.uporabniki[ime] = nov_uporabnik
         return nov_uporabnik
+
+    def v_datoteko(self, ime_datoteke):
+        with open(ime_datoteke, "w") as datoteka:
+            json.dump(self.v_slovar(), datoteka, ensure_ascii=False, indent=4)
+
+    @classmethod
+    def iz_datoteke(cls, ime_datoteke):
+        with open(ime_datoteke) as datoteka:
+            return cls.iz_slovarja(json.load(datoteka))
+
 
 
 # Testni podatki:
 
 
 if __name__ == "__main__":
-    uporabnik1 = Uporabnik("Jaka")
-    igralec1 = Igralec(uporabnik=uporabnik1, polje=(0, 2), polozaj=7, karte_v_roki=[])
-    igra = Igra("prva igra", igralci=[igralec1])
-    igra.ustvari_nov_kupcek()
-    karta1 = igra.kupcek[0]
-    karta2 = igra.kupcek[1]
-    karta3 = igra.kupcek[2]
-    for i in range(1, 4):
-        igra.postavi_karto_na_tabelo((1, i), igra.kupcek[i - 1])
+    tsuro = Tsuro()
+    # uporabnik = tsuro.dodaj_uporabnika("Jaka", "geslo")
+    # igra = uporabnik.ustvari_novo_igro()
+    # igra.dodaj_novega_igralca()
+    # igra.ustvari_nov_kupcek()
+    # karta1 = igra.kupcek[0]
+    # karta2 = igra.kupcek[1]
+    # karta3 = igra.kupcek[2]
+    # for i in range(1, 4):
+    #     igra.postavi_karto_na_tabelo((1, i), igra.kupcek[i - 1])
+    tsuro.v_datoteko("tsuro.json")

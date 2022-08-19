@@ -3,16 +3,16 @@ import bottle
 import random  # potem odstrani !!!
 
 
-ST_IGRALCEV = 9  # za testiranje
+ST_IGRALCEV = 8  # za testiranje
 
 
-tsuro = model.Tsuro()
+tsuro = model.Tsuro.iz_datoteke("tsuro.json")
 uporabnik = tsuro.dodaj_uporabnika("Testni uporabnik", "geslo")
 uporabnik.ustvari_novo_igro(id_igre="test", velikost_tabele=(6, 6))
 igra = uporabnik.igre["test"]
 
 
-# igra.dodaj_novega_igralca()
+igra.dodaj_novega_igralca()
 for _ in range(ST_IGRALCEV - 1):
     igra.dodaj_novega_igralca(je_bot=True)
 # igra.primerno_pobarvaj_poti()
