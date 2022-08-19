@@ -18,14 +18,14 @@
     filter: grayscale(1) brightness(3);
 }
 
-.karta {
+.brez-robov {
     margin: 0px;
     border: 0px;
     padding: 0px;
 }
 
 .ni_postavljena_karta {
-    filter: brightness(1.4);
+    filter: brightness(0.5);
 }
 
 .igralec {
