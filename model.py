@@ -467,6 +467,14 @@ class Uporabnik:
         self.igre[id_igre] = igra
         return igra
 
+    def inicializiraj_igro(self, boti_in_igralci, velikost_tabele=(6,6)):
+        igra = self.ustvari_novo_igro(id_igre=None, igralci=None, velikost_tabele=velikost_tabele, kupcek=None, tabela=None, na_vrsti=0)
+        for indeks in range(len(boti_in_igralci)):
+            igra.dodaj_novega_igralca(je_bot=boti_in_igralci[indeks])
+        igra.razdeli_karte()
+        igra.botova_poteza()
+        return igra
+
     def prost_id_igre(self):
         return len(self.igre) + 1
         # while True:

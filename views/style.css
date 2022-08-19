@@ -38,3 +38,8 @@
 .tabela {
     position: relative;
 }
+
+.besedilo {
+    font-size: x-large;
+    font-family: Candara;
+}
