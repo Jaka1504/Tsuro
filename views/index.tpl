@@ -19,26 +19,28 @@
       <div class="row col">
         <div class="col"></div>
         <div class="col">
-          <div class="btn-group" role="group">
-            <form action="/zarotiraj/{{indeks}}1" method="post">
-              <button type="submit" class="btn btn-outline-secondary">
+
+
+
+          <form action="/igra/" method="post">
+            <div class="btn-group" role="group">
+              <button name="zarotiraj" value="{{indeks}}1" type="submit" class="btn btn-outline-secondary">
                 <img src="/img/arrow-counterclockwise.svg" height="20px" style="filter:invert()">
               </button>
-            </form>
-            <form action="/postavi-karto/{{indeks}}" method="post">
-              <button $type="submit" class="btn btn-outline-secondary">
+              <button name="postavi-karto" value="{{indeks}}" type="submit" class="btn btn-outline-secondary">
                 <img src="/img/box-arrow-in-up.svg" height="20px" style="filter:invert()">
               </button>
-            </form>
-            <form action="/zarotiraj/{{indeks}}3" method="post">
-              <button type="submit" class="btn btn-outline-secondary">
+              <button name="zarotiraj" value="{{indeks}}3" type="submit" class="btn btn-outline-secondary">
                 <img src="/img/arrow-clockwise.svg" height="20px" style="filter:invert()">
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
+
+
+
+        </div>
+        <div class="col"></div>
       </div>
-      <div class="col"></div>
-    </div>
     % end
   </div>
 </div>
