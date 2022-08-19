@@ -178,32 +178,33 @@ class Igra:
                     hipoteticna_igra.postavi_karto_na_tabelo(bot.polje, bot.karte_v_roki[st_karte])
                     for indeks in range(len(hipoteticna_igra.igralci)):
                         hipoteticna_igra.napreduj_po_tabeli(indeks)
-                    tockovane_moznosti[(st_karte, st_rotacij)] = hipoteticna_igra.tockuj_polozaj_bota(aktivni_igralci)
+                    tockovane_moznosti[(st_karte, st_rotacij)] = hipoteticna_igra.tockuj_polozaj_bota(len(aktivni_igralci))
             izbrana_karta, izbrana_rotacija = max(tockovane_moznosti, key=tockovane_moznosti.get)
             igralec.karte_v_roki[izbrana_karta].zarotiraj(izbrana_rotacija)
             self.igralec_postavi_karto_na_tabelo(izbrana_karta)
             
 
-    def tockuj_polozaj_bota(self, igralci_pred_potezo):
+    def tockuj_polozaj_bota(self, st_igralcev_pred_potezo):
         bot = self.igralci[self.na_vrsti]
         najvecja_razdalja = self.velikost_tabele[0] + self.velikost_tabele[1] - 2
-        vrstica, stolpec = bot.polje
-        # Botu je cilj ostati čim dlje od roba, saj ga je tako težje izločiti.
-        tocke = min(vrstica, stolpec, self.velikost_tabele[0] + 1 - vrstica, self.velikost_tabele[1] + 1 - stolpec)
         aktivni_igralci = [igralec for igralec in self.igralci if igralec.v_igri]
+        tocke = 0.5
+        # Botu je praviloma cilj končati potezo na lihi oddaljenosti od igralca, saj pri razdalji 0 igralec odloča o njegovi usodi, navadno pa se po celem krogu potez parnosti razdalj ohranjajo. Prednost oziroma slabost je bolj občutna pri nižji razdalji do igralca.
         for igralec in aktivni_igralci:
             if igralec != bot:
                 razdalja = Igra.taxi_razdalja(bot.polje, igralec.polje)
-                # Botu je praviloma cilj končati potezo na lihi oddaljenosti od igralca, saj pri razdalji 0 igralec odloča o njegovi usodi, navadno pa se po celem krogu potez parnosti razdalj ohranjajo. Prednost oziroma slabost je bolj občutna pri nižji razdalji do igralca.
-                tocke += (-1) ** (razdalja + 1) * (najvecja_razdalja - razdalja) / (razdalja + 1)
+                tocke += (-1) ** (razdalja + 1) * (najvecja_razdalja - razdalja) / (3 * najvecja_razdalja * (razdalja + 1) * len(aktivni_igralci))
+        # Botu je cilj ostati čim dlje od roba, saj ga je tako težje izločiti.
+        vrstica, stolpec = bot.polje
+        tocke = 1 - (1 - tocke) * 0.95 ** min(vrstica, stolpec, self.velikost_tabele[0] + 1 - vrstica, self.velikost_tabele[1] + 1 - stolpec)
+        # Bot hoče eliminirati igralce. tocke = 1 - (1 - tocke) * (0.25 ** (...))
+        tocke = 1 - (1 - tocke) * 0.25 ** (st_igralcev_pred_potezo - len(aktivni_igralci))
         # Bot seveda noče izgubiti.
         if not bot.v_igri:
-            tocke += -100
-        # Bot hoče eliminirati igralce.
-        tocke += 30 * (len(igralci_pred_potezo) - len(aktivni_igralci))
+            tocke *= 0.1
         # Da dodamo še nekaj nepredvivljivosti.
-        EPSILON = 0.2
-        return tocke * (1 + EPSILON * (2 * random.random() - 1))
+        EPSILON = 0
+        return tocke # * (1 + EPSILON * (2 * random.random() - 1))
 
 
         
