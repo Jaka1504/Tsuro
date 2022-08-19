@@ -366,11 +366,13 @@ class Igra:
 @dataclass
 class Uporabnik:
     uporabnisko_ime: str
+    geslo: str
     igre: Dict[str, Igra] = None
 
     def __post_init__(self):
         if self.igre is None:
             self.igre = {}
+        self.geslo = self.zasifriraj_geslo(self.geslo)
 
     def ustvari_novo_igro(
         self, id_igre=None, igralci=None, velikost_tabele=(6,6), kupcek=None, tabela=None, na_vrsti=0
@@ -382,10 +384,15 @@ class Uporabnik:
         return igra
 
     def prost_id_igre(self):
-        while True:
-            kandidat = uuid4().int
-            if not kandidat in self.igre:
-                return kandidat
+        return len(self.igre)
+        # while True:
+        #     kandidat = uuid4().int
+        #     if not kandidat in self.igre:
+        #         return kandidat
+
+    @classmethod
+    def zasifriraj_geslo(cls, geslo_v_cistopisu):
+        return abs(hash(geslo_v_cistopisu) - 1234567890)
 
 
 @dataclass
@@ -396,10 +403,8 @@ class Tsuro:
         if self.uporabniki is None:
             self.uporabniki = {}
 
-    def dodaj_uporabnika(self, ime=None):
-        if ime is None:
-            ime = f"Uporabnik {len(self.uporabniki) + 1}"
-        nov_uporabnik = Uporabnik(ime)
+    def dodaj_uporabnika(self, ime, geslo):
+        nov_uporabnik = Uporabnik(ime, geslo)
         self.uporabniki[ime] = nov_uporabnik
         return nov_uporabnik
 

@@ -7,8 +7,8 @@ ST_IGRALCEV = 9  # za testiranje
 
 
 tsuro = model.Tsuro()
-uporabnik = tsuro.dodaj_uporabnika()
-uporabnik.ustvari_novo_igro(id_igre="test", velikost_tabele=(8, 8))
+uporabnik = tsuro.dodaj_uporabnika("Testni uporabnik", "geslo")
+uporabnik.ustvari_novo_igro(id_igre="test", velikost_tabele=(6, 6))
 igra = uporabnik.igre["test"]
 
 
