@@ -52,7 +52,22 @@ def nova_igra():
         bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
         return bottle.redirect("/igra/")
     else:
-        ...
+        return bottle.redirect("/nova-igra/prilagodi/osnovno/")
+
+
+@bottle.get("/nova-igra/prilagodi/osnovno/")
+def prilagodi():
+    return bottle.template("prilagodi_osnovno")
+
+
+@bottle.post("/nova-igra/prilagodi/osnovno/")
+def naslednja_stran_prilagodi():
+    return bottle.redirect("/nova-igra/prilagodi/igralci/")
+
+
+@bottle.get("/nova-igra/prilagodi/igralci/")
+def izbor_igralcev():
+    return bottle.redirect("prilagodi_igralci", st_igralcev=int(bottle.request.forms.getunicode("st_igralcev")))
 
 
 @bottle.get("/igra/")

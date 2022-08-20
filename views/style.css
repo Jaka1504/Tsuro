@@ -30,9 +30,13 @@
 
 .igralec {
     position: absolute;
-    filter: hue-rotate(var(--hue)) saturate(30);
+    
     left: var(--odmik_x);
     top: var(--odmik_y);
+}
+
+.hue {
+    filter: hue-rotate(var(--hue)) saturate(30);
 }
 
 .tabela {
