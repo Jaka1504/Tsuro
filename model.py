@@ -485,6 +485,9 @@ class Uporabnik:
     @classmethod
     def zasifriraj_geslo(cls, geslo_v_cistopisu):
         zaporedje = "QWERTZUIOPŠĐASDFGHJKLČĆŽYXCVBNMqwertzuiopšđasdfghjklčćžyxcvbnm 0123456789.,_<>!#&%$()[]-@€ß"
+        for znak in geslo_v_cistopisu:
+            if not znak in zaporedje:
+                geslo_v_cistopisu = geslo_v_cistopisu.replace(znak, "ß")
         return sum([2 ** zaporedje.index(geslo_v_cistopisu[indeks_znaka]) * 3 ** indeks_znaka for indeks_znaka in range(len(geslo_v_cistopisu))])
 
 
