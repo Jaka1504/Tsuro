@@ -99,12 +99,12 @@ def nova_igra():
     nacin = bottle.request.forms.getunicode("nacin")
     if nacin == "Običajna igra":
         # dodaj da preveri kdo je uporabnik
-        igra = uporabnik.inicializiraj_igro(boti_in_igralci=[False, True],velikost_tabele=(6, 6))
+        igra = uporabnik.inicializiraj_igro(imena_igralcev=[uporabnik.uporabnisko_ime, "Bot"], boti_in_igralci=[False, True],velikost_tabele=(6, 6))
         bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
         tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
     elif nacin == "Hitra igra":
-        igra = uporabnik.inicializiraj_igro(boti_in_igralci=[False, True],velikost_tabele=(4, 4))
+        igra = uporabnik.inicializiraj_igro(imena_igralcev=[uporabnik.uporabnisko_ime, "Bot"], boti_in_igralci=[False, True],velikost_tabele=(4, 4))
         bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
         tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
@@ -141,11 +141,11 @@ def izbor_igralcev():
 @bottle.post("/nova-igra/prilagodi/igralci/")
 def ustvari_prilagojeno_igro():
     uporabnik = poisci_uporabnika()
-    st_igralcev=bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST)
-    velikost_tabele=bottle.request.get_cookie("velikost_tabele", secret=SKRIVNOST)
-    boti_in_igralci=[(not bottle.request.forms.getunicode(f"bot{i}") is None) for i in range(st_igralcev)]
-    print(boti_in_igralci)
-    igra=uporabnik.inicializiraj_igro(boti_in_igralci=boti_in_igralci, velikost_tabele=velikost_tabele)
+    st_igralcev = bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST)
+    velikost_tabele = bottle.request.get_cookie("velikost_tabele", secret=SKRIVNOST)
+    boti_in_igralci = [(not bottle.request.forms.getunicode(f"bot{i}") is None) for i in range(st_igralcev)]
+    imena_igralcev = [bottle.request.forms.getunicode(f"ime_igralca{i}") for i in range(st_igralcev)]
+    igra = uporabnik.inicializiraj_igro(imena_igralcev=imena_igralcev, boti_in_igralci=boti_in_igralci, velikost_tabele=velikost_tabele)
     bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
     tsuro.v_datoteko(DAT)
     return bottle.redirect("/igra/")

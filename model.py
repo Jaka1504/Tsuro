@@ -89,12 +89,12 @@ class Karta:
 
 @dataclass
 class Igralec:
-    # st_igralca: int     # barve bi bile kar 0, 1, 2, ...
+    ime: str = None
     polje: tuple = None  # (vrstica, stolpec) polje tabele v tej vrstici in stolpcu
     polozaj: int = None  # položaj na ploščici - int med 0 in 7
     karte_v_roki: List[Karta] = None
     v_igri: bool = True  # postane False ko je igralec izločen
-    je_bot: bool = False # True če s tem igralcem upravlja program
+    je_bot: bool = False # True če s tem igralcem upravlja racunalnik
 
     def __post_init__(self):
         if self.karte_v_roki is None:
@@ -102,6 +102,7 @@ class Igralec:
     
     def v_slovar(self):
         return {
+            "ime": self.ime,
             "polje": self.polje,
             "polozaj": self.polozaj,
             "karte_v_roki": [karta.v_slovar() for karta in self.karte_v_roki],
@@ -112,12 +113,14 @@ class Igralec:
     @classmethod
     def iz_slovarja(cls, slovar):
         return Igralec(
+            ime=slovar["ime"],
             polje=slovar["polje"],
             polozaj=slovar["polozaj"],
             karte_v_roki=[Karta.iz_slovarja(karta) for karta in slovar["karte_v_roki"]],
             v_igri=slovar["v_igri"],
             je_bot=slovar["je_bot"]
         )
+
 
 
 @dataclass
@@ -186,8 +189,8 @@ class Igra:
         ]
         random.shuffle(self.kupcek)
 
-    def dodaj_novega_igralca(self, je_bot=False):
-        nov_igralec = Igralec(je_bot=je_bot)
+    def dodaj_novega_igralca(self, ime=None, je_bot=False):
+        nov_igralec = Igralec(ime=ime, je_bot=je_bot)
         slaba_pozicija = True
         while slaba_pozicija:
             zacetno_polje, zacetni_polozaj = random.choice(
@@ -270,7 +273,7 @@ class Igra:
         if not bot.v_igri:
             tocke *= 0.1
         # Da dodamo še nekaj nepredvivljivosti.
-        EPSILON = 0.5
+        EPSILON = 0.1
         return tocke * (1 + EPSILON * (2 * random.random() - 1))
 
     def zmagovalci(self):
@@ -281,6 +284,16 @@ class Igra:
             return aktivni_igralci[0]
         else:
             return NEDOKONCANA
+
+    def nacin_igre(self):
+        if len(self.igralci) == 2:
+            if not self.igralci[0].je_bot and self.igralci[1].je_bot:
+                if self.velikost_tabele == (6, 6):
+                    return "obicajna"
+                elif self.velikost_tabele == (4, 4):
+                    return "hitra"
+        return "prilagojena"
+
 
     def vleci_karto(self, st_igralca):
         try:
@@ -470,10 +483,12 @@ class Uporabnik:
         self.igre[id_igre] = igra
         return igra
 
-    def inicializiraj_igro(self, boti_in_igralci, velikost_tabele=(6,6)):
+    def inicializiraj_igro(self, imena_igralcev, boti_in_igralci, velikost_tabele=(6,6)):
         igra = self.ustvari_novo_igro(id_igre=None, igralci=None, velikost_tabele=velikost_tabele, kupcek=None, tabela=None, na_vrsti=0)
         for indeks in range(len(boti_in_igralci)):
-            igra.dodaj_novega_igralca(je_bot=boti_in_igralci[indeks])
+            igra.dodaj_novega_igralca(ime=imena_igralcev[indeks], je_bot=boti_in_igralci[indeks])
+            if not igra.igralci[indeks].ime:
+                igra.igralci[indeks].ime = f"Igralec {indeks + 1}"
         igra.razdeli_karte()
         igra.botova_poteza()
         return igra
