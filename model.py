@@ -6,7 +6,6 @@ import random, json
 
 
 NEDOKONCANA = "ND"
-ZMAGA = "Z"
 NI_ZMAGOVALCA = "NZ"
 LOOP = "L"
 # Barve za v css:
@@ -219,8 +218,9 @@ class Igra:
         ):
             self.napreduj_po_tabeli(indeks)
         self.primerno_pobarvaj_poti()
-        return self.predaj_potezo()
-        
+        self.predaj_potezo()
+    
+
     def predaj_potezo(self):
         st_igralcev_v_igri = len([igralec_ for igralec_ in self.igralci if igralec_.v_igri])
         if st_igralcev_v_igri > 1:
@@ -229,11 +229,8 @@ class Igra:
                 if self.igralci[self.na_vrsti].v_igri:
                     # Poskusi narediti botovo potezo
                     self.botova_poteza()
-                    return NEDOKONCANA
-        elif st_igralcev_v_igri == 1:
-            return ZMAGA
-        else:
-            return NI_ZMAGOVALCA
+                    break
+
 
     def botova_poteza(self):
         igralec = self.igralci[self.na_vrsti]
@@ -273,11 +270,17 @@ class Igra:
         if not bot.v_igri:
             tocke *= 0.1
         # Da dodamo še nekaj nepredvivljivosti.
-        EPSILON = 0
-        return tocke # * (1 + EPSILON * (2 * random.random() - 1))
+        EPSILON = 0.5
+        return tocke * (1 + EPSILON * (2 * random.random() - 1))
 
-
-        
+    def zmagovalci(self):
+        aktivni_igralci = [indeks for indeks, igralec in enumerate(self.igralci) if igralec.v_igri]
+        if len(aktivni_igralci) == 0:
+            return NI_ZMAGOVALCA
+        elif len(aktivni_igralci) == 1:
+            return aktivni_igralci[0]
+        else:
+            return NEDOKONCANA
 
     def vleci_karto(self, st_igralca):
         try:
@@ -447,7 +450,7 @@ class Uporabnik:
         return {
             "uporabnisko_ime": self.uporabnisko_ime,
             "geslo": self.geslo,
-            "igre": {id_igre: igra.v_slovar() for id_igre in self.igre}
+            "igre": {id_igre: igra.v_slovar() for id_igre, igra in self.igre.items()}
         }
 
     @classmethod
