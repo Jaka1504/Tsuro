@@ -33,6 +33,10 @@
     filter: hue-rotate(var(--hue)) saturate(30);
 }
 
+.invert {
+    filter: invert()
+}
+
 .tabela {
     position: relative;
 }
@@ -40,4 +44,8 @@
 .besedilo {
     font-size: large;
     font-family: Candara;
+}
+
+.opozorilo {
+    color: red;
 }

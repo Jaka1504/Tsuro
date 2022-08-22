@@ -10,8 +10,8 @@
   <body class="bg-dark text-light besedilo">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <div class="row">
-      <div class="col" style="text-align:right">
-        <img src="/img/zmaj.png" alt="Zmaj" class="sticky-top" width="80%" style="filter:invert()">
+      <div class="col">
+        <img src="/img/zmaj.png" alt="Zmaj" class="sticky-top float-end invert" width="80%">
       </div>
       <div class="col">
         <nav class="navbar navbar-expand-xl sticky-top">
@@ -19,13 +19,13 @@
             <a class="navbar-brand text-light besedilo" href="/">
               <img src="/img/napis_tsuro2.png" alt="Tsuro" height="30px" class="d-inline-block align-text-top">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon invert"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+              <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle text-light" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Igra
                   </a>
                   <ul class="dropdown-menu bg-secondary">
@@ -38,13 +38,16 @@
                   <a class="nav-link text-light" href="#">Statistika</a>
                 </li>
               </ul>
+              <div class="nav-item">
+                <a class="nav-link text-light" href="/prijava/">Prijava</a>
+              </div>
             </div>
           </div>
         </nav>
         {{!base}}
       </div>
       <div class="col">
-        <img src="/img/feniks.png" alt="Feniks" class="sticky-top" width="100%" style="filter:invert()">
+        <img src="/img/feniks.png" alt="Feniks" class="sticky-top invert" width="100%">
       </div>
     </div>
   </body>

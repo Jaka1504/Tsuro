@@ -511,8 +511,11 @@ class Tsuro:
             uporabniki={ime: Uporabnik.iz_slovarja(slovar[ime]) for ime in slovar}
         )
 
+    def preveri_geslo(self, uporabnisko_ime, zasifrirano_geslo):
+        return self.uporabniki[uporabnisko_ime].geslo == zasifrirano_geslo
+
     def dodaj_uporabnika(self, ime, geslo):
-        nov_uporabnik = Uporabnik(ime, Uporabnik.zasifriraj_geslo(geslo))
+        nov_uporabnik = Uporabnik(ime, geslo)
         self.uporabniki[ime] = nov_uporabnik
         return nov_uporabnik
 

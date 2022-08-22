@@ -34,6 +34,58 @@ def osnovna_stran():
     return bottle.redirect("/nova-igra/")
 
 
+@bottle.get("/prijava/")
+def get_prijava():
+    return bottle.template("prijava", napaka=None)
+
+
+@bottle.post("/prijava/")
+def post_prijava():
+    uporabnisko_ime=bottle.request.forms.getunicode("uporabnisko_ime")
+    geslo=model.Uporabnik.zasifriraj_geslo(bottle.request.forms.getunicode("geslo"))
+    napaka = None
+    if uporabnisko_ime in tsuro.uporabniki.keys():
+        if tsuro.preveri_geslo(uporabnisko_ime=uporabnisko_ime, zasifrirano_geslo=geslo):
+            bottle.response.set_cookie(
+                name="uporabnik",
+                value=uporabnisko_ime,
+                secret=SKRIVNOST,
+                path="/"
+            )
+        else:
+            napaka = "Uporabniško ime in geslo se ne ujemata!"
+    else:
+        napaka = "Ta uporabnik ne obstaja. Preveri črkovanje ali ustvari nov račun!"
+    if napaka:
+        return bottle.template("prijava", napaka=napaka)
+    else:
+        return bottle.redirect("/")
+
+
+@bottle.get("/registracija/")
+def get_registracija():
+    return bottle.template("registracija", napaka=None)
+
+
+@bottle.post("/registracija/")
+def post_registracija():
+    uporabnisko_ime=bottle.request.forms.getunicode("uporabnisko_ime")
+    geslo=model.Uporabnik.zasifriraj_geslo(bottle.request.forms.getunicode("geslo"))
+    napaka = None
+    if uporabnisko_ime in tsuro.uporabniki.keys():
+        napaka="To uporabniško ime je že zasedeno. Prosim, izberi drugačno ime."
+        return bottle.template("registracija", napaka=napaka)
+    else:
+        tsuro.dodaj_uporabnika(ime=uporabnisko_ime, geslo=geslo)
+        bottle.response.set_cookie(
+            name="uporabnik",
+            value=uporabnisko_ime,
+            secret=SKRIVNOST,
+            path="/"
+        )
+        return bottle.redirect("/")
+
+
 @bottle.get("/nova-igra/")
 def izbira_nove_igre():
     return bottle.template("nova_igra")
@@ -89,8 +141,6 @@ def ustvari_prilagojeno_igro():
     igra=uporabnik.inicializiraj_igro(boti_in_igralci=boti_in_igralci, velikost_tabele=velikost_tabele)
     bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
     return bottle.redirect("/igra/")
-
-    
 
 
 @bottle.get("/igra/")
