@@ -62,17 +62,41 @@ def prilagodi():
 
 @bottle.post("/nova-igra/prilagodi/osnovno/")
 def naslednja_stran_prilagodi():
+    st_igralcev = int(bottle.request.forms.getunicode("st_igralcev"))
+    st_vrstic = int(bottle.request.forms.getunicode("st_vrstic"))
+    st_stolpcev = int(bottle.request.forms.getunicode("st_stolpcev"))
+    bottle.response.set_cookie(name="st_igralcev", value=st_igralcev, secret=SKRIVNOST, path="/nova-igra/prilagodi/")
+    bottle.response.set_cookie(name="velikost_tabele", value=(st_vrstic, st_stolpcev), secret=SKRIVNOST, path="/nova-igra/")
     return bottle.redirect("/nova-igra/prilagodi/igralci/")
 
 
 @bottle.get("/nova-igra/prilagodi/igralci/")
 def izbor_igralcev():
-    return bottle.redirect("prilagodi_igralci", st_igralcev=int(bottle.request.forms.getunicode("st_igralcev")))
+    st_igralcev=bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST)
+    return bottle.template(
+        "prilagodi_igralci",
+        st_igralcev=st_igralcev,
+        barve=model.VRSTNI_RED_BARV
+    )
+
+
+@bottle.post("/nova-igra/prilagodi/igralci/")
+def ustvari_prilagojeno_igro():
+    st_igralcev=bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST)
+    velikost_tabele=bottle.request.get_cookie("velikost_tabele", secret=SKRIVNOST)
+    boti_in_igralci=[(not bottle.request.forms.getunicode(f"bot{i}") is None) for i in range(st_igralcev)]
+    print(boti_in_igralci)
+    igra=uporabnik.inicializiraj_igro(boti_in_igralci=boti_in_igralci, velikost_tabele=velikost_tabele)
+    bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
+    return bottle.redirect("/igra/")
+
+    
 
 
 @bottle.get("/igra/")
 def stran_z_igro():
     igra = uporabnik.igre[bottle.request.get_cookie("id_igre", secret=SKRIVNOST)]
+    zmagovalci=igra.zmagovalci()
     return bottle.template(
         "index",
         igra=igra,
@@ -80,7 +104,11 @@ def stran_z_igro():
         bela=model.BELA,
         siva=model.SIVA,
         barve=model.VRSTNI_RED_BARV,
+        ni_zmagovalca=model.NI_ZMAGOVALCA,
+        nedokoncana=model.NEDOKONCANA,
+        zmagovalci=zmagovalci
     )
+
 
 @bottle.post("/igra/")
 def poteza():
@@ -93,16 +121,9 @@ def poteza():
         igra.igralci[igra.na_vrsti].karte_v_roki[indeks_karte].zarotiraj(st_rotacij)
         return bottle.redirect("/igra/")
     elif not postavi_karto is None:
-        novo_stanje = igra.igralec_postavi_karto_na_tabelo(int(postavi_karto))
-        print(novo_stanje) # potem izbrisi
-        if novo_stanje == model.NEDOKONCANA:
-            return bottle.redirect("/igra/")
-        elif novo_stanje == model.ZMAGA:
-            raise ValueError
-        elif novo_stanje == model.NI_ZMAGOVALCA:
-            raise ValueError
-        else:
-            raise ValueError
+        igra.igralec_postavi_karto_na_tabelo(int(postavi_karto))
+        return bottle.redirect("/igra/")
+
 
 # @bottle.post("/zarotiraj/<rotacija>")
 # def zarotiraj(rotacija):

@@ -12,8 +12,8 @@
                 % end
             </select>
             <label for="st_vrstic">Število vrstic tabele:</label>
-            <select class="form-select" id="st_vrstic">
-                % for indeks in range(8):
+            <select class="form-select" id="st_vrstic" name="st_vrstic">
+                % for indeks in range(1, 8):
                 % if indeks == 5:
                 <option value="{{indeks + 1}}" selected>{{indeks + 1}}</option>
                 % else:
@@ -22,8 +22,8 @@
                 % end
             </select>
             <label for="st_stolpcev">Število stolpcev tabele:</label>
-            <select class="form-select mb-3" id="st_stolpcev">
-                % for indeks in range(8):
+            <select class="form-select mb-3" id="st_stolpcev" name="st_stolpcev">
+                % for indeks in range(1, 8):
                 % if indeks == 5:
                 <option value="{{indeks + 1}}" selected>{{indeks + 1}}</option>
                 % else:
