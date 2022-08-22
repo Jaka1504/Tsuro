@@ -1,1 +1,5134 @@
-{}
+{
+    "Jaka": {
+        "uporabnisko_ime": "Jaka",
+        "geslo": 192750089968409227821056,
+        "igre": {
+            "1": {
+                "id_igre": 1,
+                "igralci": [
+                    {
+                        "polje": [
+                            1,
+                            2
+                        ],
+                        "polozaj": 4,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    2,
+                                    6,
+                                    0,
+                                    7,
+                                    5,
+                                    4,
+                                    1,
+                                    3
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    2,
+                                    3,
+                                    0,
+                                    1,
+                                    6,
+                                    7,
+                                    4,
+                                    5
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    5,
+                                    6,
+                                    3,
+                                    2,
+                                    7,
+                                    0,
+                                    1,
+                                    4
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": true,
+                        "je_bot": false
+                    },
+                    {
+                        "polje": [
+                            2,
+                            4
+                        ],
+                        "polozaj": 2,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    4,
+                                    6,
+                                    5,
+                                    7,
+                                    0,
+                                    2,
+                                    1,
+                                    3
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    7,
+                                    2,
+                                    1,
+                                    4,
+                                    3,
+                                    6,
+                                    5,
+                                    0
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    4,
+                                    7,
+                                    6,
+                                    5,
+                                    0,
+                                    3,
+                                    2,
+                                    1
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": true,
+                        "je_bot": true
+                    }
+                ],
+                "velikost_tabele": [
+                    4,
+                    4
+                ],
+                "kupcek": [
+                    {
+                        "povezave": [
+                            6,
+                            2,
+                            1,
+                            7,
+                            5,
+                            4,
+                            0,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            3,
+                            4,
+                            1,
+                            2,
+                            6,
+                            5,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            7,
+                            5,
+                            6,
+                            3,
+                            4,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            5,
+                            0,
+                            7,
+                            6,
+                            1,
+                            4,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            4,
+                            5,
+                            2,
+                            3,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            6,
+                            4,
+                            7,
+                            2,
+                            0,
+                            1,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            4,
+                            6,
+                            2,
+                            7,
+                            3,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            5,
+                            7,
+                            6,
+                            0,
+                            1,
+                            3,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            4,
+                            5,
+                            6,
+                            1,
+                            2,
+                            3,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            6,
+                            0,
+                            4,
+                            3,
+                            7,
+                            1,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            4,
+                            7,
+                            6,
+                            1,
+                            0,
+                            3,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            4,
+                            6,
+                            0,
+                            1,
+                            7,
+                            2,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            4,
+                            3,
+                            2,
+                            1,
+                            0,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            6,
+                            7,
+                            5,
+                            4,
+                            3,
+                            2,
+                            0,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            4,
+                            0,
+                            7,
+                            1,
+                            6,
+                            5,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            2,
+                            1,
+                            5,
+                            0,
+                            3,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            2,
+                            1,
+                            6,
+                            5,
+                            4,
+                            3,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            6,
+                            3,
+                            5,
+                            1,
+                            7,
+                            2,
+                            0,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            5,
+                            3,
+                            2,
+                            0,
+                            1,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            7,
+                            6,
+                            4,
+                            3,
+                            0,
+                            2,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            5,
+                            6,
+                            4,
+                            3,
+                            1,
+                            2,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            7,
+                            0,
+                            5,
+                            6,
+                            3,
+                            4,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            3,
+                            2,
+                            7,
+                            6,
+                            5,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            7,
+                            6,
+                            0,
+                            5,
+                            4,
+                            2,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            6,
+                            4,
+                            7,
+                            5,
+                            1,
+                            3,
+                            0,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            3,
+                            2,
+                            5,
+                            4,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            5,
+                            6,
+                            7,
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            6,
+                            5,
+                            0,
+                            7,
+                            2,
+                            1,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            2,
+                            1,
+                            0,
+                            7,
+                            6,
+                            5,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    }
+                ],
+                "tabela": [
+                    [
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    [
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    [
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    [
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                ],
+                "na_vrsti": 0
+            },
+            "2": {
+                "id_igre": 2,
+                "igralci": [
+                    {
+                        "polje": [
+                            5,
+                            4
+                        ],
+                        "polozaj": 5,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    7,
+                                    2,
+                                    1,
+                                    4,
+                                    3,
+                                    6,
+                                    5,
+                                    0
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    1,
+                                    0,
+                                    3,
+                                    2,
+                                    5,
+                                    4,
+                                    7,
+                                    6
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    5,
+                                    4,
+                                    6,
+                                    7,
+                                    1,
+                                    0,
+                                    2,
+                                    3
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": false
+                    },
+                    {
+                        "polje": [
+                            4,
+                            2
+                        ],
+                        "polozaj": 4,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    4,
+                                    5,
+                                    3,
+                                    2,
+                                    0,
+                                    1,
+                                    7,
+                                    6
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    1,
+                                    0,
+                                    7,
+                                    6,
+                                    5,
+                                    4,
+                                    3,
+                                    2
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    2,
+                                    4,
+                                    0,
+                                    6,
+                                    1,
+                                    7,
+                                    3,
+                                    5
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": true,
+                        "je_bot": true
+                    }
+                ],
+                "velikost_tabele": [
+                    4,
+                    4
+                ],
+                "kupcek": [
+                    {
+                        "povezave": [
+                            4,
+                            2,
+                            1,
+                            6,
+                            0,
+                            7,
+                            3,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            4,
+                            5,
+                            2,
+                            3,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            2,
+                            1,
+                            6,
+                            5,
+                            4,
+                            3,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            2,
+                            1,
+                            7,
+                            0,
+                            6,
+                            5,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            6,
+                            5,
+                            4,
+                            3,
+                            2,
+                            1,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            2,
+                            1,
+                            0,
+                            5,
+                            4,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            6,
+                            7,
+                            4,
+                            3,
+                            0,
+                            1,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            5,
+                            4,
+                            0,
+                            2,
+                            1,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            4,
+                            5,
+                            0,
+                            1,
+                            2,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            5,
+                            6,
+                            0,
+                            7,
+                            1,
+                            2,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            7,
+                            3,
+                            2,
+                            0,
+                            6,
+                            5,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            2,
+                            1,
+                            5,
+                            6,
+                            3,
+                            4,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            4,
+                            7,
+                            6,
+                            1,
+                            0,
+                            3,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            5,
+                            6,
+                            7,
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            6,
+                            5,
+                            0,
+                            7,
+                            2,
+                            1,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    }
+                ],
+                "tabela": [
+                    [
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                7,
+                                5,
+                                4,
+                                6,
+                                2,
+                                1,
+                                3,
+                                0
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": "siva",
+                                "2": "siva",
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 0
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                7,
+                                0,
+                                5,
+                                6,
+                                3,
+                                4,
+                                1
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": "siva",
+                                "2": 0,
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                2,
+                                1,
+                                7,
+                                5,
+                                4,
+                                0,
+                                3
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "siva",
+                                "2": "siva",
+                                "3": 0,
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 0
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                2,
+                                5,
+                                0,
+                                6,
+                                7,
+                                1,
+                                3,
+                                4
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": 0,
+                                "2": 0,
+                                "3": "siva",
+                                "4": "siva",
+                                "5": 0,
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                3,
+                                0,
+                                1,
+                                6,
+                                7,
+                                4,
+                                5
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": 80,
+                                "2": 80,
+                                "3": 80,
+                                "4": "siva",
+                                "5": 0,
+                                "6": "siva",
+                                "7": 0
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                3,
+                                7,
+                                1,
+                                5,
+                                4,
+                                0,
+                                2
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": "siva",
+                                "2": 80,
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": 80,
+                                "7": 80
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                3,
+                                7,
+                                6,
+                                0,
+                                5,
+                                4,
+                                2,
+                                1
+                            ],
+                            "barve": {
+                                "0": "bela",
+                                "1": "siva",
+                                "2": "siva",
+                                "3": "bela",
+                                "4": 0,
+                                "5": 0,
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                5,
+                                4,
+                                7,
+                                2,
+                                1,
+                                0,
+                                3
+                            ],
+                            "barve": {
+                                "0": "bela",
+                                "1": 80,
+                                "2": 80,
+                                "3": "siva",
+                                "4": 80,
+                                "5": 80,
+                                "6": "bela",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                7,
+                                3,
+                                5,
+                                1,
+                                6,
+                                2,
+                                4,
+                                0
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": 80,
+                                "2": 80,
+                                "3": 80,
+                                "4": "siva",
+                                "5": 80,
+                                "6": "siva",
+                                "7": 80
+                            }
+                        }
+                    ]
+                ],
+                "na_vrsti": 1
+            },
+            "3": {
+                "id_igre": 3,
+                "igralci": [
+                    {
+                        "polje": [
+                            5,
+                            1
+                        ],
+                        "polozaj": 5,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    1,
+                                    0,
+                                    3,
+                                    2,
+                                    5,
+                                    4,
+                                    7,
+                                    6
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    2,
+                                    3,
+                                    0,
+                                    1,
+                                    7,
+                                    6,
+                                    5,
+                                    4
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    5,
+                                    6,
+                                    4,
+                                    7,
+                                    2,
+                                    0,
+                                    1,
+                                    3
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": true,
+                        "je_bot": false
+                    },
+                    {
+                        "polje": [
+                            0,
+                            3
+                        ],
+                        "polozaj": 1,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    3,
+                                    2,
+                                    1,
+                                    0,
+                                    7,
+                                    6,
+                                    5,
+                                    4
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    4,
+                                    5,
+                                    6,
+                                    7,
+                                    0,
+                                    1,
+                                    2,
+                                    3
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    2,
+                                    6,
+                                    0,
+                                    4,
+                                    3,
+                                    7,
+                                    1,
+                                    5
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": true
+                    }
+                ],
+                "velikost_tabele": [
+                    6,
+                    6
+                ],
+                "kupcek": [
+                    {
+                        "povezave": [
+                            6,
+                            7,
+                            4,
+                            5,
+                            2,
+                            3,
+                            0,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            2,
+                            1,
+                            0,
+                            6,
+                            7,
+                            4,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            3,
+                            2,
+                            7,
+                            6,
+                            5,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            7,
+                            5,
+                            0,
+                            6,
+                            2,
+                            4,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            4,
+                            5,
+                            2,
+                            3,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            3,
+                            4,
+                            1,
+                            2,
+                            0,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            7,
+                            4,
+                            6,
+                            2,
+                            0,
+                            3,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            7,
+                            6,
+                            5,
+                            4,
+                            3,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            7,
+                            0,
+                            5,
+                            6,
+                            3,
+                            4,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            6,
+                            7,
+                            5,
+                            4,
+                            2,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            5,
+                            6,
+                            4,
+                            3,
+                            1,
+                            2,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            4,
+                            6,
+                            5,
+                            1,
+                            3,
+                            2,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            6,
+                            5,
+                            4,
+                            7,
+                            2,
+                            1,
+                            0,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            4,
+                            7,
+                            6,
+                            1,
+                            0,
+                            3,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            5,
+                            6,
+                            7,
+                            2,
+                            3,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            5,
+                            7,
+                            0,
+                            6,
+                            1,
+                            4,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            6,
+                            0,
+                            7,
+                            5,
+                            4,
+                            1,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            5,
+                            6,
+                            0,
+                            7,
+                            1,
+                            2,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            4,
+                            5,
+                            6,
+                            1,
+                            2,
+                            3,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            2,
+                            1,
+                            5,
+                            6,
+                            3,
+                            4,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            5,
+                            6,
+                            7,
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            2,
+                            1,
+                            4,
+                            3,
+                            6,
+                            5,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            7,
+                            6,
+                            0,
+                            5,
+                            4,
+                            2,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            7,
+                            5,
+                            6,
+                            0,
+                            2,
+                            3,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            2,
+                            1,
+                            0,
+                            7,
+                            6,
+                            5,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            2,
+                            1,
+                            4,
+                            3,
+                            0,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            5,
+                            4,
+                            6,
+                            2,
+                            1,
+                            3,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            3,
+                            6,
+                            1,
+                            5,
+                            4,
+                            2,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            3,
+                            2,
+                            5,
+                            4,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            6,
+                            5,
+                            0,
+                            7,
+                            2,
+                            1,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            3,
+                            6,
+                            1,
+                            0,
+                            7,
+                            2,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            5,
+                            3,
+                            2,
+                            6,
+                            1,
+                            4,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            4,
+                            6,
+                            2,
+                            7,
+                            3,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            5,
+                            7,
+                            6,
+                            0,
+                            1,
+                            3,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    }
+                ],
+                "tabela": [
+                    [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                7,
+                                2,
+                                1,
+                                4,
+                                3,
+                                6,
+                                5,
+                                0
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 0,
+                                "2": 0,
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                4,
+                                7,
+                                6,
+                                1,
+                                0,
+                                3,
+                                2
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "siva",
+                                "2": 0,
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 0
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                2,
+                                1,
+                                7,
+                                0,
+                                6,
+                                5,
+                                3
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": "siva",
+                                "2": "siva",
+                                "3": 0,
+                                "4": 80,
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 0
+                            }
+                        },
+                        {
+                            "povezave": [
+                                1,
+                                0,
+                                5,
+                                6,
+                                7,
+                                2,
+                                3,
+                                4
+                            ],
+                            "barve": {
+                                "0": "bela",
+                                "1": "bela",
+                                "2": "siva",
+                                "3": 0,
+                                "4": "siva",
+                                "5": "siva",
+                                "6": 0,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                3,
+                                7,
+                                1,
+                                5,
+                                4,
+                                0,
+                                2
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": "siva",
+                                "2": "siva",
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": 0,
+                                "7": "siva"
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                4,
+                                5,
+                                7,
+                                6,
+                                0,
+                                1,
+                                3,
+                                2
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": "siva",
+                                "2": "siva",
+                                "3": "siva",
+                                "4": 0,
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                3,
+                                7,
+                                1,
+                                0,
+                                6,
+                                5,
+                                2
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 80,
+                                "2": "siva",
+                                "3": 80,
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                6,
+                                0,
+                                5,
+                                7,
+                                3,
+                                1,
+                                4
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": 80,
+                                "2": 80,
+                                "3": 80,
+                                "4": "siva",
+                                "5": 80,
+                                "6": 80,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                2,
+                                1,
+                                4,
+                                3,
+                                0,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": "bela",
+                                "1": "bela",
+                                "2": "bela",
+                                "3": "bela",
+                                "4": "bela",
+                                "5": "bela",
+                                "6": 80,
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                4,
+                                3,
+                                2,
+                                1,
+                                0,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": "siva",
+                                "2": "bela",
+                                "3": "bela",
+                                "4": "siva",
+                                "5": 0,
+                                "6": "bela",
+                                "7": "bela"
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                6,
+                                5,
+                                4,
+                                7,
+                                2,
+                                1,
+                                0,
+                                3
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 0,
+                                "2": "siva",
+                                "3": "siva",
+                                "4": "siva",
+                                "5": 0,
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                3,
+                                4,
+                                1,
+                                2,
+                                7,
+                                0,
+                                5
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "siva",
+                                "2": 80,
+                                "3": "siva",
+                                "4": 80,
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                7,
+                                3,
+                                2,
+                                5,
+                                4,
+                                0,
+                                1
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 80,
+                                "2": "bela",
+                                "3": "bela",
+                                "4": 80,
+                                "5": 80,
+                                "6": "siva",
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                3,
+                                0,
+                                1,
+                                6,
+                                7,
+                                4,
+                                5
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 0,
+                                "2": "siva",
+                                "3": 0,
+                                "4": "bela",
+                                "5": "bela",
+                                "6": "bela",
+                                "7": "bela"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                1,
+                                0,
+                                3,
+                                2,
+                                7,
+                                6,
+                                5,
+                                4
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": 80,
+                                "2": "bela",
+                                "3": "bela",
+                                "4": "siva",
+                                "5": 0,
+                                "6": 0,
+                                "7": "siva"
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                4,
+                                5,
+                                3,
+                                2,
+                                0,
+                                1,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": "siva",
+                                "2": "bela",
+                                "3": "bela",
+                                "4": 0,
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                5,
+                                0,
+                                4,
+                                3,
+                                1,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": "siva",
+                                "2": 80,
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "bela",
+                                "7": "bela"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                6,
+                                5,
+                                0,
+                                7,
+                                2,
+                                1,
+                                4
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": "siva",
+                                "2": "siva",
+                                "3": 80,
+                                "4": 80,
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                6,
+                                3,
+                                2,
+                                0,
+                                7,
+                                1,
+                                5
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": 80,
+                                "2": 80,
+                                "3": 80,
+                                "4": 0,
+                                "5": "siva",
+                                "6": 80,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                4,
+                                6,
+                                0,
+                                1,
+                                7,
+                                2,
+                                5
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 80,
+                                "2": 80,
+                                "3": "siva",
+                                "4": 80,
+                                "5": 80,
+                                "6": 80,
+                                "7": 80
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        null,
+                        {
+                            "povezave": [
+                                4,
+                                6,
+                                5,
+                                7,
+                                0,
+                                2,
+                                1,
+                                3
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "bela",
+                                "2": 80,
+                                "3": "siva",
+                                "4": "siva",
+                                "5": 80,
+                                "6": "bela",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                3,
+                                6,
+                                1,
+                                0,
+                                7,
+                                2,
+                                5
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 0,
+                                "2": "siva",
+                                "3": 0,
+                                "4": "siva",
+                                "5": 80,
+                                "6": "siva",
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                7,
+                                4,
+                                0,
+                                2,
+                                6,
+                                5,
+                                1
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "siva",
+                                "2": 80,
+                                "3": "siva",
+                                "4": 80,
+                                "5": 0,
+                                "6": 0,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                7,
+                                4,
+                                6,
+                                2,
+                                0,
+                                3,
+                                1
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 80,
+                                "2": 80,
+                                "3": "siva",
+                                "4": 80,
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 80
+                            }
+                        }
+                    ]
+                ],
+                "na_vrsti": 1
+            },
+            "4": {
+                "id_igre": 4,
+                "igralci": [
+                    {
+                        "polje": [
+                            7,
+                            0
+                        ],
+                        "polozaj": 2,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    7,
+                                    2,
+                                    1,
+                                    4,
+                                    3,
+                                    6,
+                                    5,
+                                    0
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    3,
+                                    6,
+                                    4,
+                                    0,
+                                    2,
+                                    7,
+                                    1,
+                                    5
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    5,
+                                    4,
+                                    7,
+                                    6,
+                                    1,
+                                    0,
+                                    3,
+                                    2
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": true
+                    },
+                    {
+                        "polje": [
+                            9,
+                            2
+                        ],
+                        "polozaj": 5,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    7,
+                                    6,
+                                    3,
+                                    2,
+                                    5,
+                                    4,
+                                    1,
+                                    0
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    2,
+                                    7,
+                                    0,
+                                    4,
+                                    3,
+                                    6,
+                                    5,
+                                    1
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    3,
+                                    6,
+                                    4,
+                                    0,
+                                    2,
+                                    7,
+                                    1,
+                                    5
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": true
+                    },
+                    {
+                        "polje": [
+                            9,
+                            4
+                        ],
+                        "polozaj": 4,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    4,
+                                    6,
+                                    5,
+                                    7,
+                                    0,
+                                    2,
+                                    1,
+                                    3
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    1,
+                                    0,
+                                    3,
+                                    2,
+                                    5,
+                                    4,
+                                    7,
+                                    6
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    7,
+                                    2,
+                                    1,
+                                    4,
+                                    3,
+                                    6,
+                                    5,
+                                    0
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": true
+                    },
+                    {
+                        "polje": [
+                            0,
+                            6
+                        ],
+                        "polozaj": 1,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    4,
+                                    3,
+                                    7,
+                                    1,
+                                    0,
+                                    6,
+                                    5,
+                                    2
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    5,
+                                    6,
+                                    7,
+                                    4,
+                                    3,
+                                    0,
+                                    1,
+                                    2
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    2,
+                                    3,
+                                    0,
+                                    1,
+                                    5,
+                                    4,
+                                    7,
+                                    6
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": true
+                    },
+                    {
+                        "polje": [
+                            7,
+                            9
+                        ],
+                        "polozaj": 6,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    2,
+                                    4,
+                                    0,
+                                    6,
+                                    1,
+                                    7,
+                                    3,
+                                    5
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    3,
+                                    2,
+                                    1,
+                                    0,
+                                    7,
+                                    6,
+                                    5,
+                                    4
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    7,
+                                    3,
+                                    6,
+                                    1,
+                                    5,
+                                    4,
+                                    2,
+                                    0
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": true
+                    },
+                    {
+                        "polje": [
+                            9,
+                            5
+                        ],
+                        "polozaj": 5,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    3,
+                                    7,
+                                    4,
+                                    0,
+                                    2,
+                                    6,
+                                    5,
+                                    1
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    4,
+                                    3,
+                                    7,
+                                    1,
+                                    0,
+                                    6,
+                                    5,
+                                    2
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    2,
+                                    4,
+                                    0,
+                                    7,
+                                    1,
+                                    6,
+                                    5,
+                                    3
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": true
+                    },
+                    {
+                        "polje": [
+                            9,
+                            2
+                        ],
+                        "polozaj": 4,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    4,
+                                    7,
+                                    6,
+                                    5,
+                                    0,
+                                    3,
+                                    2,
+                                    1
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    4,
+                                    6,
+                                    7,
+                                    5,
+                                    0,
+                                    3,
+                                    1,
+                                    2
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    2,
+                                    4,
+                                    0,
+                                    6,
+                                    1,
+                                    7,
+                                    3,
+                                    5
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": false,
+                        "je_bot": true
+                    },
+                    {
+                        "polje": [
+                            1,
+                            7
+                        ],
+                        "polozaj": 7,
+                        "karte_v_roki": [
+                            {
+                                "povezave": [
+                                    2,
+                                    3,
+                                    0,
+                                    1,
+                                    7,
+                                    6,
+                                    5,
+                                    4
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    3,
+                                    5,
+                                    4,
+                                    0,
+                                    2,
+                                    1,
+                                    7,
+                                    6
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            },
+                            {
+                                "povezave": [
+                                    6,
+                                    5,
+                                    4,
+                                    7,
+                                    2,
+                                    1,
+                                    0,
+                                    3
+                                ],
+                                "barve": {
+                                    "0": "bela",
+                                    "1": "bela",
+                                    "2": "bela",
+                                    "3": "bela",
+                                    "4": "bela",
+                                    "5": "bela",
+                                    "6": "bela",
+                                    "7": "bela"
+                                }
+                            }
+                        ],
+                        "v_igri": true,
+                        "je_bot": true
+                    }
+                ],
+                "velikost_tabele": [
+                    8,
+                    8
+                ],
+                "kupcek": [
+                    {
+                        "povezave": [
+                            4,
+                            5,
+                            3,
+                            2,
+                            0,
+                            1,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            2,
+                            1,
+                            4,
+                            3,
+                            6,
+                            5,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            7,
+                            0,
+                            5,
+                            6,
+                            3,
+                            4,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            5,
+                            6,
+                            7,
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            6,
+                            5,
+                            7,
+                            0,
+                            2,
+                            1,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            2,
+                            1,
+                            6,
+                            5,
+                            4,
+                            3,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            5,
+                            0,
+                            4,
+                            3,
+                            1,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            7,
+                            5,
+                            6,
+                            0,
+                            2,
+                            3,
+                            1
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            5,
+                            6,
+                            7,
+                            2,
+                            3,
+                            4
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            6,
+                            0,
+                            4,
+                            3,
+                            7,
+                            1,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            6,
+                            4,
+                            7,
+                            2,
+                            0,
+                            1,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            3,
+                            2,
+                            5,
+                            4,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            4,
+                            7,
+                            6,
+                            1,
+                            0,
+                            3,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            3,
+                            6,
+                            4,
+                            0,
+                            2,
+                            7,
+                            1,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            6,
+                            3,
+                            7,
+                            1,
+                            5,
+                            4,
+                            0,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            2,
+                            3,
+                            0,
+                            1,
+                            6,
+                            7,
+                            4,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            7,
+                            6,
+                            5,
+                            4,
+                            3,
+                            2
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            5,
+                            4,
+                            6,
+                            7,
+                            1,
+                            0,
+                            2,
+                            3
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            7,
+                            2,
+                            1,
+                            5,
+                            6,
+                            3,
+                            4,
+                            0
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            1,
+                            0,
+                            5,
+                            4,
+                            3,
+                            2,
+                            7,
+                            6
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    },
+                    {
+                        "povezave": [
+                            4,
+                            3,
+                            6,
+                            1,
+                            0,
+                            7,
+                            2,
+                            5
+                        ],
+                        "barve": {
+                            "0": "bela",
+                            "1": "bela",
+                            "2": "bela",
+                            "3": "bela",
+                            "4": "bela",
+                            "5": "bela",
+                            "6": "bela",
+                            "7": "bela"
+                        }
+                    }
+                ],
+                "tabela": [
+                    [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                6,
+                                5,
+                                4,
+                                7,
+                                2,
+                                1,
+                                0,
+                                3
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "siva",
+                                "2": "siva",
+                                "3": 70,
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 70
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                7,
+                                0,
+                                6,
+                                5,
+                                4,
+                                3,
+                                1
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "siva",
+                                "2": "siva",
+                                "3": 70,
+                                "4": "siva",
+                                "5": "siva",
+                                "6": 70,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                3,
+                                6,
+                                1,
+                                7,
+                                0,
+                                2,
+                                4
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 70,
+                                "2": 70,
+                                "3": 70,
+                                "4": "siva",
+                                "5": "siva",
+                                "6": 70,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                5,
+                                4,
+                                0,
+                                2,
+                                1,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "siva",
+                                "2": "siva",
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": 70,
+                                "7": 70
+                            }
+                        },
+                        null,
+                        {
+                            "povezave": [
+                                4,
+                                2,
+                                1,
+                                7,
+                                0,
+                                6,
+                                5,
+                                3
+                            ],
+                            "barve": {
+                                "0": 70,
+                                "1": 67,
+                                "2": 67,
+                                "3": "bela",
+                                "4": 70,
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "bela"
+                            }
+                        },
+                        null
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                1,
+                                0,
+                                5,
+                                7,
+                                6,
+                                2,
+                                4,
+                                3
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": 80,
+                                "2": "siva",
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        null,
+                        {
+                            "povezave": [
+                                4,
+                                2,
+                                1,
+                                5,
+                                0,
+                                3,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": 70,
+                                "1": 70,
+                                "2": 70,
+                                "3": "siva",
+                                "4": 70,
+                                "5": "siva",
+                                "6": "bela",
+                                "7": "bela"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                7,
+                                0,
+                                6,
+                                5,
+                                4,
+                                3,
+                                1
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": 70,
+                                "2": 330,
+                                "3": "siva",
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 70
+                            }
+                        },
+                        {
+                            "povezave": [
+                                7,
+                                2,
+                                1,
+                                6,
+                                5,
+                                4,
+                                3,
+                                0
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": 67,
+                                "2": 67,
+                                "3": "siva",
+                                "4": "bela",
+                                "5": "bela",
+                                "6": "siva",
+                                "7": 330
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                5,
+                                6,
+                                7,
+                                0,
+                                1,
+                                2,
+                                3
+                            ],
+                            "barve": {
+                                "0": 67,
+                                "1": 70,
+                                "2": "siva",
+                                "3": 67,
+                                "4": 67,
+                                "5": 70,
+                                "6": "siva",
+                                "7": 67
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                6,
+                                7,
+                                0,
+                                5,
+                                4,
+                                1,
+                                2
+                            ],
+                            "barve": {
+                                "0": 67,
+                                "1": 67,
+                                "2": "siva",
+                                "3": 67,
+                                "4": "bela",
+                                "5": "bela",
+                                "6": 67,
+                                "7": "siva"
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                4,
+                                5,
+                                6,
+                                7,
+                                0,
+                                1,
+                                2,
+                                3
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": 80,
+                                "2": "siva",
+                                "3": "siva",
+                                "4": 80,
+                                "5": 80,
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        null,
+                        {
+                            "povezave": [
+                                2,
+                                3,
+                                0,
+                                1,
+                                5,
+                                4,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": 330,
+                                "2": 330,
+                                "3": 330,
+                                "4": 70,
+                                "5": 70,
+                                "6": "bela",
+                                "7": "bela"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                5,
+                                7,
+                                6,
+                                0,
+                                1,
+                                3,
+                                2
+                            ],
+                            "barve": {
+                                "0": 70,
+                                "1": 330,
+                                "2": 330,
+                                "3": 330,
+                                "4": 70,
+                                "5": 330,
+                                "6": 330,
+                                "7": 330
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                2,
+                                1,
+                                6,
+                                0,
+                                7,
+                                3,
+                                5
+                            ],
+                            "barve": {
+                                "0": 67,
+                                "1": 330,
+                                "2": 330,
+                                "3": 330,
+                                "4": 67,
+                                "5": 330,
+                                "6": 330,
+                                "7": 330
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                7,
+                                4,
+                                5,
+                                2,
+                                3,
+                                0,
+                                1
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": 330,
+                                "2": 70,
+                                "3": 67,
+                                "4": 70,
+                                "5": 67,
+                                "6": 330,
+                                "7": 330
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                7,
+                                6,
+                                0,
+                                5,
+                                4,
+                                2,
+                                1
+                            ],
+                            "barve": {
+                                "0": 67,
+                                "1": 70,
+                                "2": 67,
+                                "3": 67,
+                                "4": 67,
+                                "5": 67,
+                                "6": 67,
+                                "7": 70
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                6,
+                                3,
+                                4,
+                                1,
+                                2,
+                                7,
+                                0,
+                                5
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 330,
+                                "2": 80,
+                                "3": 330,
+                                "4": 80,
+                                "5": 80,
+                                "6": "siva",
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                5,
+                                7,
+                                6,
+                                0,
+                                1,
+                                3,
+                                2
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": "siva",
+                                "2": 80,
+                                "3": 330,
+                                "4": "siva",
+                                "5": "siva",
+                                "6": 330,
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                4,
+                                2,
+                                1,
+                                7,
+                                0,
+                                6,
+                                5,
+                                3
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": 80,
+                                "2": 80,
+                                "3": 80,
+                                "4": 330,
+                                "5": 330,
+                                "6": 330,
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                4,
+                                3,
+                                2,
+                                1,
+                                0,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": 70,
+                                "1": 330,
+                                "2": 330,
+                                "3": 330,
+                                "4": 330,
+                                "5": 70,
+                                "6": 80,
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                6,
+                                5,
+                                0,
+                                7,
+                                2,
+                                1,
+                                4
+                            ],
+                            "barve": {
+                                "0": 180,
+                                "1": 330,
+                                "2": 67,
+                                "3": 180,
+                                "4": 330,
+                                "5": 67,
+                                "6": 330,
+                                "7": 330
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                6,
+                                7,
+                                0,
+                                5,
+                                4,
+                                1,
+                                2
+                            ],
+                            "barve": {
+                                "0": 70,
+                                "1": 180,
+                                "2": 67,
+                                "3": 70,
+                                "4": 330,
+                                "5": 330,
+                                "6": 180,
+                                "7": 67
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                2,
+                                1,
+                                7,
+                                6,
+                                0,
+                                4,
+                                3
+                            ],
+                            "barve": {
+                                "0": 67,
+                                "1": 67,
+                                "2": 67,
+                                "3": 67,
+                                "4": 70,
+                                "5": 67,
+                                "6": 70,
+                                "7": 67
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                7,
+                                6,
+                                4,
+                                5,
+                                2,
+                                3,
+                                1,
+                                0
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 330,
+                                "2": 330,
+                                "3": "siva",
+                                "4": 330,
+                                "5": "siva",
+                                "6": 330,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                7,
+                                4,
+                                3,
+                                2,
+                                1,
+                                6,
+                                5,
+                                0
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": "siva",
+                                "2": 80,
+                                "3": 80,
+                                "4": "siva",
+                                "5": "siva",
+                                "6": "siva",
+                                "7": 330
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                6,
+                                5,
+                                0,
+                                7,
+                                2,
+                                1,
+                                4
+                            ],
+                            "barve": {
+                                "0": 180,
+                                "1": 80,
+                                "2": 330,
+                                "3": 180,
+                                "4": 80,
+                                "5": 330,
+                                "6": 80,
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                5,
+                                0,
+                                6,
+                                7,
+                                1,
+                                3,
+                                4
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": 70,
+                                "2": 330,
+                                "3": 180,
+                                "4": 330,
+                                "5": 70,
+                                "6": 180,
+                                "7": 330
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                2,
+                                1,
+                                0,
+                                7,
+                                6,
+                                5,
+                                4
+                            ],
+                            "barve": {
+                                "0": 70,
+                                "1": "siva",
+                                "2": "siva",
+                                "3": 70,
+                                "4": 330,
+                                "5": 180,
+                                "6": 180,
+                                "7": 330
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                6,
+                                7,
+                                4,
+                                3,
+                                0,
+                                1,
+                                2
+                            ],
+                            "barve": {
+                                "0": 70,
+                                "1": 70,
+                                "2": "siva",
+                                "3": 180,
+                                "4": 180,
+                                "5": 70,
+                                "6": 70,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                4,
+                                7,
+                                6,
+                                1,
+                                0,
+                                3,
+                                2
+                            ],
+                            "barve": {
+                                "0": 67,
+                                "1": 67,
+                                "2": "siva",
+                                "3": 180,
+                                "4": 67,
+                                "5": 67,
+                                "6": 180,
+                                "7": "siva"
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                1,
+                                0,
+                                6,
+                                4,
+                                3,
+                                7,
+                                2,
+                                5
+                            ],
+                            "barve": {
+                                "0": "bela",
+                                "1": "bela",
+                                "2": "siva",
+                                "3": 330,
+                                "4": 330,
+                                "5": "siva",
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                2,
+                                1,
+                                0,
+                                7,
+                                6,
+                                5,
+                                4
+                            ],
+                            "barve": {
+                                "0": 80,
+                                "1": 80,
+                                "2": 80,
+                                "3": 80,
+                                "4": "siva",
+                                "5": 330,
+                                "6": 330,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                7,
+                                0,
+                                5,
+                                6,
+                                3,
+                                4,
+                                1
+                            ],
+                            "barve": {
+                                "0": 255.5,
+                                "1": 80,
+                                "2": 255.5,
+                                "3": 180,
+                                "4": 80,
+                                "5": 180,
+                                "6": 80,
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                5,
+                                4,
+                                7,
+                                2,
+                                1,
+                                0,
+                                3
+                            ],
+                            "barve": {
+                                "0": 180,
+                                "1": 330,
+                                "2": 70,
+                                "3": 255.5,
+                                "4": 70,
+                                "5": 330,
+                                "6": 180,
+                                "7": 255.5
+                            }
+                        },
+                        {
+                            "povezave": [
+                                1,
+                                0,
+                                4,
+                                6,
+                                2,
+                                7,
+                                3,
+                                5
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": 330,
+                                "2": "siva",
+                                "3": 255.5,
+                                "4": "siva",
+                                "5": 70,
+                                "6": 255.5,
+                                "7": 70
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                7,
+                                5,
+                                4,
+                                3,
+                                2,
+                                0,
+                                1
+                            ],
+                            "barve": {
+                                "0": 255.5,
+                                "1": "siva",
+                                "2": 70,
+                                "3": 70,
+                                "4": 70,
+                                "5": 70,
+                                "6": 255.5,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                7,
+                                6,
+                                0,
+                                5,
+                                4,
+                                2,
+                                1
+                            ],
+                            "barve": {
+                                "0": 70,
+                                "1": 70,
+                                "2": 70,
+                                "3": 70,
+                                "4": 67,
+                                "5": 67,
+                                "6": 70,
+                                "7": 70
+                            }
+                        }
+                    ],
+                    [
+                        null,
+                        {
+                            "povezave": [
+                                6,
+                                2,
+                                1,
+                                7,
+                                5,
+                                4,
+                                0,
+                                3
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 180,
+                                "2": 180,
+                                "3": 0,
+                                "4": "bela",
+                                "5": "bela",
+                                "6": "siva",
+                                "7": 0
+                            }
+                        },
+                        {
+                            "povezave": [
+                                6,
+                                4,
+                                5,
+                                7,
+                                1,
+                                2,
+                                0,
+                                3
+                            ],
+                            "barve": {
+                                "0": 0,
+                                "1": 80,
+                                "2": 80,
+                                "3": 180,
+                                "4": 80,
+                                "5": 80,
+                                "6": 0,
+                                "7": 180
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                2,
+                                1,
+                                6,
+                                7,
+                                0,
+                                3,
+                                4
+                            ],
+                            "barve": {
+                                "0": 255.5,
+                                "1": 234,
+                                "2": 234,
+                                "3": 180,
+                                "4": 80,
+                                "5": 255.5,
+                                "6": 180,
+                                "7": 80
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                7,
+                                0,
+                                4,
+                                3,
+                                6,
+                                5,
+                                1
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 234,
+                                "2": "siva",
+                                "3": 330,
+                                "4": 330,
+                                "5": 180,
+                                "6": 180,
+                                "7": 234
+                            }
+                        },
+                        {
+                            "povezave": [
+                                5,
+                                2,
+                                1,
+                                7,
+                                6,
+                                0,
+                                4,
+                                3
+                            ],
+                            "barve": {
+                                "0": 330,
+                                "1": "siva",
+                                "2": "siva",
+                                "3": "siva",
+                                "4": 330,
+                                "5": 330,
+                                "6": 330,
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                3,
+                                5,
+                                6,
+                                0,
+                                7,
+                                1,
+                                2,
+                                4
+                            ],
+                            "barve": {
+                                "0": "siva",
+                                "1": 255.5,
+                                "2": "siva",
+                                "3": "siva",
+                                "4": "siva",
+                                "5": 255.5,
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        },
+                        {
+                            "povezave": [
+                                2,
+                                3,
+                                0,
+                                1,
+                                5,
+                                4,
+                                7,
+                                6
+                            ],
+                            "barve": {
+                                "0": 255.5,
+                                "1": 255.5,
+                                "2": 255.5,
+                                "3": 255.5,
+                                "4": 70,
+                                "5": 70,
+                                "6": "siva",
+                                "7": "siva"
+                            }
+                        }
+                    ]
+                ],
+                "na_vrsti": 7
+            }
+        }
+    }
+}

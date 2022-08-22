@@ -84,6 +84,7 @@ def post_registracija():
             secret=SKRIVNOST,
             path="/"
         )
+        tsuro.v_datoteko(DAT)
         return bottle.redirect("/")
 
 
@@ -100,10 +101,12 @@ def nova_igra():
         # dodaj da preveri kdo je uporabnik
         igra = uporabnik.inicializiraj_igro(boti_in_igralci=[False, True],velikost_tabele=(6, 6))
         bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
+        tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
     elif nacin == "Hitra igra":
         igra = uporabnik.inicializiraj_igro(boti_in_igralci=[False, True],velikost_tabele=(4, 4))
         bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
+        tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
     else:
         return bottle.redirect("/nova-igra/prilagodi/osnovno/")
@@ -130,7 +133,8 @@ def izbor_igralcev():
     return bottle.template(
         "prilagodi_igralci",
         st_igralcev=st_igralcev,
-        barve=model.VRSTNI_RED_BARV
+        barve=model.VRSTNI_RED_BARV,
+        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST)
     )
 
 
@@ -143,6 +147,7 @@ def ustvari_prilagojeno_igro():
     print(boti_in_igralci)
     igra=uporabnik.inicializiraj_igro(boti_in_igralci=boti_in_igralci, velikost_tabele=velikost_tabele)
     bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
+    tsuro.v_datoteko(DAT)
     return bottle.redirect("/igra/")
 
 
@@ -160,7 +165,8 @@ def stran_z_igro():
         barve=model.VRSTNI_RED_BARV,
         ni_zmagovalca=model.NI_ZMAGOVALCA,
         nedokoncana=model.NEDOKONCANA,
-        zmagovalci=zmagovalci
+        zmagovalci=zmagovalci,
+        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST)
     )
 
 
@@ -177,6 +183,7 @@ def poteza():
         return bottle.redirect("/igra/")
     elif not postavi_karto is None:
         igra.igralec_postavi_karto_na_tabelo(int(postavi_karto))
+        tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
 
 
@@ -202,11 +209,11 @@ def poteza():
 
 
 def poisci_uporabnika():
-    uporabnisko_ime = bottle.request.get_cookie(key="uporabnisko_ime")
+    uporabnisko_ime = bottle.request.get_cookie(key="uporabnisko_ime", secret=SKRIVNOST)
     if not uporabnisko_ime:
         return bottle.redirect("/prijava/")
     else:
-        return tsuro[uporabnisko_ime]
+        return tsuro.uporabniki[uporabnisko_ime]
 
 
 # To naj bo na dnu datoteke.
