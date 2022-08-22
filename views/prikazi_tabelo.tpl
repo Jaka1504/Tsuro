@@ -11,7 +11,7 @@
 								% if karta is not None:
 									% include("prikazi_karto.tpl")
 								%	else:
-								<img src="/img/ozadje.png" alt="ozadje" width="100px" class="ni_postavljena_karta">
+								<img src="/img/ozadje.png" alt="ozadje" width="100px" class="ni-postavljena-karta">
 								% end
 							</div>
 						</td>
@@ -23,7 +23,7 @@
 		% for i, igralec in enumerate(igra.igralci):
 			%	vrstica, stolpec = igralec.polje
 			%	polozaj = igralec.polozaj
-			<img src="/img/igralec.png" alt="igralec" width="100px" class="igralec" style="--hue: {{barve[i]}}deg; --odmik_y: {{100 * (vrstica - 1) + odmiki[polozaj][1]}}px; --odmik_x: {{100 * (stolpec - 1) + odmiki[polozaj][0]}}px;">
+			<img src="/img/igralec.png" alt="igralec" width="100px" class="igralec hue" style="--hue: {{barve[i]}}deg; --odmik_y: {{100 * (vrstica - 1) + odmiki[polozaj][1]}}px; --odmik_x: {{100 * (stolpec - 1) + odmiki[polozaj][0]}}px;">
 		% end
 	</div>
 	<div class="col"></div>

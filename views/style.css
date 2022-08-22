@@ -4,17 +4,12 @@
 }
 
 
-.barvna_povezava {
-    filter: hue-rotate(var(--hue)) saturate(30); 
-}
-
-
-.bela_povezava {
+.bela-povezava {
     filter: grayscale(1) brightness(6);
 }
 
 
-.siva_povezava {
+.siva-povezava {
     filter: grayscale(1) brightness(3);
 }
 
@@ -24,13 +19,12 @@
     padding: 0px;
 }
 
-.ni_postavljena_karta {
+.ni-postavljena-karta {
     filter: brightness(0.5);
 }
 
 .igralec {
     position: absolute;
-    
     left: var(--odmik_x);
     top: var(--odmik_y);
 }
