@@ -1,14 +1,15 @@
 import model
 import bottle
-import random  # potem odstrani !!!
+# import random  # potem odstrani !!!
 
 
-ST_IGRALCEV = 8  # za testiranje
+# ST_IGRALCEV = 8  # za testiranje
 SKRIVNOST = "bhjčkeibvcjčbdnjsbcv"
+DAT = "tsuro.json"
 
 
-tsuro = model.Tsuro.iz_datoteke("tsuro.json")
-uporabnik = tsuro.dodaj_uporabnika("Testni uporabnik", "geslo")
+tsuro = model.Tsuro.iz_datoteke(DAT)
+# uporabnik = tsuro.dodaj_uporabnika("Testni uporabnik", "geslo")
 # uporabnik.ustvari_novo_igro(id_igre="test", velikost_tabele=(6, 6))
 # igra = uporabnik.igre["test"]
 
@@ -36,7 +37,7 @@ def osnovna_stran():
 
 @bottle.get("/prijava/")
 def get_prijava():
-    return bottle.template("prijava", napaka=None)
+    return bottle.template("prijava", napaka=None, uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST))
 
 
 @bottle.post("/prijava/")
@@ -47,7 +48,7 @@ def post_prijava():
     if uporabnisko_ime in tsuro.uporabniki.keys():
         if tsuro.preveri_geslo(uporabnisko_ime=uporabnisko_ime, zasifrirano_geslo=geslo):
             bottle.response.set_cookie(
-                name="uporabnik",
+                name="uporabnisko_ime",
                 value=uporabnisko_ime,
                 secret=SKRIVNOST,
                 path="/"
@@ -57,14 +58,14 @@ def post_prijava():
     else:
         napaka = "Ta uporabnik ne obstaja. Preveri črkovanje ali ustvari nov račun!"
     if napaka:
-        return bottle.template("prijava", napaka=napaka)
+        return bottle.template("prijava", napaka=napaka, uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST))
     else:
         return bottle.redirect("/")
 
 
 @bottle.get("/registracija/")
 def get_registracija():
-    return bottle.template("registracija", napaka=None)
+    return bottle.template("registracija", napaka=None, uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST))
 
 
 @bottle.post("/registracija/")
@@ -74,11 +75,11 @@ def post_registracija():
     napaka = None
     if uporabnisko_ime in tsuro.uporabniki.keys():
         napaka="To uporabniško ime je že zasedeno. Prosim, izberi drugačno ime."
-        return bottle.template("registracija", napaka=napaka)
+        return bottle.template("registracija", napaka=napaka, uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST))
     else:
         tsuro.dodaj_uporabnika(ime=uporabnisko_ime, geslo=geslo)
         bottle.response.set_cookie(
-            name="uporabnik",
+            name="uporabnisko_ime",
             value=uporabnisko_ime,
             secret=SKRIVNOST,
             path="/"
@@ -88,11 +89,12 @@ def post_registracija():
 
 @bottle.get("/nova-igra/")
 def izbira_nove_igre():
-    return bottle.template("nova_igra")
+    return bottle.template("nova_igra", uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST))
 
 
 @bottle.post("/nova-igra/")
 def nova_igra():
+    uporabnik = poisci_uporabnika()
     nacin = bottle.request.forms.getunicode("nacin")
     if nacin == "Običajna igra":
         # dodaj da preveri kdo je uporabnik
@@ -109,7 +111,7 @@ def nova_igra():
 
 @bottle.get("/nova-igra/prilagodi/osnovno/")
 def prilagodi():
-    return bottle.template("prilagodi_osnovno")
+    return bottle.template("prilagodi_osnovno", uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST))
 
 
 @bottle.post("/nova-igra/prilagodi/osnovno/")
@@ -134,6 +136,7 @@ def izbor_igralcev():
 
 @bottle.post("/nova-igra/prilagodi/igralci/")
 def ustvari_prilagojeno_igro():
+    uporabnik = poisci_uporabnika()
     st_igralcev=bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST)
     velikost_tabele=bottle.request.get_cookie("velikost_tabele", secret=SKRIVNOST)
     boti_in_igralci=[(not bottle.request.forms.getunicode(f"bot{i}") is None) for i in range(st_igralcev)]
@@ -145,6 +148,7 @@ def ustvari_prilagojeno_igro():
 
 @bottle.get("/igra/")
 def stran_z_igro():
+    uporabnik = poisci_uporabnika()
     igra = uporabnik.igre[bottle.request.get_cookie("id_igre", secret=SKRIVNOST)]
     zmagovalci=igra.zmagovalci()
     return bottle.template(
@@ -162,6 +166,7 @@ def stran_z_igro():
 
 @bottle.post("/igra/")
 def poteza():
+    uporabnik = poisci_uporabnika()
     igra = uporabnik.igre[bottle.request.get_cookie("id_igre", secret=SKRIVNOST)]
     rotacija = bottle.request.forms.getunicode("zarotiraj")
     postavi_karto = bottle.request.forms.getunicode("postavi-karto")
@@ -194,6 +199,14 @@ def poteza():
 #         raise ValueError
 #     else:
 #         raise ValueError
+
+
+def poisci_uporabnika():
+    uporabnisko_ime = bottle.request.get_cookie(key="uporabnisko_ime")
+    if not uporabnisko_ime:
+        return bottle.redirect("/prijava/")
+    else:
+        return tsuro[uporabnisko_ime]
 
 
 # To naj bo na dnu datoteke.
