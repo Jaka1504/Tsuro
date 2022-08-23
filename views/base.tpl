@@ -26,16 +26,21 @@
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Igra
+                    Igraj
                   </a>
                   <ul class="dropdown-menu bg-secondary">
                     <li><a class="dropdown-item text-light" href="/igra/">Trenutna igra</a></li>
                     <li><a class="dropdown-item text-light" href="/nova-igra/">Nova igra</a></li>
-                    <li><a class="dropdown-item text-light" href="#">Pregled mojih iger</a></li>
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="#">Statistika</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-light" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Pregled mojih iger
+                  </a>
+                  <ul class="dropdown-menu bg-secondary">
+                    <li><a class="dropdown-item text-light" href="/pregled-iger/bot/">Igre proti računalniku</a></li>
+                    <li><a class="dropdown-item text-light" href="/pregled-iger/prilagojene/">Prilagojene igre</a></li>
+                  </ul>
                 </li>
               </ul>
               <div class="nav-item">

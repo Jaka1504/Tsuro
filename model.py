@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Dict, List
 # from uuid import uuid4
 from copy import deepcopy
+from datetime import datetime
 import random, json
 
 
@@ -56,7 +57,7 @@ class Karta:
     def iz_slovarja(cls, slovar):
         return Karta(
             povezave=slovar["povezave"],
-            barve=slovar["barve"]
+            barve={int(i): slovar["barve"][i] for i in slovar["barve"]}
         )
         
     def zarotiraj(self, st_rotacij=1):
@@ -114,7 +115,7 @@ class Igralec:
     def iz_slovarja(cls, slovar):
         return Igralec(
             ime=slovar["ime"],
-            polje=slovar["polje"],
+            polje=tuple(slovar["polje"]),
             polozaj=slovar["polozaj"],
             karte_v_roki=[Karta.iz_slovarja(karta) for karta in slovar["karte_v_roki"]],
             v_igri=slovar["v_igri"],
@@ -122,10 +123,10 @@ class Igralec:
         )
 
 
-
 @dataclass
 class Igra:
     id_igre: int
+    cas: datetime = None
     igralci: List[Igralec] = None
     velikost_tabele: tuple = (6, 6)
     kupcek: List[Karta] = None
@@ -133,6 +134,8 @@ class Igra:
     na_vrsti: int = 0
 
     def __post_init__(self):
+        if self.cas is None:
+            self.cas = datetime.now()
         if self.igralci is None:
             self.igralci = []
         if self.tabela is None:
@@ -146,9 +149,9 @@ class Igra:
     
     def v_slovar(self):
         seznam_tabele = []
-        for vrstica in range(self.velikost_tabele[0]):
+        for vrstica in range(self.velikost_tabele[0] + 2):
             seznam_vrstice = []
-            for stolpec in range(self.velikost_tabele[1]):
+            for stolpec in range(self.velikost_tabele[1] + 2):
                 if self.tabela[(vrstica, stolpec)] is None:
                     seznam_vrstice.append(None)
                 else:
@@ -156,6 +159,14 @@ class Igra:
             seznam_tabele.append(seznam_vrstice)            
         return {
             "id_igre": self.id_igre,
+            "cas": {
+                "leto": self.cas.year,
+                "mesec": self.cas.month,
+                "dan": self.cas.day,
+                "ura": self.cas.hour,
+                "minuta": self.cas.minute,
+                "sekunda": self.cas.second
+            },
             "igralci": [igralec.v_slovar() for igralec in self.igralci],
             "velikost_tabele": self.velikost_tabele,
             "kupcek": [karta.v_slovar() for karta in self.kupcek],
@@ -166,8 +177,8 @@ class Igra:
     @classmethod
     def iz_slovarja(cls, slovar):
         slovar_tabele = {}
-        for vrstica in range(slovar["velikost_tabele"][0]):
-            for stolpec in range(slovar["velikost_tabele"][1]):
+        for vrstica in range(slovar["velikost_tabele"][0] + 2):
+            for stolpec in range(slovar["velikost_tabele"][1] + 2):
                 karta = slovar["tabela"][vrstica][stolpec]
                 if karta is None:
                     slovar_tabele[(vrstica, stolpec)] = None
@@ -175,8 +186,16 @@ class Igra:
                     slovar_tabele[(vrstica, stolpec)] = Karta.iz_slovarja(karta)
         return Igra(
             id_igre=slovar["id_igre"],
+            cas = datetime(
+                year=slovar["cas"]["leto"],
+                month=slovar["cas"]["mesec"],
+                day=slovar["cas"]["dan"],
+                hour=slovar["cas"]["ura"],
+                minute=slovar["cas"]["minuta"],
+                second=slovar["cas"]["sekunda"]
+            ),
             igralci=[Igralec.iz_slovarja(igralec) for igralec in slovar["igralci"]],
-            velikost_tabele=slovar["velikost_tabele"],
+            velikost_tabele=tuple(slovar["velikost_tabele"]),
             kupcek=[Karta.iz_slovarja(karta) for karta in slovar["kupcek"]],
             tabela=slovar_tabele,
             na_vrsti=slovar["na_vrsti"]
@@ -289,10 +308,10 @@ class Igra:
         if len(self.igralci) == 2:
             if not self.igralci[0].je_bot and self.igralci[1].je_bot:
                 if self.velikost_tabele == (6, 6):
-                    return "obicajna"
+                    return "Običajna"
                 elif self.velikost_tabele == (4, 4):
-                    return "hitra"
-        return "prilagojena"
+                    return "Hitra"
+        return "Prilagojena"
 
 
     def vleci_karto(self, st_igralca):
@@ -452,7 +471,7 @@ class Igra:
 @dataclass
 class Uporabnik:
     uporabnisko_ime: str
-    geslo: str
+    geslo: int
     igre: Dict[int, Igra] = None
 
     def __post_init__(self):
@@ -463,7 +482,7 @@ class Uporabnik:
         return {
             "uporabnisko_ime": self.uporabnisko_ime,
             "geslo": self.geslo,
-            "igre": {id_igre: igra.v_slovar() for id_igre, igra in self.igre.items()}
+            "igre": {str(id_igre): igra.v_slovar() for id_igre, igra in self.igre.items()}
         }
 
     @classmethod
@@ -471,20 +490,20 @@ class Uporabnik:
         return Uporabnik(
             uporabnisko_ime=slovar["uporabnisko_ime"],
             geslo=slovar["geslo"],
-            igre={id_igre: Igra.iz_slovarja(slovar["igre"][id_igre]) for id_igre in slovar["igre"]}           
+            igre={int(id_igre): Igra.iz_slovarja(slovar["igre"][id_igre]) for id_igre in slovar["igre"]}           
         )
 
     def ustvari_novo_igro(
-        self, id_igre=None, igralci=None, velikost_tabele=(6,6), kupcek=None, tabela=None, na_vrsti=0
+        self, id_igre=None, cas=None, igralci=None, velikost_tabele=(6, 6), kupcek=None, tabela=None, na_vrsti=0
     ):
         if id_igre is None:
             id_igre = self.prost_id_igre()
-        igra = Igra(id_igre, igralci, velikost_tabele, kupcek, tabela, na_vrsti)
+        igra = Igra(id_igre=id_igre, cas=cas, igralci=igralci, velikost_tabele=velikost_tabele, kupcek=kupcek, tabela=tabela, na_vrsti=na_vrsti)
         self.igre[id_igre] = igra
         return igra
 
-    def inicializiraj_igro(self, imena_igralcev, boti_in_igralci, velikost_tabele=(6,6)):
-        igra = self.ustvari_novo_igro(id_igre=None, igralci=None, velikost_tabele=velikost_tabele, kupcek=None, tabela=None, na_vrsti=0)
+    def inicializiraj_igro(self, imena_igralcev, boti_in_igralci, velikost_tabele=(6, 6)):
+        igra = self.ustvari_novo_igro(id_igre=None, cas=None, igralci=None, velikost_tabele=velikost_tabele, kupcek=None, tabela=None, na_vrsti=0)
         for indeks in range(len(boti_in_igralci)):
             igra.dodaj_novega_igralca(ime=imena_igralcev[indeks], je_bot=boti_in_igralci[indeks])
             if not igra.igralci[indeks].ime:

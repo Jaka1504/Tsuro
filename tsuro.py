@@ -1,6 +1,5 @@
 import model
 import bottle
-# import random  # potem odstrani !!!
 
 
 # ST_IGRALCEV = 8  # za testiranje
@@ -99,13 +98,13 @@ def nova_igra():
     nacin = bottle.request.forms.getunicode("nacin")
     if nacin == "Običajna igra":
         # dodaj da preveri kdo je uporabnik
-        igra = uporabnik.inicializiraj_igro(imena_igralcev=[uporabnik.uporabnisko_ime, "Bot"], boti_in_igralci=[False, True],velikost_tabele=(6, 6))
-        bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
+        igra = uporabnik.inicializiraj_igro(imena_igralcev=[uporabnik.uporabnisko_ime, "Bot"], boti_in_igralci=[False, True], velikost_tabele=(6, 6))
+        bottle.response.set_cookie(name="id_igre", value=int(igra.id_igre), secret=SKRIVNOST, path="/")
         tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
     elif nacin == "Hitra igra":
-        igra = uporabnik.inicializiraj_igro(imena_igralcev=[uporabnik.uporabnisko_ime, "Bot"], boti_in_igralci=[False, True],velikost_tabele=(4, 4))
-        bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
+        igra = uporabnik.inicializiraj_igro(imena_igralcev=[uporabnik.uporabnisko_ime, "Bot"], boti_in_igralci=[False, True], velikost_tabele=(4, 4))
+        bottle.response.set_cookie(name="id_igre", value=int(igra.id_igre), secret=SKRIVNOST, path="/")
         tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
     else:
@@ -146,7 +145,7 @@ def ustvari_prilagojeno_igro():
     boti_in_igralci = [(not bottle.request.forms.getunicode(f"bot{i}") is None) for i in range(st_igralcev)]
     imena_igralcev = [bottle.request.forms.getunicode(f"ime_igralca{i}") for i in range(st_igralcev)]
     igra = uporabnik.inicializiraj_igro(imena_igralcev=imena_igralcev, boti_in_igralci=boti_in_igralci, velikost_tabele=velikost_tabele)
-    bottle.response.set_cookie(name="id_igre", value=igra.id_igre, secret=SKRIVNOST, path="/")
+    bottle.response.set_cookie(name="id_igre", value=int(igra.id_igre), secret=SKRIVNOST, path="/")
     tsuro.v_datoteko(DAT)
     return bottle.redirect("/igra/")
 
@@ -185,6 +184,46 @@ def poteza():
         igra.igralec_postavi_karto_na_tabelo(int(postavi_karto))
         tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
+
+
+@bottle.get("/pregled-iger/bot/")
+def get_pregled_iger_bot():
+    uporabnik = poisci_uporabnika()
+    return bottle.template("pregled_iger_bot",
+        nedokoncana=model.NEDOKONCANA,
+        ni_zmagovalca=model.NI_ZMAGOVALCA,
+        barve=model.VRSTNI_RED_BARV,
+        igre=uporabnik.igre,
+        uporabnisko_ime=uporabnik.uporabnisko_ime
+    )
+
+
+@bottle.post("/pregled-iger/bot/")
+def post_pregled_iger_bot():
+    id_igre = bottle.request.forms.getunicode("id_igre")
+    bottle.response.set_cookie(name="id_igre", value=int(id_igre), secret=SKRIVNOST, path="/")
+    return bottle.redirect("/igra/")
+
+
+@bottle.get("/pregled-iger/prilagojene/")
+def get_pregled_iger_prilagojene():
+    uporabnik = poisci_uporabnika()
+    return bottle.template("pregled_iger_prilagojene",
+        nedokoncana=model.NEDOKONCANA,
+        ni_zmagovalca=model.NI_ZMAGOVALCA,
+        barve=model.VRSTNI_RED_BARV,
+        igre=uporabnik.igre,
+        uporabnisko_ime=uporabnik.uporabnisko_ime
+    )
+
+
+@bottle.post("/pregled-iger/prilagojene/")
+def post_pregled_iger_prilagojene():
+    id_igre = bottle.request.forms.getunicode("id_igre")
+    bottle.response.set_cookie(name="id_igre", value=int(id_igre), secret=SKRIVNOST, path="/")
+    return bottle.redirect("/igra/")
+
+
 
 
 # @bottle.post("/zarotiraj/<rotacija>")
