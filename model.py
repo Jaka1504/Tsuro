@@ -292,7 +292,7 @@ class Igra:
         if not bot.v_igri:
             tocke *= 0.1
         # Da dodamo še nekaj nepredvivljivosti.
-        EPSILON = 0.1
+        EPSILON = 0
         return tocke * (1 + EPSILON * (2 * random.random() - 1))
 
     def zmagovalci(self):
@@ -519,8 +519,31 @@ class Uporabnik:
         #     if not kandidat in self.igre:
         #         return kandidat
 
-    @classmethod
-    def zasifriraj_geslo(cls, geslo_v_cistopisu):
+    def statistika(self):
+        zmage, izenacenja, porazi, nedokoncane = 0, 0, 0, 0
+        for igra in self.igre.values():
+            if igra.nacin_igre() in ["Hitra", "Običajna"]:
+                zmagovalec = igra.zmagovalci()
+                if zmagovalec == 0:
+                    zmage += 1
+                elif zmagovalec == 1:
+                    porazi += 1
+                elif zmagovalec == NI_ZMAGOVALCA:
+                    izenacenja += 1
+                elif zmagovalec == NEDOKONCANA:
+                    nedokoncane += 1
+        return {
+            "zmage": zmage,
+            "izenacenja": izenacenja,
+            "porazi": porazi,
+            "nedokoncane": nedokoncane,
+            "prilagojene": len([igra for igra in self.igre.values() if igra.nacin_igre() == "Prilagojena"]),
+            "skupaj": len(self.igre),
+            "razmerje": (round(zmage / porazi, 2) if porazi != 0 else 999.0)
+        }
+
+    @staticmethod
+    def zasifriraj_geslo(geslo_v_cistopisu):
         zaporedje = "QWERTZUIOPŠĐASDFGHJKLČĆŽYXCVBNMqwertzuiopšđasdfghjklčćžyxcvbnm 0123456789.,_<>!#&%$()[]-@€ß"
         for znak in geslo_v_cistopisu:
             if not znak in zaporedje:

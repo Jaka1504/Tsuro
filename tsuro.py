@@ -156,7 +156,7 @@ def stran_z_igro():
     igra = uporabnik.igre[bottle.request.get_cookie("id_igre", secret=SKRIVNOST)]
     zmagovalci=igra.zmagovalci()
     return bottle.template(
-        "index",
+        "igra",
         igra=igra,
         velikost_tabele=igra.velikost_tabele,
         bela=model.BELA,
@@ -223,6 +223,59 @@ def post_pregled_iger_prilagojene():
     bottle.response.set_cookie(name="id_igre", value=int(id_igre), secret=SKRIVNOST, path="/")
     return bottle.redirect("/igra/")
 
+
+@bottle.get("/profil/")
+def get_profil():
+    uporabnik = poisci_uporabnika()
+    return bottle.template(
+        "profil",
+        barve=model.VRSTNI_RED_BARV,
+        uporabnisko_ime=uporabnik.uporabnisko_ime,
+        uporabnik=uporabnik,
+        napaka=None
+    )
+
+@bottle.post("/profil/")
+def post_profil():
+    uporabnik = poisci_uporabnika()
+    napaka = None
+    spremeni_ime = bottle.request.forms.getunicode("spremeni_ime")
+    spremeni_geslo = model.Uporabnik.zasifriraj_geslo(bottle.request.forms.getunicode("spremeni_geslo"))
+    staro_geslo = model.Uporabnik.zasifriraj_geslo(bottle.request.forms.getunicode("staro_geslo"))
+    print(spremeni_ime, spremeni_geslo, staro_geslo)
+    if spremeni_ime and spremeni_ime in tsuro.uporabniki.keys():
+        napaka = "To uporabniško ime je že zasedeno. Prosim, izberi drugačno ime."
+    if not tsuro.preveri_geslo(uporabnisko_ime=uporabnik.uporabnisko_ime, zasifrirano_geslo=staro_geslo):
+        napaka = "Geslo za potrditev je napačno. Poskusi ponovno."
+    if napaka:
+        return bottle.template(
+            "profil",
+            barve=model.VRSTNI_RED_BARV,
+            uporabnisko_ime=uporabnik.uporabnisko_ime,
+            uporabnik=uporabnik,
+            napaka=napaka
+        )
+    else:
+        if spremeni_geslo:
+            uporabnik.geslo = spremeni_geslo
+        if spremeni_ime:
+            tsuro.uporabniki[spremeni_ime] = tsuro.uporabniki.pop(uporabnik.uporabnisko_ime)
+            uporabnik.uporabnisko_ime = spremeni_ime
+            tsuro.v_datoteko(DAT)
+            bottle.response.set_cookie(
+                name="uporabnisko_ime",
+                value=spremeni_ime,
+                secret=SKRIVNOST,
+                path="/"
+            )
+        return bottle.redirect("/")
+
+    
+
+@bottle.post("/odjava/")
+def post_odjava():
+    bottle.response.delete_cookie("uporabnisko_ime", path="/")
+    return bottle.redirect("/")
 
 
 
