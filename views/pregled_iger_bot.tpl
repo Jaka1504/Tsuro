@@ -1,11 +1,11 @@
-% rebase("base.tpl", title = "Tsuro - Nova igra")
+% rebase("base.tpl", title = "Tsuro - Pregled iger")
 
 <h1 class="mb-3">Pregled iger proti računalniku</h1>
 <div class="card bg-secondary">
   <div class="card-body">
     <form action="/pregled-iger/bot/" method="post" id="igre">
       <div class="tabela-scroll d-grid">
-        <table class="table">
+        <table class="table text-light">
           <thead class="sticky-top bg-secondary">
             <tr>
               <th scope="col">Datum</th>
@@ -41,7 +41,7 @@
               % end
               <td>
                 <div class="d-grid">
-                  <button class="btn btn-outline-dark btn-sm" name="id_igre" type="submit" value="{{id_igre}}">Prikaži</button>
+                  <button class="btn btn-outline-light btn-sm" name="id_igre" type="submit" value="{{id_igre}}">Prikaži</button>
                 </div>
               </td>
             </tr>
