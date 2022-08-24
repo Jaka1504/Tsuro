@@ -150,6 +150,20 @@ def ustvari_prilagojeno_igro():
     return bottle.redirect("/igra/")
 
 
+@bottle.post("/nova-igra/enaka/")
+def post_nova_igra_enaka():
+    uporabnik = poisci_uporabnika()
+    trenutna_igra = uporabnik.igre[bottle.request.get_cookie(key="id_igre", secret=SKRIVNOST)]
+    nova_igra = uporabnik.inicializiraj_igro(
+        imena_igralcev=[igralec.ime for igralec in trenutna_igra.igralci],
+        boti_in_igralci=[igralec.je_bot for igralec in trenutna_igra.igralci],
+        velikost_tabele=trenutna_igra.velikost_tabele
+    )
+    bottle.response.set_cookie(name="id_igre", value=int(nova_igra.id_igre), secret=SKRIVNOST, path="/")
+    tsuro.v_datoteko(DAT)
+    return bottle.redirect("/igra/")
+
+
 @bottle.get("/igra/")
 def stran_z_igro():
     uporabnik = poisci_uporabnika()
@@ -316,6 +330,4 @@ def poisci_uporabnika():
 
 
 # To naj bo na dnu datoteke.
-bottle.run(host="0.0.0.0")
-
-#  reloader=True, debug=True
+bottle.run(reloader=True, debug=True)

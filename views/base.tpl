@@ -14,7 +14,7 @@
         <img src="/img/zmaj.png" alt="Zmaj" class="sticky-top float-end invert" width="80%">
       </div>
       <div class="col">
-        <nav class="navbar navbar-expand-xl sticky-top">
+        <nav class="navbar navbar-expand-xl sticky-top bg-dark">
           <div class="container-fluid">
             <a class="navbar-brand text-light besedilo" href="/">
               <img src="/img/napis_tsuro2.png" alt="Tsuro" height="30px" class="d-inline-block align-text-top">
@@ -41,6 +41,9 @@
                     <li><a class="dropdown-item text-light" href="/pregled-iger/bot/">Igre proti računalniku</a></li>
                     <li><a class="dropdown-item text-light" href="/pregled-iger/prilagojene/">Prilagojene igre</a></li>
                   </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="/lestvica/">Lestvica</a>
                 </li>
               </ul>
               <div class="nav-item">
