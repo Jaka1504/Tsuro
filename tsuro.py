@@ -270,7 +270,14 @@ def post_profil():
             )
         return bottle.redirect("/")
 
-    
+@bottle.get("/lestvica/")
+def get_lestvica():
+    uporabnik = poisci_uporabnika()
+    return bottle.template(
+        "lestvica",
+        uporabnisko_ime=uporabnik.uporabnisko_ime,
+        uporabniki=tsuro.uporabniki
+    )
 
 @bottle.post("/odjava/")
 def post_odjava():
@@ -309,5 +316,6 @@ def poisci_uporabnika():
 
 
 # To naj bo na dnu datoteke.
-bottle.run(reloader=True, debug=True)
+bottle.run(host="0.0.0.0")
 
+#  reloader=True, debug=True

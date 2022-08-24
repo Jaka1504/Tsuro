@@ -6,7 +6,7 @@
   <div class="card-header fs-3">
     Statistika
   </div>
-  <div class="card-body">
+  <div class="card-body pt-0">
     <table class="table text-light">
       <tr>
         <td>
@@ -69,31 +69,22 @@
         </td>
       </tr>
     </table>
-    % vse = statistika["skupaj"] - statistika["prilagojene"]
-    % delez_zmag = 100 * statistika["zmage"] / vse
-    % delez_porazov = 100 * statistika["porazi"] / vse
-    % delez_izenacenj = 100 * statistika["izenacenja"] / vse
-    % delez_nedokoncanih = 100 * statistika["nedokoncane"] / vse
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{delez_zmag}}%" aria-valuenow="{{delez_zmag}}" aria-valuemin="0" aria-valuemax="100"></div>
-      <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" style="width: {{delez_izenacenj}}%" aria-valuenow="{{delez_izenacenj}}" aria-valuemin="0" aria-valuemax="100"></div>
-      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{delez_porazov}}%" aria-valuenow="{{delez_porazov}}" aria-valuemin="0" aria-valuemax="100"></div>
-      <div class="progress-bar progress-bar-striped bg-light" role="progressbar" style="width: {{delez_nedokoncanih}}%" aria-valuenow="{{delez_nedokoncanih}}" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+    % include("prikaz_statistike.tpl", statistika=statistika)
   </div>
 </div>
 <div class="card bg-secondary mb-3">
   <div class="card-header fs-3">
     Upravljanje računa
   </div>
-  <div class="card-body">
+  <div class="card-body pt-1">
     <form action="/odjava/" method="post">
       <p class="fs-4 mb-0">Odjava</p>
       <div class="d-grid">
         <button class="btn btn-dark mt-1" type="submit">Odjava</button>
       </div>
     </form>
-    <hr>
+  </div>
+  <div class="card-footer pt-1">
     <form action="/profil/" method="post">
       <p class="fs-4 mb-1">Uredi račun</p>
       <label for="spremeni_ime" class="input-label">Spremeni uporabniško ime:</label>
