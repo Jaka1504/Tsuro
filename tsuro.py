@@ -330,4 +330,6 @@ def poisci_uporabnika():
 
 
 # To naj bo na dnu datoteke.
-bottle.run(reloader=True, debug=True)
+bottle.run(host="0.0.0.0")
+
+# , reloader=True, debug=True

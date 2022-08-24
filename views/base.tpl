@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <div class="row">
       <div class="col">
-        <img src="/img/zmaj.png" alt="Zmaj" class="sticky-top float-end invert" width="80%">
+        <img src="/img/zmaj.png" alt="Zmaj" class="sticky-top float-end invert zmaj">
       </div>
       <div class="col">
         <nav class="navbar navbar-expand-xl sticky-top bg-dark">
@@ -59,7 +59,7 @@
         {{!base}}
       </div>
       <div class="col">
-        <img src="/img/feniks.png" alt="Feniks" class="sticky-top invert" width="100%">
+        <img src="/img/feniks.png" alt="Feniks" class="sticky-top invert feniks">
       </div>
     </div>
   </body>

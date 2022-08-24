@@ -5,12 +5,15 @@
     width: 4vw;
 }
 
-
 .karta {
     height: 4vw;
-    width:4vw;
+    width: 4vw;
 }
 
+.gumb {
+    height: 1vw;
+    width: 1vw;
+}
 
 .bela-povezava {
     filter: grayscale(1) brightness(6);
@@ -62,6 +65,18 @@
     max-height: 500px;
     overflow: auto;
     display:inline-block;
+}
+
+.progress-bar-lestvica {
+    width: 10vw
+}
+
+.feniks {
+    width: 30vw
+}
+
+.zmaj {
+    width: 25vw
 }
 
 /* width */

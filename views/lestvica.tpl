@@ -29,7 +29,7 @@
             <td width="10%">
               {{uporabniki[ime].statistika()["razmerje"]}}
             </td>
-            <td width="40%">
+            <td class="progress-bar-lestvica">
               % include("prikaz_statistike.tpl", statistika=uporabniki[ime].statistika())
             </td>
           </tr>
