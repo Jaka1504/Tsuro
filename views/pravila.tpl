@@ -1,4 +1,4 @@
-% rebase("base.tpl", title="Tsuro - Pravila igre")
+% rebase("base.tpl", title="Tsuro – Pravila igre")
 
 <h1>Pravila igre</h1>
 <div class="card bg-secondary mb-3">

@@ -1,4 +1,4 @@
-% rebase("base.tpl", title="Tsuro - Prijava")
+% rebase("base.tpl", title="Tsuro – Prijava")
 
 <h1>Prijava</h1>
 <div class="card bg-secondary">

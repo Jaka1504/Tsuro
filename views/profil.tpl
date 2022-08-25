@@ -1,7 +1,7 @@
-% rebase("base.tpl", title = "Tsuro - profil")
+% rebase("base.tpl", title = "Tsuro – Profil")
 % statistika = uporabnik.statistika()
 
-<h1 class="mb-3">Profil - {{uporabnisko_ime}}</h1>
+<h1>Profil – {{uporabnisko_ime}}</h1>
 <div class="card bg-secondary mb-3">
   <div class="card-header fs-3">
     Statistika

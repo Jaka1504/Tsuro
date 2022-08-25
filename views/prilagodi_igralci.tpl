@@ -1,4 +1,4 @@
-% rebase("base.tpl", title = "Tsuro - Nova igra")
+% rebase("base.tpl", title = "Tsuro – Nova igra")
 
 
 <h1>Prilagodi igro</h1>

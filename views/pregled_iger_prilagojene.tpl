@@ -1,6 +1,6 @@
-% rebase("base.tpl", title = "Tsuro - Pregled iger")
+% rebase("base.tpl", title = "Tsuro – Pregled iger")
 
-<h1 class="mb-3">Pregled prilagojenih iger</h1>
+<h1>Pregled prilagojenih iger</h1>
 <div class="card bg-secondary">
   <div class="card-body py-0">
     <form action="/pregled-iger/prilagojene/" method="post" id="igre">

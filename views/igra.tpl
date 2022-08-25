@@ -1,4 +1,4 @@
-% rebase("base.tpl", title = "Tsuro")
+% rebase("base.tpl", title = "Tsuro – Igra")
 <div class="mb-4"></div>
 % include("prikazi_tabelo.tpl")
 % if zmagovalci == nedokoncana:
