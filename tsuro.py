@@ -31,7 +31,26 @@ def css(ime_datoteke):
 
 @bottle.get("/")
 def osnovna_stran():
-    return bottle.redirect("/nova-igra/")
+    return bottle.template(
+        "index",
+        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST)
+    )
+
+@bottle.get("/pravila/")
+def get_pravila():
+    demo_igra_prazna = model.Igra(id_igre="DEMO", velikost_tabele=(4, 4))
+    for _ in range(5):
+        demo_igra_prazna.dodaj_novega_igralca()
+    karte = demo_igra_prazna.kupcek[:3]
+    return bottle.template(
+        "pravila",
+        igra=demo_igra_prazna,
+        karte=karte,
+        bela=model.BELA,
+        siva=model.SIVA,
+        barve=model.VRSTNI_RED_BARV,
+        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST)
+    )
 
 
 @bottle.get("/prijava/")
@@ -168,17 +187,15 @@ def post_nova_igra_enaka():
 def stran_z_igro():
     uporabnik = poisci_uporabnika()
     igra = uporabnik.igre[bottle.request.get_cookie("id_igre", secret=SKRIVNOST)]
-    zmagovalci=igra.zmagovalci()
     return bottle.template(
         "igra",
         igra=igra,
-        velikost_tabele=igra.velikost_tabele,
         bela=model.BELA,
         siva=model.SIVA,
         barve=model.VRSTNI_RED_BARV,
         ni_zmagovalca=model.NI_ZMAGOVALCA,
         nedokoncana=model.NEDOKONCANA,
-        zmagovalci=zmagovalci,
+        zmagovalci=igra.zmagovalci(),
         uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST)
     )
 
@@ -330,6 +347,7 @@ def poisci_uporabnika():
 
 
 # To naj bo na dnu datoteke.
-bottle.run(host="0.0.0.0")
+bottle.run(reloader=True, debug=True)
 
-# , reloader=True, debug=True
+# host="0.0.0.0"
+# , 

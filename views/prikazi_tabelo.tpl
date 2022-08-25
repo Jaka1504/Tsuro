@@ -1,9 +1,9 @@
 <div class="d-flex justify-content-center">
   <div class="tabela brez-robov">
     <table cellspacing="0" cellpadding="0" class="m-0">
-      % for st_vrstice in range(1, velikost_tabele[0] + 1):
+      % for st_vrstice in range(1, igra.velikost_tabele[0] + 1):
         <tr class="brez-robov">
-          % for st_stolpca in range(1, velikost_tabele[1] + 1):
+          % for st_stolpca in range(1, igra.velikost_tabele[1] + 1):
             <td class="brez-robov">
               <div class="brez-robov">
                 % karta = igra.tabela[(st_vrstice, st_stolpca)]
