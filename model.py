@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from typing import Dict, List
-# from uuid import uuid4
 from copy import deepcopy
 from datetime import datetime
 import random, json
@@ -23,8 +22,6 @@ SIVA = "siva"
 VRSTNI_RED_BARV = [RDECA, ZELENA, MODRA, RUMENA, AQUA, ROZA, VIJOLICNA, ORANZNA]
 
 
-
-# Opombe zase:
 #
 #   Številčenje položajev na karti oz polju:
 #       5   4
@@ -36,6 +33,7 @@ VRSTNI_RED_BARV = [RDECA, ZELENA, MODRA, RUMENA, AQUA, ROZA, VIJOLICNA, ORANZNA]
 #   |           |
 #   ----+---+----
 #       0   1
+#
 
 
 @dataclass
@@ -48,18 +46,15 @@ class Karta:
             self.barve = {i: BELA for i in range(8)}
 
     def v_slovar(self):
-        return {
-            "povezave": self.povezave,
-            "barve": self.barve
-        }
+        return {"povezave": self.povezave, "barve": self.barve}
 
     @classmethod
     def iz_slovarja(cls, slovar):
         return Karta(
             povezave=slovar["povezave"],
-            barve={int(i): slovar["barve"][i] for i in slovar["barve"]}
+            barve={int(i): slovar["barve"][i] for i in slovar["barve"]},
         )
-        
+
     def zarotiraj(self, st_rotacij=1):
         nove_povezave = self.povezave[:]
         for _ in range(st_rotacij):
@@ -86,21 +81,21 @@ class Karta:
                 obdelano.append(izvor)
                 obdelano.append(konec)
         return prikaz
-    
+
 
 @dataclass
 class Igralec:
     ime: str = None
     polje: tuple = None  # (vrstica, stolpec) polje tabele v tej vrstici in stolpcu
-    polozaj: int = None  # položaj na ploščici - int med 0 in 7
+    polozaj: int = None  # položaj na ploščici - int med 0 in 7 - glej sliko na vrhu
     karte_v_roki: List[Karta] = None
     v_igri: bool = True  # postane False ko je igralec izločen
-    je_bot: bool = False # True če s tem igralcem upravlja racunalnik
+    je_bot: bool = False  # True če s tem igralcem upravlja racunalnik
 
     def __post_init__(self):
         if self.karte_v_roki is None:
             self.karte_v_roki = []
-    
+
     def v_slovar(self):
         return {
             "ime": self.ime,
@@ -108,7 +103,7 @@ class Igralec:
             "polozaj": self.polozaj,
             "karte_v_roki": [karta.v_slovar() for karta in self.karte_v_roki],
             "v_igri": self.v_igri,
-            "je_bot": self.je_bot
+            "je_bot": self.je_bot,
         }
 
     @classmethod
@@ -119,7 +114,7 @@ class Igralec:
             polozaj=slovar["polozaj"],
             karte_v_roki=[Karta.iz_slovarja(karta) for karta in slovar["karte_v_roki"]],
             v_igri=slovar["v_igri"],
-            je_bot=slovar["je_bot"]
+            je_bot=slovar["je_bot"],
         )
 
 
@@ -146,7 +141,7 @@ class Igra:
             }
         if self.kupcek is None:
             self.ustvari_nov_kupcek()
-    
+
     def v_slovar(self):
         seznam_tabele = []
         for vrstica in range(self.velikost_tabele[0] + 2):
@@ -156,7 +151,7 @@ class Igra:
                     seznam_vrstice.append(None)
                 else:
                     seznam_vrstice.append(self.tabela[(vrstica, stolpec)].v_slovar())
-            seznam_tabele.append(seznam_vrstice)            
+            seznam_tabele.append(seznam_vrstice)
         return {
             "id_igre": self.id_igre,
             "cas": {
@@ -165,13 +160,13 @@ class Igra:
                 "dan": self.cas.day,
                 "ura": self.cas.hour,
                 "minuta": self.cas.minute,
-                "sekunda": self.cas.second
+                "sekunda": self.cas.second,
             },
             "igralci": [igralec.v_slovar() for igralec in self.igralci],
             "velikost_tabele": self.velikost_tabele,
             "kupcek": [karta.v_slovar() for karta in self.kupcek],
             "tabela": seznam_tabele,
-            "na_vrsti": self.na_vrsti
+            "na_vrsti": self.na_vrsti,
         }
 
     @classmethod
@@ -186,19 +181,19 @@ class Igra:
                     slovar_tabele[(vrstica, stolpec)] = Karta.iz_slovarja(karta)
         return Igra(
             id_igre=slovar["id_igre"],
-            cas = datetime(
+            cas=datetime(
                 year=slovar["cas"]["leto"],
                 month=slovar["cas"]["mesec"],
                 day=slovar["cas"]["dan"],
                 hour=slovar["cas"]["ura"],
                 minute=slovar["cas"]["minuta"],
-                second=slovar["cas"]["sekunda"]
+                second=slovar["cas"]["sekunda"],
             ),
             igralci=[Igralec.iz_slovarja(igralec) for igralec in slovar["igralci"]],
             velikost_tabele=tuple(slovar["velikost_tabele"]),
             kupcek=[Karta.iz_slovarja(karta) for karta in slovar["kupcek"]],
             tabela=slovar_tabele,
-            na_vrsti=slovar["na_vrsti"]
+            na_vrsti=slovar["na_vrsti"],
         )
 
     def ustvari_nov_kupcek(self):
@@ -241,10 +236,11 @@ class Igra:
             self.napreduj_po_tabeli(indeks)
         self.primerno_pobarvaj_poti()
         self.predaj_potezo()
-    
 
     def predaj_potezo(self):
-        st_igralcev_v_igri = len([igralec_ for igralec_ in self.igralci if igralec_.v_igri])
+        st_igralcev_v_igri = len(
+            [igralec_ for igralec_ in self.igralci if igralec_.v_igri]
+        )
         if st_igralcev_v_igri > 1:
             while True:
                 self.na_vrsti = (self.na_vrsti + 1) % len(self.igralci)
@@ -253,10 +249,13 @@ class Igra:
                     self.botova_poteza()
                     break
 
-
     def botova_poteza(self):
         igralec = self.igralci[self.na_vrsti]
-        aktivni_igralci = [aktivni_igralec for aktivni_igralec in self.igralci if aktivni_igralec.v_igri]
+        aktivni_igralci = [
+            aktivni_igralec
+            for aktivni_igralec in self.igralci
+            if aktivni_igralec.v_igri
+        ]
         if igralec.je_bot:
             tockovane_moznosti = {}
             for st_karte in range(3):
@@ -264,14 +263,19 @@ class Igra:
                     hipoteticna_igra = deepcopy(self)
                     bot = hipoteticna_igra.igralci[hipoteticna_igra.na_vrsti]
                     bot.karte_v_roki[st_karte].zarotiraj(st_rotacij=st_rotacij)
-                    hipoteticna_igra.postavi_karto_na_tabelo(bot.polje, bot.karte_v_roki[st_karte])
+                    hipoteticna_igra.postavi_karto_na_tabelo(
+                        bot.polje, bot.karte_v_roki[st_karte]
+                    )
                     for indeks in range(len(hipoteticna_igra.igralci)):
                         hipoteticna_igra.napreduj_po_tabeli(indeks)
-                    tockovane_moznosti[(st_karte, st_rotacij)] = hipoteticna_igra.tockuj_polozaj_bota(len(aktivni_igralci))
-            izbrana_karta, izbrana_rotacija = max(tockovane_moznosti, key=tockovane_moznosti.get)
+                    tockovane_moznosti[
+                        (st_karte, st_rotacij)
+                    ] = hipoteticna_igra.tockuj_polozaj_bota(len(aktivni_igralci))
+            izbrana_karta, izbrana_rotacija = max(
+                tockovane_moznosti, key=tockovane_moznosti.get
+            )
             igralec.karte_v_roki[izbrana_karta].zarotiraj(izbrana_rotacija)
             self.igralec_postavi_karto_na_tabelo(izbrana_karta)
-            
 
     def tockuj_polozaj_bota(self, st_igralcev_pred_potezo):
         bot = self.igralci[self.na_vrsti]
@@ -282,12 +286,23 @@ class Igra:
         for igralec in aktivni_igralci:
             if igralec != bot:
                 razdalja = Igra.taxi_razdalja(bot.polje, igralec.polje)
-                tocke += (-1) ** (razdalja + 1) * (najvecja_razdalja - razdalja) / (3 * najvecja_razdalja * (razdalja + 1) * len(aktivni_igralci))
+                tocke += (
+                    (-1) ** (razdalja + 1)
+                    * (najvecja_razdalja - razdalja)
+                    / (3 * najvecja_razdalja * (razdalja + 1) * len(aktivni_igralci))
+                )
         # Botu je cilj ostati čim dlje od roba, saj ga je tako težje izločiti.
         vrstica, stolpec = bot.polje
-        tocke = 1 - (1 - tocke) * 0.95 ** min(vrstica, stolpec, self.velikost_tabele[0] + 1 - vrstica, self.velikost_tabele[1] + 1 - stolpec)
+        tocke = 1 - (1 - tocke) * 0.95 ** min(
+            vrstica,
+            stolpec,
+            self.velikost_tabele[0] + 1 - vrstica,
+            self.velikost_tabele[1] + 1 - stolpec,
+        )
         # Bot hoče eliminirati igralce. tocke = 1 - (1 - tocke) * (0.25 ** (...))
-        tocke = 1 - (1 - tocke) * 0.25 ** (st_igralcev_pred_potezo - len(aktivni_igralci))
+        tocke = 1 - (1 - tocke) * 0.25 ** (
+            st_igralcev_pred_potezo - len(aktivni_igralci)
+        )
         # Bot seveda noče izgubiti.
         if not bot.v_igri:
             tocke *= 0.1
@@ -296,7 +311,9 @@ class Igra:
         return tocke * (1 + EPSILON * (2 * random.random() - 1))
 
     def zmagovalci(self):
-        aktivni_igralci = [indeks for indeks, igralec in enumerate(self.igralci) if igralec.v_igri]
+        aktivni_igralci = [
+            indeks for indeks, igralec in enumerate(self.igralci) if igralec.v_igri
+        ]
         if len(aktivni_igralci) == 0:
             return NI_ZMAGOVALCA
         elif len(aktivni_igralci) == 1:
@@ -312,7 +329,6 @@ class Igra:
                 elif self.velikost_tabele == (4, 4):
                     return "Hitra"
         return "Prilagojena"
-
 
     def vleci_karto(self, st_igralca):
         try:
@@ -333,10 +349,13 @@ class Igra:
         igralec = self.igralci[st_igralca]
         while True:
             polje, polozaj = igralec.polje, igralec.polozaj
-            if not (0 < polje[0] < self.velikost_tabele[0] + 1 and 0 < polje[1] < self.velikost_tabele[1] + 1): # ce igralec zapusti tabelo
+            if not (
+                0 < polje[0] < self.velikost_tabele[0] + 1
+                and 0 < polje[1] < self.velikost_tabele[1] + 1
+            ):  # ce igralec zapusti tabelo
                 igralec.v_igri = False
                 break
-            dva_igralca = False # ce se dva zaletita
+            dva_igralca = False  # ce se dva zaletita
             for indeks in range(len(self.igralci)):
                 if (
                     self.igralci[indeks].polje,
@@ -347,7 +366,7 @@ class Igra:
                     dva_igralca = True
             if dva_igralca:
                 break
-            if self.tabela[polje] is None: # normalen zakljucek poteze
+            if self.tabela[polje] is None:  # normalen zakljucek poteze
                 break
             polje, polozaj = self.naslednja_pozicija(polje, polozaj)
             igralec.polje, igralec.polozaj = polje, polozaj
@@ -482,7 +501,9 @@ class Uporabnik:
         return {
             "uporabnisko_ime": self.uporabnisko_ime,
             "geslo": self.geslo,
-            "igre": {str(id_igre): igra.v_slovar() for id_igre, igra in self.igre.items()}
+            "igre": {
+                str(id_igre): igra.v_slovar() for id_igre, igra in self.igre.items()
+            },
         }
 
     @classmethod
@@ -490,22 +511,52 @@ class Uporabnik:
         return Uporabnik(
             uporabnisko_ime=slovar["uporabnisko_ime"],
             geslo=slovar["geslo"],
-            igre={int(id_igre): Igra.iz_slovarja(slovar["igre"][id_igre]) for id_igre in slovar["igre"]}           
+            igre={
+                int(id_igre): Igra.iz_slovarja(slovar["igre"][id_igre])
+                for id_igre in slovar["igre"]
+            },
         )
 
     def ustvari_novo_igro(
-        self, id_igre=None, cas=None, igralci=None, velikost_tabele=(6, 6), kupcek=None, tabela=None, na_vrsti=0
+        self,
+        id_igre=None,
+        cas=None,
+        igralci=None,
+        velikost_tabele=(6, 6),
+        kupcek=None,
+        tabela=None,
+        na_vrsti=0,
     ):
         if id_igre is None:
             id_igre = self.prost_id_igre()
-        igra = Igra(id_igre=id_igre, cas=cas, igralci=igralci, velikost_tabele=velikost_tabele, kupcek=kupcek, tabela=tabela, na_vrsti=na_vrsti)
+        igra = Igra(
+            id_igre=id_igre,
+            cas=cas,
+            igralci=igralci,
+            velikost_tabele=velikost_tabele,
+            kupcek=kupcek,
+            tabela=tabela,
+            na_vrsti=na_vrsti,
+        )
         self.igre[id_igre] = igra
         return igra
 
-    def inicializiraj_igro(self, imena_igralcev, boti_in_igralci, velikost_tabele=(6, 6)):
-        igra = self.ustvari_novo_igro(id_igre=None, cas=None, igralci=None, velikost_tabele=velikost_tabele, kupcek=None, tabela=None, na_vrsti=0)
+    def inicializiraj_igro(
+        self, imena_igralcev, boti_in_igralci, velikost_tabele=(6, 6)
+    ):
+        igra = self.ustvari_novo_igro(
+            id_igre=None,
+            cas=None,
+            igralci=None,
+            velikost_tabele=velikost_tabele,
+            kupcek=None,
+            tabela=None,
+            na_vrsti=0,
+        )
         for indeks in range(len(boti_in_igralci)):
-            igra.dodaj_novega_igralca(ime=imena_igralcev[indeks], je_bot=boti_in_igralci[indeks])
+            igra.dodaj_novega_igralca(
+                ime=imena_igralcev[indeks], je_bot=boti_in_igralci[indeks]
+            )
             if not igra.igralci[indeks].ime:
                 igra.igralci[indeks].ime = f"Igralec {indeks + 1}"
         igra.razdeli_karte()
@@ -514,10 +565,6 @@ class Uporabnik:
 
     def prost_id_igre(self):
         return len(self.igre) + 1
-        # while True:
-        #     kandidat = uuid4().int
-        #     if not kandidat in self.igre:
-        #         return kandidat
 
     def statistika(self):
         zmage, izenacenja, porazi, nedokoncane = 0, 0, 0, 0
@@ -537,9 +584,15 @@ class Uporabnik:
             "izenacenja": izenacenja,
             "porazi": porazi,
             "nedokoncane": nedokoncane,
-            "prilagojene": len([igra for igra in self.igre.values() if igra.nacin_igre() == "Prilagojena"]),
+            "prilagojene": len(
+                [
+                    igra
+                    for igra in self.igre.values()
+                    if igra.nacin_igre() == "Prilagojena"
+                ]
+            ),
             "skupaj": len(self.igre),
-            "razmerje": (round(zmage / porazi, 2) if porazi != 0 else 999.0)
+            "razmerje": (round(zmage / porazi, 2) if porazi != 0 else 999.0),
         }
 
     @staticmethod
@@ -548,7 +601,13 @@ class Uporabnik:
         for znak in geslo_v_cistopisu:
             if not znak in zaporedje:
                 geslo_v_cistopisu = geslo_v_cistopisu.replace(znak, "ß")
-        return sum([2 ** zaporedje.index(geslo_v_cistopisu[indeks_znaka]) * 3 ** indeks_znaka for indeks_znaka in range(len(geslo_v_cistopisu))])
+        return sum(
+            [
+                2 ** zaporedje.index(geslo_v_cistopisu[indeks_znaka])
+                * 3**indeks_znaka
+                for indeks_znaka in range(len(geslo_v_cistopisu))
+            ]
+        )
 
 
 @dataclass
@@ -584,21 +643,3 @@ class Tsuro:
     def iz_datoteke(cls, ime_datoteke):
         with open(ime_datoteke) as datoteka:
             return cls.iz_slovarja(json.load(datoteka))
-
-
-
-# Testni podatki:
-
-
-if __name__ == "__main__":
-    tsuro = Tsuro()
-    # uporabnik = tsuro.dodaj_uporabnika("Jaka", "geslo")
-    # igra = uporabnik.ustvari_novo_igro()
-    # igra.dodaj_novega_igralca()
-    # igra.ustvari_nov_kupcek()
-    # karta1 = igra.kupcek[0]
-    # karta2 = igra.kupcek[1]
-    # karta3 = igra.kupcek[2]
-    # for i in range(1, 4):
-    #     igra.postavi_karto_na_tabelo((1, i), igra.kupcek[i - 1])
-    tsuro.v_datoteko("tsuro.json")
