@@ -25,17 +25,17 @@
               % zmagovalec = igre[id_igre].zmagovalci()
               % if zmagovalec == nedokoncana:
               <td>
-                <img src="/img/igralec_povecan.png" alt="igralec" height="10px" class="bela-povezava">
+                <img src="/img/igralec_povecan.png" alt="igralec" class="bela-povezava igralec-text">
                 Nedokončana
               </td>
               % elif zmagovalec == ni_zmagovalca:
               <td>
-                <img src="/img/igralec_povecan.png" alt="igralec" height="10px" class="siva-povezava">
+                <img src="/img/igralec_povecan.png" alt="igralec" class="siva-povezava igralec-text">
                 Izenačenje
               </td>
               % else:
               <td>
-                <img src="/img/igralec_povecan.png" alt="igralec" height="10px" class="hue" style="--hue: {{barve[zmagovalec]}}deg">
+                <img src="/img/igralec_povecan.png" alt="igralec" class="hue igralec-text" style="--hue: {{barve[zmagovalec]}}deg">
                 {{igre[id_igre].igralci[zmagovalec].ime}}
               </td>
               % end

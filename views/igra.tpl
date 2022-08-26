@@ -2,7 +2,9 @@
 <div class="mb-4"></div>
 % include("prikazi_tabelo.tpl")
 % if zmagovalci == nedokoncana:
-  <p class="pt-3 text-center fs-4">Na potezi je {{igra.igralci[igra.na_vrsti].ime}}:</p>
+  <p class="pt-3 text-center fs-4">
+    Na potezi je <img src="/img/igralec_povecan.png" alt="igralec" class="hue igralec-text" style="--hue: {{barve[igra.na_vrsti]}}deg"> {{igra.igralci[igra.na_vrsti].ime}}:
+  </p>
   % include("karte_v_roki.tpl")
 % elif zmagovalci == ni_zmagovalca:
   <p class="pt-3 text-center fs-4">Vsi igralci so izločeni, ni zmagovalca.</p>
@@ -17,7 +19,7 @@
     </div>
   </div>
 % else:
-  <p class="pt-3 text-center fs-4">Zmagovalec je {{igra.igralci[zmagovalci].ime}}.</p>
+  <p class="pt-3 text-center fs-4">Zmagovalec je <img src="/img/igralec_povecan.png" alt="igralec" class="hue igralec-text" style="--hue: {{barve[zmagovalci]}}deg"> {{igra.igralci[zmagovalci].ime}}.</p>
   <div class="row" width="100%">
     <div class="col">
       <form action="/nova-igra/enaka/" method="post">

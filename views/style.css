@@ -79,6 +79,10 @@
     width: 25vw
 }
 
+.igralec-text {
+    height: 0.7em;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 20px;
