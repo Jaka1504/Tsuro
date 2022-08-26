@@ -4,7 +4,7 @@
 <div class="card bg-secondary mb-3">
   <div class="card-body">
     <p>
-      Igra tsuro se običajno igra na tabeli s šestimi vrsticami in šestimi stolpci, katere polja so kvadrati, vendar je mogoče z enakimi pravili igrati tudi na drugačnih dimenzijah tabele. Igro igra od dva do osem igralcev, ki po vrsti izvajajo svoje poteze. Zanjo je potreben kupček kart, ki po velikosti ustrezajo poljam tabele.
+      Igra Tsuro se običajno igra na tabeli s šestimi vrsticami in šestimi stolpci, katere polja so kvadrati, vendar je mogoče z enakimi pravili igrati tudi na drugačnih dimenzijah tabele. Igro igra od dva do osem igralcev, ki po vrsti izvajajo svoje poteze. Zanjo je potreben kupček kart, ki po velikosti ustrezajo poljam tabele.
     </p>
     <p>
       Na vsaki karti imamo na vsakem robu po dve točki enako oddaljeni druga od druge in od oglišč karte. Vsaka od teh točk je s povezavo povezana z natanko eno drugo točko, torej so na vsaki karti štiri povezave. Tu je nekaj primerov tovrstnih kart:
