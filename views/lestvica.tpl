@@ -5,7 +5,7 @@
   <div class="card-body py-0">
     <div class="tabela-scroll d-grid">
       <table class="table text-light">
-        <thead class="sticky-top bg-secondary">
+        <thead>
           <tr>
             <th scope="col" class="text-end">#</th>
             <th scope="col">Ime</th>

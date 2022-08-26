@@ -6,11 +6,11 @@
     <form action="/pregled-iger/prilagojene/" method="post" id="igre">
       <div class="tabela-scroll d-grid">
         <table class="table text-light">
-          <thead class="sticky-top bg-secondary">
+          <thead>
             <tr>
               <th scope="col">Datum</th>
               <th scope="col">Ura</th>
-              <th scope="col">Velikost tabele</th>
+              <th scope="col">Tabela</th>
               <th scope="col">Zmagovalec</th>
               <th scope="col">Ogled tabele</th>
             </tr>

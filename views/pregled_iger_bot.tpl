@@ -6,7 +6,7 @@
     <form action="/pregled-iger/bot/" method="post" id="igre">
       <div class="tabela-scroll d-grid">
         <table class="table text-light">
-          <thead class="sticky-top bg-secondary">
+          <thead>
             <tr>
               <th scope="col">Datum</th>
               <th scope="col">Ura</th>
