@@ -238,18 +238,22 @@ def post_nova_igra_enaka():
 @bottle.get("/igra/")
 def get_igra():
     uporabnik = poisci_uporabnika()
-    igra = uporabnik.igre[bottle.request.get_cookie("id_igre", secret=SKRIVNOST)]
-    return bottle.template(
-        "igra",
-        igra=igra,
-        bela=model.BELA,
-        siva=model.SIVA,
-        barve=model.VRSTNI_RED_BARV,
-        ni_zmagovalca=model.NI_ZMAGOVALCA,
-        nedokoncana=model.NEDOKONCANA,
-        zmagovalci=igra.zmagovalci(),
-        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
-    )
+    id_igre = bottle.request.get_cookie("id_igre", secret=SKRIVNOST)
+    if id_igre:
+        igra = uporabnik.igre[id_igre]
+        return bottle.template(
+            "igra",
+            igra=igra,
+            bela=model.BELA,
+            siva=model.SIVA,
+            barve=model.VRSTNI_RED_BARV,
+            ni_zmagovalca=model.NI_ZMAGOVALCA,
+            nedokoncana=model.NEDOKONCANA,
+            zmagovalci=igra.zmagovalci(),
+            uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
+        )
+    else:
+        return bottle.redirect("/nova-igra/")
 
 
 @bottle.post("/igra/")
