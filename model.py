@@ -19,7 +19,7 @@ VIJOLICNA = 255.5
 ROZA = 330
 BELA = "bela"
 SIVA = "siva"
-VRSTNI_RED_BARV = [RDECA, ZELENA, MODRA, RUMENA, AQUA, ROZA, VIJOLICNA, ORANZNA]
+VRSTNI_RED_BARV = [ZELENA, RDECA, MODRA, RUMENA, AQUA, ROZA, VIJOLICNA, ORANZNA]
 
 
 #
@@ -403,7 +403,6 @@ class Igra:
             polje, polozaj = Igra.obrni_se_na_mestu(
                 self.igralci[indeks].polje, self.igralci[indeks].polozaj
             )
-            # polje, polozaj = self.igralci[indeks].polje, self.igralci[indeks].polozaj
             barva = VRSTNI_RED_BARV[indeks]
             self.barvaj_povezave_od_tocke(polje, polozaj, barva)
 
