@@ -592,7 +592,7 @@ class Uporabnik:
                 ]
             ),
             "skupaj": len(self.igre),
-            "razmerje": (round(zmage / porazi, 2) if porazi != 0 else 999.0),
+            "razmerje": (round(zmage / porazi, 2) if porazi != 0 else 999.0) if zmage != 0 else 0,
         }
 
     @staticmethod
