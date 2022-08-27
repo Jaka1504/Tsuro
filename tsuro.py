@@ -21,10 +21,7 @@ def css(ime_datoteke):
 
 @bottle.get("/")
 def get_index():
-    return bottle.template(
-        "index",
-        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
-    )
+    return bottle.template("index", uporabnisko_ime=poisci_uporabnisko_ime())
 
 
 @bottle.get("/pravila/")
@@ -40,7 +37,7 @@ def get_pravila():
         bela=model.BELA,
         siva=model.SIVA,
         barve=model.VRSTNI_RED_BARV,
-        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
+        uporabnisko_ime=poisci_uporabnisko_ime(),
     )
 
 
@@ -49,7 +46,7 @@ def get_prijava():
     return bottle.template(
         "prijava",
         napaka=None,
-        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
+        uporabnisko_ime=poisci_uporabnisko_ime(),
     )
 
 
@@ -74,11 +71,7 @@ def post_prijava():
         napaka = "Ta uporabnik ne obstaja. Preveri črkovanje ali ustvari nov račun!"
     if napaka:
         return bottle.template(
-            "prijava",
-            napaka=napaka,
-            uporabnisko_ime=bottle.request.get_cookie(
-                "uporabnisko_ime", secret=SKRIVNOST
-            ),
+            "prijava", napaka=napaka, uporabnisko_ime=poisci_uporabnisko_ime()
         )
     else:
         return bottle.redirect("/")
@@ -89,7 +82,7 @@ def get_registracija():
     return bottle.template(
         "registracija",
         napaka=None,
-        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
+        uporabnisko_ime=poisci_uporabnisko_ime(),
     )
 
 
@@ -101,11 +94,7 @@ def post_registracija():
     if uporabnisko_ime in tsuro.uporabniki.keys():
         napaka = "To uporabniško ime je že zasedeno. Prosim, izberi drugačno ime."
         return bottle.template(
-            "registracija",
-            napaka=napaka,
-            uporabnisko_ime=bottle.request.get_cookie(
-                "uporabnisko_ime", secret=SKRIVNOST
-            ),
+            "registracija", napaka=napaka, uporabnisko_ime=poisci_uporabnisko_ime()
         )
     else:
         tsuro.dodaj_uporabnika(ime=uporabnisko_ime, geslo=geslo)
@@ -120,7 +109,7 @@ def post_registracija():
 def get_nova_igra():
     return bottle.template(
         "nova_igra",
-        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
+        uporabnisko_ime=poisci_uporabnisko_ime(),
     )
 
 
@@ -134,9 +123,7 @@ def post_nova_igra():
             boti_in_igralci=[False, True],
             velikost_tabele=(6, 6),
         )
-        bottle.response.set_cookie(
-            name="id_igre", value=int(igra.id_igre), secret=SKRIVNOST, path="/"
-        )
+        nastavi_id_igre(igra.id_igre)
         tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
     elif nacin == "Hitra igra":
@@ -145,9 +132,7 @@ def post_nova_igra():
             boti_in_igralci=[False, True],
             velikost_tabele=(4, 4),
         )
-        bottle.response.set_cookie(
-            name="id_igre", value=int(igra.id_igre), secret=SKRIVNOST, path="/"
-        )
+        nastavi_id_igre(igra.id_igre)
         tsuro.v_datoteko(DAT)
         return bottle.redirect("/igra/")
     else:
@@ -158,7 +143,7 @@ def post_nova_igra():
 def get_nova_igra_prilagodi_osnovno():
     return bottle.template(
         "prilagodi_osnovno",
-        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
+        uporabnisko_ime=poisci_uporabnisko_ime(),
     )
 
 
@@ -189,7 +174,7 @@ def get_nova_igra_prilagodi_igralci():
         "prilagodi_igralci",
         st_igralcev=st_igralcev,
         barve=model.VRSTNI_RED_BARV,
-        uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
+        uporabnisko_ime=poisci_uporabnisko_ime(),
     )
 
 
@@ -210,9 +195,7 @@ def post_nova_igra_prilagodi_igralci():
         boti_in_igralci=boti_in_igralci,
         velikost_tabele=velikost_tabele,
     )
-    bottle.response.set_cookie(
-        name="id_igre", value=int(igra.id_igre), secret=SKRIVNOST, path="/"
-    )
+    nastavi_id_igre(igra.id_igre)
     tsuro.v_datoteko(DAT)
     return bottle.redirect("/igra/")
 
@@ -220,17 +203,13 @@ def post_nova_igra_prilagodi_igralci():
 @bottle.post("/nova-igra/enaka/")
 def post_nova_igra_enaka():
     uporabnik = poisci_uporabnika()
-    trenutna_igra = uporabnik.igre[
-        bottle.request.get_cookie(key="id_igre", secret=SKRIVNOST)
-    ]
+    trenutna_igra = uporabnik.igre[poisci_id_igre()]
     nova_igra = uporabnik.inicializiraj_igro(
         imena_igralcev=[igralec.ime for igralec in trenutna_igra.igralci],
         boti_in_igralci=[igralec.je_bot for igralec in trenutna_igra.igralci],
         velikost_tabele=trenutna_igra.velikost_tabele,
     )
-    bottle.response.set_cookie(
-        name="id_igre", value=int(nova_igra.id_igre), secret=SKRIVNOST, path="/"
-    )
+    nastavi_id_igre(nova_igra.id_igre)
     tsuro.v_datoteko(DAT)
     return bottle.redirect("/igra/")
 
@@ -238,7 +217,7 @@ def post_nova_igra_enaka():
 @bottle.get("/igra/")
 def get_igra():
     uporabnik = poisci_uporabnika()
-    id_igre = bottle.request.get_cookie("id_igre", secret=SKRIVNOST)
+    id_igre = poisci_id_igre()
     if id_igre:
         igra = uporabnik.igre[id_igre]
         return bottle.template(
@@ -250,7 +229,7 @@ def get_igra():
             ni_zmagovalca=model.NI_ZMAGOVALCA,
             nedokoncana=model.NEDOKONCANA,
             zmagovalci=igra.zmagovalci(),
-            uporabnisko_ime=bottle.request.get_cookie("uporabnisko_ime", secret=SKRIVNOST),
+            uporabnisko_ime=poisci_uporabnisko_ime(),
         )
     else:
         return bottle.redirect("/nova-igra/")
@@ -259,7 +238,7 @@ def get_igra():
 @bottle.post("/igra/")
 def post_igra():
     uporabnik = poisci_uporabnika()
-    igra = uporabnik.igre[bottle.request.get_cookie("id_igre", secret=SKRIVNOST)]
+    igra = uporabnik.igre[poisci_id_igre()]
     rotacija = bottle.request.forms.getunicode("zarotiraj")
     postavi_karto = bottle.request.forms.getunicode("postavi-karto")
     if not rotacija is None:
@@ -289,9 +268,7 @@ def get_pregled_iger_bot():
 @bottle.post("/pregled-iger/bot/")
 def post_pregled_iger_bot():
     id_igre = bottle.request.forms.getunicode("id_igre")
-    bottle.response.set_cookie(
-        name="id_igre", value=int(id_igre), secret=SKRIVNOST, path="/"
-    )
+    nastavi_id_igre(id_igre)
     return bottle.redirect("/igra/")
 
 
@@ -311,9 +288,7 @@ def get_pregled_iger_prilagojene():
 @bottle.post("/pregled-iger/prilagojene/")
 def post_pregled_iger_prilagojene():
     id_igre = bottle.request.forms.getunicode("id_igre")
-    bottle.response.set_cookie(
-        name="id_igre", value=int(id_igre), secret=SKRIVNOST, path="/"
-    )
+    nastavi_id_igre(id_igre)
     return bottle.redirect("/igra/")
 
 
@@ -387,11 +362,31 @@ def post_odjava():
 
 
 def poisci_uporabnika():
-    uporabnisko_ime = bottle.request.get_cookie(key="uporabnisko_ime", secret=SKRIVNOST)
+    uporabnisko_ime = poisci_uporabnisko_ime()
     if not uporabnisko_ime:
         return bottle.redirect("/prijava/")
     else:
         return tsuro.uporabniki[uporabnisko_ime]
+
+
+def poisci_id_igre():
+    """Poišče in vrne vrednost piškotka `id_igre`, ki jo spremeni v celo število."""
+    return int(bottle.request.get_cookie(key="id_igre", secret=SKRIVNOST))
+
+
+def poisci_uporabnisko_ime():
+    """Poišče in vrne vrednost piškotka `uporabnisko_ime`."""
+    return bottle.request.get_cookie(key="uporabnisko_ime", secret=SKRIVNOST)
+
+
+def nastavi_id_igre(id):
+    """Nastavi vrednost piškotka `id_igre` na `id`, ki ga pretvori v niz."""
+    bottle.response.set_cookie(
+        name="id_igre",
+        value=str(id),
+        secret=SKRIVNOST,
+        path="/",
+    )
 
 
 # To naj bo na dnu datoteke.
