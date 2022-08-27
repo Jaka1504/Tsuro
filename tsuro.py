@@ -1,8 +1,8 @@
 import model
 import bottle
 
-with open("skrivnost.txt", mode="r", encoding="utf-8") as datoteka:
-    SKRIVNOST = datoteka.read()
+
+SKRIVNOST = "!#$%/()=?*'+~^ˇ"
 DAT = "tsuro.json"
 
 

@@ -133,7 +133,3 @@ dmypy.json
 # Mape z slikami, ki pomagajo pri razvoju aplikacije
 img/cropped/
 img/import-from-geogebra
-
-# ostalo:
-skrivnost.txt
-.gitignore
