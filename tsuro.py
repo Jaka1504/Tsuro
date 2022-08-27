@@ -1,8 +1,8 @@
 import model
 import bottle
 
-
-SKRIVNOST = "bhjčkeibvcjčbdnjsbcv"
+with open("skrivnost.txt", mode="r", encoding="utf-8") as datoteka:
+    SKRIVNOST = datoteka.read()
 DAT = "tsuro.json"
 
 
@@ -371,7 +371,11 @@ def poisci_uporabnika():
 
 def poisci_id_igre():
     """Poišče in vrne vrednost piškotka `id_igre`, ki jo spremeni v celo število."""
-    return int(bottle.request.get_cookie(key="id_igre", secret=SKRIVNOST))
+    id_igre = bottle.request.get_cookie(key="id_igre", secret=SKRIVNOST)
+    if id_igre is None:
+        return None
+    else:
+        return int(id_igre)
 
 
 def poisci_uporabnisko_ime():
