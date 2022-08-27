@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-xl sticky-top bg-dark">
           <div class="container-fluid">
             <a class="navbar-brand text-light besedilo" href="/">
-              <img src="/img/napis_tsuro2.png" alt="Tsuro" height="30px" class="d-inline-block align-text-top">
+              <img src="/img/napis_tsuro.png" alt="Tsuro" height="30px" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon invert"></span>
