@@ -4,7 +4,7 @@
 <h1>Prilagodi igro</h1>
 <div class="card bg-secondary">
   <div class="card-body">
-    <label for="igralci">
+    <label for="igralci" class="form-label">
       Če želiš, navedi imena igralcev. V desnem stolpcu obkljukaj polja pri igralcih, za katere želiš, da jih računalnik igra sam.
     </label>
     <form action="/nova-igra/prilagodi/igralci/" method="post" id="igralci">
