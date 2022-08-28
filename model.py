@@ -677,6 +677,7 @@ class Uporabnik:
             "razmerje": (round(zmage / porazi, 2) if porazi != 0 else 999.9)
             if zmage != 0
             else 0,
+            "vseh_iger_proti_racunalniku": zmage + porazi + izenacenja
         }
 
     def spremeni_ime_v_starih_igrah(self, novo_ime):
