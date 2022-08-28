@@ -41,7 +41,11 @@
               % end
               <td>
                 <div class="d-grid">
+                  % if zmagovalec == nedokoncana:
+                  <button class="btn btn-outline-light btn-sm" name="id_igre" type="submit" value="{{id_igre}}">Nadaljuj</button>
+                  % else:
                   <button class="btn btn-outline-light btn-sm" name="id_igre" type="submit" value="{{id_igre}}">Prikaži</button>
+                  % end
                 </div>
               </td>
             </tr>
