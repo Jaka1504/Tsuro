@@ -45,7 +45,7 @@
 }
 
 .invert {
-    filter: invert()
+    filter: invert();
 }
 
 .tabela {
@@ -53,30 +53,26 @@
 }
 
 .besedilo {
-    font-size: large;
+    font-size: medium;
     font-family: Candara;
-}
-
-.opozorilo {
-    color: red;
 }
 
 .tabela-scroll {
     max-height: 500px;
     overflow: auto;
-    display:inline-block;
+    display: inline-block;
 }
 
 .progress-bar-lestvica {
-    width: 15vw
+    width: 15vw;
 }
 
 .feniks {
-    width: 30vw
+    width: 30vw;
 }
 
 .zmaj {
-    width: 25vw
+    width: 25vw;
 }
 
 .igralec-text {
@@ -102,6 +98,6 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #212529; 
+    background: #212529;
     border-radius: 10px;
   }
