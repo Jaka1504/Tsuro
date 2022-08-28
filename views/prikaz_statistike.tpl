@@ -6,4 +6,4 @@
   <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{delez_zmag}}%" aria-valuenow="{{delez_zmag}}" aria-valuemin="0" aria-valuemax="100"></div>
   <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" style="width: {{delez_izenacenj}}%" aria-valuenow="{{delez_izenacenj}}" aria-valuemin="0" aria-valuemax="100"></div>
   <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{delez_porazov}}%" aria-valuenow="{{delez_porazov}}" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
+</div>
