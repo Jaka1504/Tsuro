@@ -354,10 +354,9 @@ def post_profil():
 
 @bottle.get("/lestvica/")
 def get_lestvica():
-    uporabnik = poisci_uporabnika()
     return bottle.template(
         "lestvica",
-        uporabnisko_ime=uporabnik.uporabnisko_ime,
+        uporabnisko_ime=poisci_uporabnisko_ime(),
         uporabniki=tsuro.uporabniki,
     )
 
