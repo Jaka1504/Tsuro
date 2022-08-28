@@ -26,7 +26,7 @@
       </tr>
       <tr>
         <td>
-          <img src="/img/igralec_povecan.png" alt="igralec" height="10px" class="hue" style="--hue: {{barve[0]}}deg">
+          <img src="/img/igralec_povecan.png" alt="igralec" class="igralec-text hue" style="--hue: {{barve[0]}}deg">
           Zmage:
         </td>
         <td>
@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <td>
-          <img src="/img/igralec_povecan.png" alt="igralec" height="10px" class="siva-povezava">
+          <img src="/img/igralec_povecan.png" alt="igralec" class="igralec-text siva-povezava">
           Izenačenja:
         </td>
         <td>
@@ -44,7 +44,7 @@
       </tr>
       <tr>
         <td>
-          <img src="/img/igralec_povecan.png" alt="igralec" height="10px" class="hue" style="--hue: {{barve[1]}}deg">
+          <img src="/img/igralec_povecan.png" alt="igralec" class="igralec-text hue" style="--hue: {{barve[1]}}deg">
           Porazi:
         </td>
         <td>
@@ -53,7 +53,7 @@
       </tr>
       <tr>
         <td>
-          <img src="/img/igralec_povecan.png" alt="igralec" height="10px" class="bela-povezava">
+          <img src="/img/igralec_povecan.png" alt="igralec" class="igralec-text bela-povezava">
           Nedokončane igre:
         </td>
         <td>
