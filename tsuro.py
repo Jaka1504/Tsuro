@@ -315,7 +315,6 @@ def post_profil():
     staro_geslo = model.Uporabnik.zasifriraj_geslo(
         bottle.request.forms.getunicode("staro_geslo")
     )
-    print(spremeni_ime, spremeni_geslo, staro_geslo)
     if spremeni_ime and spremeni_ime in tsuro.uporabniki.keys():
         napaka = "To uporabniško ime je že zasedeno. Prosim, izberi drugačno ime."
     if not tsuro.preveri_geslo(
@@ -338,6 +337,7 @@ def post_profil():
                 uporabnik.uporabnisko_ime
             )
             uporabnik.uporabnisko_ime = spremeni_ime
+            uporabnik.spremeni_ime_v_starih_igrah(novo_ime=spremeni_ime)
             tsuro.v_datoteko(DAT)
             bottle.response.set_cookie(
                 name="uporabnisko_ime", value=spremeni_ime, secret=SKRIVNOST, path="/"
@@ -393,5 +393,4 @@ def nastavi_id_igre(id):
     )
 
 
-# To naj bo na dnu datoteke.
-bottle.run()
+bottle.run(reloader=True, debug=True)

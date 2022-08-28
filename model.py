@@ -679,6 +679,12 @@ class Uporabnik:
             else 0,
         }
 
+    def spremeni_ime_v_starih_igrah(self, novo_ime):
+        """Nastavi ime igralca v shranjenih običajnih in hitrih igrah na `novo_ime`."""
+        for igra in self.igre.values():
+            if igra.nacin_igre() in ["Običajna", "Hitra"]:
+                igra.igralci[0].ime = novo_ime
+
     @staticmethod
     def zasifriraj_geslo(geslo_v_cistopisu: str):
         """Vrne celo število, iz katerega ni moč enostavno razbrati
