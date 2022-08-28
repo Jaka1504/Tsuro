@@ -149,9 +149,9 @@ def get_nova_igra_prilagodi_osnovno():
 
 @bottle.post("/nova-igra/prilagodi/osnovno/")
 def post_nova_igra_prilagodi_osnovno():
-    st_igralcev = int(bottle.request.forms.getunicode("st_igralcev"))
-    st_vrstic = int(bottle.request.forms.getunicode("st_vrstic"))
-    st_stolpcev = int(bottle.request.forms.getunicode("st_stolpcev"))
+    st_igralcev = bottle.request.forms.getunicode("st_igralcev")
+    st_vrstic = bottle.request.forms.getunicode("st_vrstic")
+    st_stolpcev = bottle.request.forms.getunicode("st_stolpcev")
     bottle.response.set_cookie(
         name="st_igralcev",
         value=st_igralcev,
@@ -159,17 +159,23 @@ def post_nova_igra_prilagodi_osnovno():
         path="/nova-igra/prilagodi/",
     )
     bottle.response.set_cookie(
-        name="velikost_tabele",
-        value=(st_vrstic, st_stolpcev),
+        name="st_vrstic",
+        value=st_vrstic,
         secret=SKRIVNOST,
-        path="/nova-igra/",
+        path="/nova-igra/prilagodi/",
+    )
+    bottle.response.set_cookie(
+        name="st_stolpcev",
+        value=st_stolpcev,
+        secret=SKRIVNOST,
+        path="/nova-igra/prilagodi/",
     )
     return bottle.redirect("/nova-igra/prilagodi/igralci/")
 
 
 @bottle.get("/nova-igra/prilagodi/igralci/")
 def get_nova_igra_prilagodi_igralci():
-    st_igralcev = bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST)
+    st_igralcev = int(bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST))
     return bottle.template(
         "prilagodi_igralci",
         st_igralcev=st_igralcev,
@@ -181,8 +187,9 @@ def get_nova_igra_prilagodi_igralci():
 @bottle.post("/nova-igra/prilagodi/igralci/")
 def post_nova_igra_prilagodi_igralci():
     uporabnik = poisci_uporabnika()
-    st_igralcev = bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST)
-    velikost_tabele = bottle.request.get_cookie("velikost_tabele", secret=SKRIVNOST)
+    st_igralcev = int(bottle.request.get_cookie("st_igralcev", secret=SKRIVNOST))
+    st_vrstic = int(bottle.request.get_cookie("st_vrstic", secret=SKRIVNOST))
+    st_stolpcev = int(bottle.request.get_cookie("st_stolpcev", secret=SKRIVNOST))
     boti_in_igralci = [
         (not bottle.request.forms.getunicode(f"bot{i}") is None)
         for i in range(st_igralcev)
@@ -193,7 +200,7 @@ def post_nova_igra_prilagodi_igralci():
     igra = uporabnik.inicializiraj_igro(
         imena_igralcev=imena_igralcev,
         boti_in_igralci=boti_in_igralci,
-        velikost_tabele=velikost_tabele,
+        velikost_tabele=(st_vrstic, st_stolpcev),
     )
     nastavi_id_igre(igra.id_igre)
     tsuro.v_datoteko(DAT)
