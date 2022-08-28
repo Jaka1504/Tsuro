@@ -40,7 +40,7 @@
     </div>
     % else:
     <p>
-      S pomočjo spodnjih povezav si lahko pogledaš pravila igre, ustvariš novo igro, pogedaš zgodovino svojih iger in mnogo drugega. Vse te bljižnice so dostopne tudi v navigacijski vrstici na vrhu vsake strani.
+      S pomočjo spodnjih povezav si lahko pogledaš pravila igre, ustvariš novo igro, pogledaš zgodovino svojih iger in mnogo drugega. Vse te bližnjice so dostopne tudi v navigacijski vrstici na vrhu vsake strani.
     </p>
     <div class="row mb-2" width="100%">
       <div class="col d-grid pe-1">

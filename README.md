@@ -4,10 +4,10 @@ Tsuro je namizna igra, ki jo je leta 1979 ustvaril Tom McMurchie in jo izdaja po
 V tem repozitoriju je moj projekt pri predmetu Uvod v programiranje v študijskem letu 2021/2022.
 
 # Navodila za zagon
-Da bi zagnali aplikacijo na svojem računalniku, sledite naslednjim korakom:
-- Prenesite z Github-a `.zip` datoteko z vsebino tega repozitorija in jo razširite nekje na svojem računalniku.
-- Poženite datoteko `tsuro.py`.
-- Odprite brskalnik in obiščite naslov http://127.0.0.1:8080/.
+Da bi zagnal aplikacijo na svojem računalniku, sledi naslednjim korakom:
+- Prenesi z Github-a `.zip` datoteko z vsebino tega repozitorija in jo razširi nekje na svojem računalniku.
+- Poženi datoteko `tsuro.py`.
+- Odpri brskalnik in obišči naslov http://127.0.0.1:8080/.
 
 # Zavrnitev odgovornosti
 Čeprav sem aplikacijo oblikoval sam, grafike v ozadju niso moja last – priredil sem jih po naslednjih slikah:

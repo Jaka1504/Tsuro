@@ -4,7 +4,7 @@
 <div class="card bg-secondary mb-3">
   <div class="card-body">
     <p>
-      Igra Tsuro se običajno igra na tabeli s šestimi vrsticami in šestimi stolpci, katere polja so kvadrati, vendar je mogoče z enakimi pravili igrati tudi na drugačnih dimenzijah tabele. Igro igra od dva do osem igralcev, ki po vrsti izvajajo svoje poteze. Zanjo je potreben kupček kart, ki po velikosti ustrezajo poljam tabele.
+      Igra Tsuro se igra na tabeli s kvadratnimi polji, ki ima običajno šest vrstic in šest stolpcev, enako pa se lahko igra tudi na drugačnih dimenzijah tabele. Igro igra od dva do osem igralcev, ki po vrsti izvajajo svoje poteze. Zanjo je potreben kupček kart, ki po velikosti ustrezajo poljam tabele.
     </p>
     <p>
       Na vsaki karti sta na vsakem robu po dve točki, enako oddaljeni druga od druge in od oglišč karte. Vsaka od teh točk je s povezavo povezana z natanko eno drugo točko, torej so na vsaki karti štiri povezave. Tu je nekaj primerov tovrstnih kart:
@@ -17,7 +17,7 @@
       %end
     </div>
     <p>
-      Na začetku so vsa polja tabele prazna. Poimenujmo <i>položaj</i> točko na mreži tabele, ki je za eno tretjino dolžine polja oddaljena od najbližjega oglišča. Vsak igralec ima svoj žeton na začetku igre postavljen na nek položaj na robu tabele. Tako torej izgleda tabela velikosti 4×4 na začetku igre s petimi igralci:
+      Na začetku so vsa polja tabele prazna. Poimenujmo <i>položaj</i> točko na mreži tabele, ki je za eno tretjino dolžine polja oddaljena od najbližjega oglišča. Vsak igralec ima svoj žeton na začetku igre postavljen na nek položaj na robu tabele. Tako torej izgleda tabela velikosti 4×4 na začetku igre s petimi igralci, katerih žetone predstavljajo barvni krogi:
     </p>
     <div class="d-flex justify-content-center my-3">
       % include("prikazi_tabelo", igra=igra)
