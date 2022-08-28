@@ -21,7 +21,7 @@
             <tr>
               <td>{{f"{igre[id_igre].cas.day}. {igre[id_igre].cas.month}. {igre[id_igre].cas.year}"}}</td>
               <td>{{f"{str(igre[id_igre].cas.hour).zfill(2)}:{str(igre[id_igre].cas.minute).zfill(2)}"}}</td>
-              <td>{{igre[id_igre].velikost_tabele[0]}} x {{igre[id_igre].velikost_tabele[1]}}</td>
+              <td>{{igre[id_igre].velikost_tabele[0]}}×{{igre[id_igre].velikost_tabele[1]}}</td>
               % zmagovalec = igre[id_igre].zmagovalci()
               % if zmagovalec == nedokoncana:
               <td>

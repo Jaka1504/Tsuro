@@ -4,7 +4,7 @@
 <div class="card bg-secondary mb-3">
   <div class="card-body">
     <p class="fs-5 fw-bold">
-      Pozdravljen/-a {{uporabnisko_ime if uporabnisko_ime else ""}} in dobrodošel/-a v igro Tsuro!
+      Pozdravljen/-a {{uporabnisko_ime if uporabnisko_ime else ""}} in dobrodošel/-a v igri Tsuro!
     </p>
     <p>
       Tsuro je namizna igra, ki jo je leta 1979 ustvaril Tom McMurchie in jo izdaja podjetje Calliope Games. Igra je dobila ime po japonski besedi <i>"tsūro"</i> (通路), ki pomeni "pot". Več o igri si lahko prebereš na strani <a href="https://en.wikipedia.org/wiki/Tsuro" class="link text-dark">Wikipedia</a>.

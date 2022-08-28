@@ -23,12 +23,12 @@
       % include("prikazi_tabelo", igra=igra)
     </div>
     <p>
-      Igralec prične igro z tremi kartami v roki. Na svoji potezi izbere eno od svojih kart, jo poljubno zasuče in postavi na polje tabele pred svojim žetonom. Nato premakne svoj žeton (in morebitne ostale žetone ob tem polju) vzdolž tiste povezave na postavljeni karti, ki vodi od položaja žetona, s čimer potezo zopet konča na enem od dovoljenih položajev. Če s tega položaja vodijo povezave še naprej, mora igralec žeton premikati po njih, dokler ne pride do praznega polja, drugega žetona ali roba tabele. Na koncu povleče novo karto in s svojo potezo nadaljuje naslednji igralec po vrsti.
-    </p>
-    <p>
-      Na spodnji shemi je prikazan potek poteze, če bi rdeči igralec s klikom na srednji gumb z ikono <img src="/img/box-arrow-in-up.svg" alt="Postavi karto - gumb" class="igralec-text invert"> na prazno polje, ob katerem je njegov žeton, postavil prikazano karto. Oba igralca bi morala slediti vsak svoji povezavi, ki pa ju pripeljeta na že obstoječe poti, po katerih do konca prestavita svoja žetona. Rdeči bi nato povlekel novo karto in s svojo potezo bi nadaljeval zeleni.
+      Igralec prične igro z tremi kartami v roki. Na svoji potezi izbere eno od svojih kart, jo poljubno zasuče in postavi na polje tabele pred svojim žetonom. Nato premakne svoj žeton in morebitne ostale žetone ob tem polju vzdolž tiste povezave na postavljeni karti, ki vodi od položaja žetona, s čimer potezo zopet konča na enem od dovoljenih položajev. Če s tega položaja vodijo povezave še naprej, mora igralec žeton premikati po njih, dokler ne pride do praznega polja, drugega žetona ali roba tabele. Na koncu povleče novo karto in s svojo potezo nadaljuje naslednji igralec po vrsti.
     </p>
     <img src="/img/shema_poteze.png" alt="Shema poteze" class="feniks">
+    <p>
+      <i>Primer</i>: Na zgornji shemi je prikazan potek poteze, v kateri rdeči igralec s klikom na srednji gumb z ikono <img src="/img/box-arrow-in-up.svg" alt="Postavi karto - gumb" class="igralec-text invert"> postavi prikazano karto na prazno polje, ob katerem je njegov žeton. Oba igralca morata slediti vsak svoji povezavi, ki pa ju pripeljeta na že obstoječe poti. Po njih nato do konca prestavita svoja žetona in končata na položajih, prikazanih na desni sliki. Rdeči nato povleče novo karto in s svojo potezo nadaljuje zeleni.
+    </p>
     <p>
       Igralec je <i>izločen</i> iz igre, če ne more več storiti poteze, t.j. če se njegov žeton vrne na rob tabele ali pa če se zaleti v žeton drugega igralca (v tem primeru sta izločena oba). Zmagovalec igre je zadnji igralec, ki še ni izločen. V primeru, da je več igralcev izločenih v isti potezi in po njej v igri ne ostane nihče, je izid izenačen.
     </p>

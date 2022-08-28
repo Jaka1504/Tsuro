@@ -6,10 +6,10 @@ V tem repozitoriju je moj projekt pri predmetu Uvod v programiranje v študijske
 # Navodila za zagon
 Da bi zagnali aplikacijo na svojem računalniku, sledite naslednjim korakom:
 - Prenesite z Github-a `.zip` datoteko z vsebino tega repozitorija in jo razširite nekje na svojem računalniku.
-- Poženite datoteko `tsuro.py`
-- Odprite brskalnik in obiščite naslov http://127.0.0.1:8080/
+- Poženite datoteko `tsuro.py`.
+- Odprite brskalnik in obiščite naslov http://127.0.0.1:8080/.
 
 # Zavrnitev odgovornosti
 Čeprav sem aplikacijo oblikoval sam, grafike v ozadju niso moja last – priredil sem jih po naslednjih slikah:
-- Slika zmaja: https://www.pinterest.de/pin/435160382744436436/
-- Slika feniksa: https://www.pinterest.com/pin/738801513858225949/
+- slika zmaja: https://www.pinterest.de/pin/435160382744436436/,
+- slika feniksa: https://www.pinterest.com/pin/738801513858225949/.
