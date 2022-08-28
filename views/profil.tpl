@@ -88,13 +88,13 @@
     <form action="/profil/" method="post">
       <p class="fs-4 mb-1">Uredi račun</p>
       <label for="spremeni_ime" class="input-label">Spremeni uporabniško ime:</label>
-      <input type="text" class="form-control" id="spremeni_ime" name="spremeni_ime" placeholder="Vnesi novo uporabniško ime" minlength="3" maxlength="20">
+      <input type="text" class="form-control" id="spremeni_ime" name="spremeni_ime" placeholder="Vnesi novo uporabniško ime" minlength="3" maxlength="15">
       <label for="spremeni_geslo">Spremeni geslo:</label>
-      <input type="password" class="form-control" id="spremeni_geslo" name="spremeni_geslo" placeholder="Vnesi novo geslo" minlength="6" maxlength="20">
+      <input type="password" class="form-control" id="spremeni_geslo" name="spremeni_geslo" placeholder="Vnesi novo geslo" minlength="5" maxlength="20" autocomplete="new-password">
       <label for="staro_geslo">Potrdi s starim geslom:</label>
-      <input type="password" class="form-control mb-1" id="staro_geslo" name="staro_geslo" placeholder="Vnesi staro geslo" minlength="6" maxlength="20">
+      <input type="password" class="form-control mb-1" id="staro_geslo" name="staro_geslo" placeholder="Vnesi staro geslo" minlength="5" maxlength="20">
       % if napaka:
-      <div class="alert alert-danger p-1 my-1 fs-6">{{napaka}}</div>
+      <div class="alert alert-danger py-1 my-1 fs-6">{{napaka}}</div>
       %end
       <div class="d-grid">
         <button class="btn btn-dark mt-2" type="submit">Potrdi spremembe</button>
