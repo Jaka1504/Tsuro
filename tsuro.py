@@ -399,4 +399,4 @@ def nastavi_id_igre(id):
     )
 
 
-bottle.run(reloader=True, debug=True)
+bottle.run()
