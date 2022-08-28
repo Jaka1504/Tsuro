@@ -92,12 +92,12 @@
       <label for="spremeni_geslo">Spremeni geslo:</label>
       <input type="password" class="form-control" id="spremeni_geslo" name="spremeni_geslo" placeholder="Vnesi novo geslo" minlength="6" maxlength="20">
       <label for="staro_geslo">Potrdi s starim geslom:</label>
-      <input type="password" class="form-control" id="staro_geslo" name="staro_geslo" placeholder="Vnesi staro geslo" minlength="6" maxlength="20">
+      <input type="password" class="form-control mb-1" id="staro_geslo" name="staro_geslo" placeholder="Vnesi staro geslo" minlength="6" maxlength="20">
       % if napaka:
-      <small class="form-text opozorilo">{{napaka}}</small>
+      <div class="alert alert-danger p-1 my-1 fs-6">{{napaka}}</div>
       %end
       <div class="d-grid">
-        <button class="btn btn-dark mt-3" type="submit">Potrdi spremembe</button>
+        <button class="btn btn-dark mt-2" type="submit">Potrdi spremembe</button>
       </div>
     </form>
   </div>

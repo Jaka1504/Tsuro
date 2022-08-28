@@ -10,13 +10,13 @@
       </div>
       <div class="form-group">
         <label for="geslo">Geslo:</label>
-        <input type="password" class="form-control" id="geslo" name="geslo" placeholder="Geslo" minlength="6" maxlength="20">
+        <input type="password" class="form-control mb-1" id="geslo" name="geslo" placeholder="Geslo" minlength="6" maxlength="20">
       </div>
       % if napaka:
-      <small class="form-text opozorilo">{{napaka}}</small>
+      <div class="alert alert-danger p-1 m-0 fs-6">{{napaka}}</div>
       %end
       <div class="d-grid">
-        <button class="btn btn-dark my-3" type="submit">Prijava</button>
+        <button class="btn btn-dark mb-3 mt-1" type="submit">Prijava</button>
       </div>
     </form>
     <label for="registracija">Še nimaš računa? Registriraj se:</label>
